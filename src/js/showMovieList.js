@@ -1,14 +1,19 @@
 import movieMarkup from '../templates/movieMarkup.hbs';
 import showMovieCard from './showMovieCard';
+// import handlebars from 'handlebars';
 
 const refs = {
-  main: document.querySelector('.main'),
+  listMovies: document.querySelector('.list_movies'),
 };
 
-refs.main.addEventListener('click', onCardClick);
+refs.listMovies.addEventListener('click', onCardClick);
 
 function onCardClick(e) {
   e.preventDefault();
+
+  if (e.target.dataset.id === undefined) {
+    return;
+  }
 
   if (e.target.nodeName === 'BUTTON') {
     return;
@@ -17,7 +22,11 @@ function onCardClick(e) {
   showMovieCard(e.target.dataset.id);
 }
 
+// handlebars.registerHelper('stringifyFunc', function (fn) {
+//   return fn;
+// });
+
 export default function showMovie(data) {
-  refs.main.insertAdjacentHTML('beforeend', movieMarkup(data));
+  refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));
   //return markup;
 }
