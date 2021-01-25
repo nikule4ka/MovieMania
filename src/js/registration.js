@@ -1,23 +1,11 @@
-import refs from './refs';
-import regForm from '../templates/registration-form.hbs';
 import firebase from '../services/firebase';
-
 import 'firebase/database';
 
-refs.registrationOverlayRef.insertAdjacentHTML('afterbegin', regForm());
-
-// const formRef = document.querySelector('.form__submit');
-// const usernameRef = document.querySelector('.username');
-// const passwordRef = document.querySelector('.password');
-// const emailRef = document.querySelector('.email');
-
-// formRef.addEventListener('submit', submitForm);
-
-function submitForm(e) {
-  e.preventDefault();
-  console.log(usernameRef.value);
-  console.log(passwordRef.value);
-  console.log(emailRef.value);
+export default function submitForm(event) {
+  event.preventDefault();
+  const usernameRef = document.querySelector('.username');
+  const passwordRef = document.querySelector('.password');
+  const emailRef = document.querySelector('.email');
 
   firebase
     .auth()
