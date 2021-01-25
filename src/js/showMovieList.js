@@ -2,10 +2,10 @@ import movieMarkup from '../templates/movieMarkup.hbs';
 import showMovieCard from './showMovieCard';
 
 const refs = {
-  main: document.querySelector('.main'),
+  listMovies: document.querySelector('.list_movies'),
 };
 
-refs.main.addEventListener('click', onCardClick);
+refs.listMovies.addEventListener('click', onCardClick);
 
 function onCardClick(e) {
   e.preventDefault();
@@ -18,6 +18,6 @@ function onCardClick(e) {
 }
 
 export default function showMovie(data) {
-  refs.main.insertAdjacentHTML('beforeend', movieMarkup(data));
+  refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));
   //return markup;
 }
