@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>MovieMania</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__list__item"><a href="">Главная</a></li>
+          <li class="navigation__list__item list">
+            <a href="">Списки</a>
+            <ul class="navigation__movie__list is-hidden">
+              <li><a href="">Просмотренные</a></li>
+              <li><a href="">Очередь</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="languages">
+          <img
+            class="language ru__icon"
+            src="./images/ru.png"
+            alt="language russian"
+            width="30px"
+            height="30px"
+          />
+          <img
+            class="language en__icon"
+            src="./images/en.png"
+            alt="language english"
+            width="30px"
+            height="30px"
+          />
+        </div>
+
+        <div class="user__navigation">
+          <p><i class="material-icons login">account_circle</i></p>
+          <p><i class="material-icons logout">login</i></p>
+        </div>
+      </nav>
+    </header>
+    <main class="main"></main>
+    <footer class="footer"></footer>
+    <div class="modal__oferlay is-hidden"></div>
+  </body>
+</html>
