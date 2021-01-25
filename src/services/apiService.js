@@ -35,7 +35,7 @@ const fetchGanres = async () => {
 };
 
 const fetchMovieByGanres = async ({ ganres }) => {
-  // ganres - список id жаноров через запятую без пробелов
+  // ganres - список id жанров через запятую без пробелов
   const res = await fetch(
     `${MAIN_URL}movie${API_KEY}${LANGUAGE}&with_genres=${ganres}`,
   );
@@ -101,13 +101,15 @@ const fetchReviewsId = async ({ queryKey }) => {
 };
 
 const fetchApi = {
-  fetchTrending,
-  fetchMovieId,
-  fetchCreditsId,
-  fetchReviewsId,
-  fetchSearchMovie,
-  fetchVideosId,
-  fetchGanres,
+  fetchTrending, //популярные (1 страница)
+  fetchMovieId, //получить фильм по id
+  fetchCreditsId, //список актеров (для получение нужен id фильма)
+  fetchReviewsId, //обзоры (для получение нужен id фильма)
+  fetchSearchMovie, //поиск по названия (нужно передавать название)
+  fetchVideosId, //трейлеры (для получение нужен id фильма)
+  fetchGanres, //полный список жанров
+  fetchMovieByGanres,
+  //**список фильмов согласно выбраных жанров(айди жанровчерез запятую)*/
 };
 
 export default fetchApi;
