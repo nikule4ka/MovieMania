@@ -1,2 +1,2 @@
 import './styles.css';
-import './js/language-localstorage';
+import './js/main';

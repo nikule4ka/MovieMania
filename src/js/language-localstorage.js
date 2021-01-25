@@ -2,49 +2,48 @@ import refs from './refs';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
-console.dir(refs.languageEn.classList.contains('hidden'));
-console.dir(refs.languageRu);
-
-const Language = {
-  RUSSIAN: 'ru_RU',
-  ENGLISH: 'en_EN',
-};
-
 setClassForLanguage();
 
 function setClassForLanguage() {
   const savedTheme = localStorage.getItem('language');
-  if (savedTheme === Language.RUSSIAN) {
+  if (savedTheme === refs.Languages.RUSSIAN) {
     refs.languageEn.classList.add('hidden');
-    refs.language.classList.add(Language.RUSSIAN);
+    refs.language.classList.add(refs.Languages.RUSSIAN);
   }
-  if (savedTheme === Language.ENGLISH) {
+  if (savedTheme === refs.Languages.ENGLISH) {
     refs.languageRu.classList.add('hidden');
-    refs.language.classList.add(Language.ENGLISH);
+    refs.language.classList.add(refs.Languages.ENGLISH);
   }
 }
 
 function removeClassForLanguage() {
   refs.languageEn.classList.remove('hidden');
   refs.languageRu.classList.remove('hidden');
-  refs.language.classList.remove(Language.RUSSIAN);
-  refs.language.classList.remove(Language.ENGLISH);
+  refs.language.classList.remove(refs.Languages.RUSSIAN);
+  refs.language.classList.remove(refs.Languages.ENGLISH);
 }
 
 function ChangeLanguage() {
-  if (refs.language.classList.contains(Language.RUSSIAN)) {
+  if (refs.language.classList.contains(refs.Languages.RUSSIAN)) {
     removeClassForLanguage();
     refs.languageRu.classList.add('hidden');
-    refs.language.classList.add(Language.ENGLISH);
-    localStorage.setItem('language', Language.ENGLISH);
+    refs.language.classList.add(refs.Languages.ENGLISH);
+    localStorage.setItem('language', refs.Languages.ENGLISH);
+    getLocalLanguage();
     return;
   }
 
-  if (refs.language.classList.contains(Language.ENGLISH)) {
+  if (refs.language.classList.contains(refs.Languages.ENGLISH)) {
     removeClassForLanguage();
     refs.languageEn.classList.add('hidden');
-    refs.language.classList.add(Language.RUSSIAN);
-    localStorage.setItem('language', Language.RUSSIAN);
+    refs.language.classList.add(refs.Languages.RUSSIAN);
+    localStorage.setItem('language', refs.Languages.RUSSIAN);
+    getLocalLanguage();
     return;
   }
+}
+
+export default function getLocalLanguage() {
+  const savedTheme = localStorage.getItem('language');
+  return savedTheme;
 }
