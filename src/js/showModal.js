@@ -25,4 +25,5 @@ export default function modalShow(html) {
   });
   // instance.element().insertAdjacentHTML('beforeend', '<p>After placeholder</p>')
   instance.show();
+  return instance;
 }

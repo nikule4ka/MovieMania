@@ -1,4 +1,4 @@
-import modalShow from './modalShow';
+import showModal from './showModal';
 import fetchApi from '../services/apiService';
 import movieMarkupCard from '../templates/movieMarkupCard.hbs';
 
@@ -14,7 +14,7 @@ export default function showMovieCard(id) {
       vote_average,
       overview,
     } = data;
-    modalShow(movieMarkupCard());
+    showModal(movieMarkupCard());
   });
 
   //alert('Карточка ' + id);
