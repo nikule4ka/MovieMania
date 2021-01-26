@@ -4,7 +4,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 let instance = '';
 
 function onEscKeyPress(event) {
-  console.log(event);
+  // console.log(event);
   console.log(instance);
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
