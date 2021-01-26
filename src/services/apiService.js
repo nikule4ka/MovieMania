@@ -1,4 +1,6 @@
 import getLanguage from '../js/language-localstorage';
+import getConstData from '../js/constData';
+
 const LANGUAGE = `&language=${getLanguage()}`;
 const API_KEY = '?api_key=fb4eca5dd3545235e4fd6796c70d4d40';
 const MAIN_URL = 'https://api.themoviedb.org/3/';
@@ -28,16 +30,7 @@ async function fetchTrending() {
   // console.log(res.json());
   return res.json();
 }
-
-async function fetchGanres() {
-  const res = await fetch(`${MAIN_URL}genre/movie/list${API_KEY}${LANGUAGE}`);
-  if (!res.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return res.json();
-}
-
-async function fetchMovieByGanres({ ganres }) {
+async function fetchMovieByGanres(ganres) {
   // ganres - список id жанров через запятую без пробелов
 
   const res = await fetch(
@@ -49,11 +42,7 @@ async function fetchMovieByGanres({ ganres }) {
   return res.json();
 }
 
-async function fetchSearchMovie({ queryKey }) {
-  const query = queryKey[1];
-  if (query === '') {
-    return '';
-  }
+async function fetchSearchMovie(query) {
   const res = await fetch(
     `${MAIN_URL}search/movie${API_KEY}${LANGUAGE}&query=${query}&page=${this.page}`,
   );
@@ -64,8 +53,31 @@ async function fetchSearchMovie({ queryKey }) {
   return res.json();
 }
 
-async function fetchMovieId({ queryKey }) {
-  const id = queryKey[1];
+function getMovieData(param = '') {
+  const queryString = getConstData.queryString;
+
+  if (this.queryString === queryString.BY_NAME) {
+    return this.fetchSearchMovie(param);
+  }
+  if (this.queryString === queryString.BY_GANRE) {
+    return this.fetchMovieByGanres(param);
+  }
+  if (this.queryString === queryString.POPULAR) {
+    return this.fetchTrending();
+  }
+
+  return null;
+}
+
+async function fetchGanres() {
+  const res = await fetch(`${MAIN_URL}genre/movie/list${API_KEY}${LANGUAGE}`);
+  if (!res.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return res.json();
+}
+
+async function fetchMovieId(id) {
   const res = await fetch(`${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}`);
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -73,8 +85,7 @@ async function fetchMovieId({ queryKey }) {
   return res.json();
 }
 
-async function fetchVideosId({ queryKey }) {
-  const id = queryKey[1];
+async function fetchVideosId(id) {
   const res = await fetch(`${MAIN_URL}movie/${id}/videos${API_KEY}${LANGUAGE}`);
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -82,8 +93,7 @@ async function fetchVideosId({ queryKey }) {
   return res.json();
 }
 
-async function fetchCreditsId({ queryKey }) {
-  const id = queryKey[1];
+async function fetchCreditsId(id) {
   const res = await fetch(
     `${MAIN_URL}movie/${id}/credits${API_KEY}${LANGUAGE}`,
   );
@@ -93,8 +103,7 @@ async function fetchCreditsId({ queryKey }) {
   return res.json();
 }
 
-async function fetchReviewsId({ queryKey }) {
-  const id = queryKey[1];
+async function fetchReviewsId(id) {
   const res = await fetch(
     `${MAIN_URL}movie/${id}/reviews${API_KEY}${LANGUAGE}`,
   );
@@ -106,17 +115,27 @@ async function fetchReviewsId({ queryKey }) {
 
 const fetchApi = {
   page: 1,
+  queryString: '',
   fetchTrending, //популярные (1 страница)
+  fetchSearchMovie, //поиск по названия (нужно передавать название)
+  fetchMovieByGanres,
+  //**список фильмов согласно выбраных жанров(айди жанровчерез запятую)*/
+  getMovieData,
+
   fetchMovieId, //получить фильм по id
   fetchCreditsId, //список актеров (для получение нужен id фильма)
   fetchReviewsId, //обзоры (для получение нужен id фильма)
-  fetchSearchMovie, //поиск по названия (нужно передавать название)
   fetchVideosId, //трейлеры (для получение нужен id фильма)
   fetchGanres, //полный список жанров
-  fetchMovieByGanres,
-  //**список фильмов согласно выбраных жанров(айди жанровчерез запятую)*/
+
   reset() {
     this.page = 1;
+  },
+  incrementPage() {
+    this.page += 1;
+  },
+  setQueryString(newQueryString) {
+    this.queryString = newQueryString;
   },
 };
 
