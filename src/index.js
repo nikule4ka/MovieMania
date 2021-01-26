@@ -4,6 +4,6 @@ import './js/main';
 import './js/footer';
 import './js/preLoaderPage';
 import './js/language-localstorage';
-import './js/registration';
+import './js/submitRegLogForm';
 import './js/login';
 import './js/checkUser';
