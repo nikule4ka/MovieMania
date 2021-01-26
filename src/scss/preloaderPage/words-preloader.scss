@@ -11,20 +11,20 @@ $backgroundColor: #281f55;
   left: 0;
   display: flex;
   align-items: center;
-
+  z-index: 99998;
   overflow: auto;
   animation: 10s opacity;
   position: fixed;
-}
 
-.preloader-text {
-  position: absolute;
-  bottom: 30px;
-  right: -10px;
-  width: 100%;
-  text-align: center;
-  margin: 20%;
-  animation: 10s opacity;
+  .preloader-text {
+    position: absolute;
+    bottom: 30px;
+    right: -10px;
+    width: 100%;
+    text-align: center;
+    margin: 20%;
+    animation: 10s opacity;
+  }
 }
 
 .preloader-text > b {
@@ -34,35 +34,6 @@ $backgroundColor: #281f55;
 
   animation: flip 3s ease-out infinite;
   text-shadow: 2px 2px 4px white;
-}
-
-.preloader-text > b:first-of-type {
-  animation-delay: 0s;
-}
-
-.preloader-text > b:nth-of-type(2) {
-  animation-delay: 0.1s;
-}
-
-.preloader-text > b:nth-of-type(3) {
-  animation-delay: 0.2s;
-}
-
-.preloader-text > b:nth-of-type(4) {
-  animation-delay: 0.2s;
-}
-
-.preloader-text > b:nth-of-type(5) {
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
-.preloader-text > b:nth-of-type(6) {
-  animation-delay: 0.5s;
-}
-
-.preloader-text > b:last-of-type {
-  animation-delay: 0.6s;
 }
 
 @keyframes flip {
@@ -97,7 +68,7 @@ $backgroundColor: #281f55;
     color: $secondaryColor;
     font-weight: 700;
     letter-spacing: 0.3em;
-    transform: rotateY(360deg);
+    transform: rotateY(90deg);
   }
 
   55% {
