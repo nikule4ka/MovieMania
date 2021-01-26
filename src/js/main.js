@@ -1,4 +1,5 @@
 import fetchApi from '../services/apiService';
+import getConstData from '../js/constData';
 
 import showMovie from './showMovieList';
 import loadMoreBtn from './loadMoreButton';
@@ -10,11 +11,12 @@ const refs = {
 refs.btnViewMoreRef.addEventListener('click', onPaginationsBtnClick);
 
 function getMovie() {
+  fetchApi.setQueryString(getConstData.queryString.POPULAR);
   loadMoreBtn.disable();
-  fetchApi.fetchTrending().then(({ results }) => {
+  fetchApi.getMovieData().then(({ results }) => {
     if (results.length === 0) loadMoreBtn.btnViewMoreOff();
 
-    fetchApi.page += 1;
+    fetchApi.incrementPage();
     showMovie(results);
     loadMoreBtn.enable();
   });
