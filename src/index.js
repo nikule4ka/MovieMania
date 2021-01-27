@@ -6,8 +6,9 @@ import showMovieCard from './js/showMovieCard';
 import './js/footer';
 // import './js/preLoaderPage';
 import './js/language-localstorage';
-import './js/submitRegLogForm';
-import './js/login';
+import './js/submitRegForm';
+import './js/submitLogForm';
+import './js/userLogOut';
 import './js/checkUser';
 
 const router = new Router({

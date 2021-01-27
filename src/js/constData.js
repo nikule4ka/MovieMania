@@ -4,6 +4,7 @@ const CONST_DATA = {
     BY_GANRE: 'discover',
     POPULAR: 'popular',
   },
+  instance: '',
 };
 
 export default CONST_DATA;
