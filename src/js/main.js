@@ -26,5 +26,7 @@ function onPaginationsBtnClick() {
   getMovie();
 }
 
-fetchApi.reset();
-getMovie();
+export default function main() {
+  fetchApi.reset();
+  getMovie();
+}

@@ -1,68 +1,59 @@
- <div class="login-html is-hidden">
+ <div class="login-html is-hidden ">
         <input
           id="tab-1"
           type="radio"
           name="tab"
           class="sign-in"
-          checked
-        /><label for="tab-1" class="tab">Sign In</label>
+        /><label for="tab-1" class="tab sign__in">Sign In</label>
         <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
           for="tab-2"
-          class="tab"
+          class="tab up"
+
           >Sign Up</label
         >
         <div class="login-form">
           <div class="sign-in-htm">
-            <div class="group">
+            <form class="form__sing__in group">
               <label class="label"
                 >Email Address
                 <input
                   type="email"
-                  class="input"
+                  class="input email__sign__in"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   required
                 />
               </label>
-            </div>
-            <div class="group">
               <label class="label"
                 >Password
                 <input
                   type="password"
-                  class="input"
-                  data-type="password"
-                  placeholder="4 characters minimum"
+                  class="input password__sign__in"
+                  placeholder=" 4 characters minimum"
                   data-type="password"
                   minlength="4"
                   maxlength="16"
                   required
                 />
               </label>
-            </div>
-            <!-- <div class="group">
-          <input id="check" type="checkbox" class="check" checked>
-          <label for="check"><span class="icon"></span> Keep me Signed in</label>
-        </div> -->
-            <div class="group">
-              <input type="submit" class="button" value="Sign In" />
-            </div>
+              <button type="submit" class="button submit__login">Sign In</button>
+            </form>
             <div class="hr"></div>
             <div class="foot-lnk">
               <a href="#forgot">Forgot Password?</a>
             </div>
           </div>
           <div class="sign-up-htm">
-            <form class="form__submit group">
+            <form class="form__sign__up group">
               <label class="label"
                 >Username
-                <input type="text" class="input username" />
+                <input type="text" class="input username__sign__up" />
               </label>
               <label class="label"
                 >Password
                 <input
                   type="password"
-                  class="input password"
-                  placeholder="4 characters minimum"
+                  class="input password__sign__up"
+                  placeholder=" 4 characters minimum"
                   data-type="password"
                   minlength="4"
                   maxlength="16"
@@ -73,12 +64,12 @@
                 >Email Address
                 <input
                   type="email"
-                  class="input email"
+                  class="input email__sign__up"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   required
                 />
               </label>
-              <button type="submit" class="button">Sign Up</button>
+              <button type="submit" class="button submit__reg">Sign Up</button>
             </form>
           </div>
         </div>

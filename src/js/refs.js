@@ -3,11 +3,12 @@ const refs = {
   languageRu: document.querySelector('.language.ru__icon'),
   languageEn: document.querySelector('.language.en__icon'),
   Languages: {
-    RUSSIAN: 'ru_RU',
-    ENGLISH: 'en_EN',
+    RUSSIAN: 'ru-RU',
+    ENGLISH: 'en-EN',
   },
   registrationOverlayRef: document.querySelector('.modal__overlay'),
   userLogin: document.querySelector('.user__login'),
+  userAccount: document.querySelector('.user__account'),
 };
 
 export default refs;

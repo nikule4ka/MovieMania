@@ -22,12 +22,12 @@ a {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .login-html {
-  margin-bottom: 30px;
   width: 350px;
-  height: 400px;
-  position: absolute;
-  padding: 90px 70px 50px 70px;
-  background: rgba(40, 57, 101, 0.9);
+  height: 420px;
+  padding: 50px 70px;
+  background: rgba(10, 22, 54, 0.9);
+  border-radius: 5%;
+  box-shadow: 0 0 15px rgb(15, 219, 255), 0 17px 50px 0 rgb(25, 194, 236);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
@@ -60,10 +60,11 @@ a {
 }
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab {
-  color: #fff;
+  color: #11eeac;
   border-color: #1161ee;
 }
 .tab {
+  color: #fff;
   cursor: pointer;
 }
 .login-form {
@@ -79,7 +80,7 @@ a {
 .login-form .group .input,
 .login-form .group .button {
   width: 100%;
-  color: #fff;
+  color: rgb(3, 3, 3);
   display: block;
 }
 .login-form .group .input,
@@ -155,16 +156,15 @@ a {
 
 .hr {
   height: 2px;
-  margin: 60px 0 50px 0;
+  margin: 20px 0;
   background: rgba(255, 255, 255, 0.2);
 }
 .foot-lnk {
+  color: rgb(219, 54, 54);
   text-align: center;
 }
 
-.is-hidden {
-  display: none;
-}
+
 
 .svg {
   width: 100px;

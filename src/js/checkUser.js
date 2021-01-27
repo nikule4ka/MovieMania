@@ -1,30 +1,47 @@
-import firebase from '../services/firebase';
-import '@firebase/auth';
+// import firebase from '../services/firebase';
+// import '@firebase/auth';
 import refs from './refs';
-import regForm from '../templates/registration-form.hbs';
-import submitForm from './registration';
+import loginRegForm from '../templates/loginRegForm.hbs';
+import submitRegForm from './submitRegForm';
+import submitLogForm from './submitLogForm';
+import constData from './constData';
 import showModal from './showModal';
 
-refs.userLogin.addEventListener('click', checkUser);
+refs.userLogin.addEventListener('click', () => {
+  console.log(2), checkUser();
+});
 
 function checkUser() {
-  firebase.auth().onAuthStateChanged(function () {
-    showModal(regForm());
-    // refs.registrationOverlayRef.insertAdjacentHTML('afterbegin', regForm());
-    const modalRef = document.querySelector('.login-html');
-    modalRef.classList.remove('is-hidden');
-    const formRef = document.querySelector('.form__submit');
+  constData.instance = showModal(loginRegForm());
+  const modalRef = document.querySelector('.login-html');
+  modalRef.classList.remove('is-hidden');
+  const signInRef = document.querySelector('.sign-in');
+  const signUpRef = document.querySelector('.sign-up');
+  const regFormRef = document.querySelector('.form__sign__up');
+  const loginFormRef = document.querySelector('.form__sing__in');
 
-    formRef.addEventListener('submit', submitForm);
+  signInRef.checked = true;
+  loginFormRef.addEventListener('submit', submitLogForm);
+
+  signUpRef.addEventListener('click', () => {
+    signUpRef.checked = true;
+    signInRef.checked = false;
+    regFormRef.addEventListener('submit', submitRegForm);
+    loginFormRef.removeEventListener('submit', submitLogForm);
   });
-}
 
-// firebase
-//   .auth()
-//   .signOut()
-//   .then(() => {
-//     // Sign-out successful.
-//   })
-//   .catch(error => {
-//     // An error happened.
-//   });
+  signInRef.addEventListener('click', () => {
+    signInRef.checked = true;
+    signUpRef.checked = false;
+    loginFormRef.addEventListener('submit', submitLogForm);
+    regFormRef.removeEventListener('submit', submitRegForm);
+  });
+
+  //   firebase.auth().onAuthStateChanged(function (user) {
+  //     if (user) {
+  //       console.log(user);
+  //     } else {
+  //       console.log('NoUser');
+  //     }
+  //   });
+}

@@ -1,22 +1,17 @@
-import showModal from './showModal';
 import fetchApi from '../services/apiService';
 import movieMarkupCard from '../templates/movieMarkupCard.hbs';
 
+const refs = {
+  cardMovies: document.querySelector('.main_card'),
+};
+
 export default function showMovieCard(id) {
   fetchApi.fetchMovieId(id).then(data => {
-    const {
-      title,
-      id,
-      original_title,
-      genres,
-      release_date,
-      poster_path,
-      vote_average,
-      overview,
-    } = data;
-    showModal(movieMarkupCard());
-  });
+    console.log(data);
 
-  //alert('Карточка ' + id);
-  // modalShow(`<p class="modalDiv">${id}</p>`);
+    refs.cardMovies.innerHTML = '';
+    refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
+
+    //showModal(movieMarkupCard());
+  });
 }
