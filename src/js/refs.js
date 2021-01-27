@@ -8,6 +8,7 @@ const refs = {
   },
   registrationOverlayRef: document.querySelector('.modal__overlay'),
   userLogin: document.querySelector('.user__login'),
+  userAccount: document.querySelector('.user__account'),
 };
 
 export default refs;
