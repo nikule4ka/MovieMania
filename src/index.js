@@ -4,7 +4,7 @@ import './js/header';
 import main from './js/main';
 import showMovieCard from './js/showMovieCard';
 import './js/footer';
-// import './js/preLoaderPage';
+import './js/preLoaderPage';
 import './js/language-localstorage';
 import './js/submitRegForm';
 import './js/submitLogForm';
