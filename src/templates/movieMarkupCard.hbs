@@ -1,30 +1,24 @@
-     <div class="modalDiv card mb-3">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img
-              src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-              width="300px"
-              alt={{title}}
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h3 class="card-title">
-                {{title}}  ({{release_date}})
-              </h3>
-              <p class="card-text">Рейтинг: {{vote_average}}</p>
-              <h4 class="card-title">Обзор</h4>
-              <p class="card-text">{{overview}}</p>
-              <h4 class="card-title">Жанры</h4>
-              {{#each genres}}
-                <p class="card-text">{{name}}</p>
-              {{/each}}
-            </div>
-            <div class="btn-group btn-group-sm" role="group">
-              <p data-id={{id}}><i class="material-icons">favorite_border</i></p>
-              <p data-id={{id}}><i class="material-icons">bookmark_border</i></p>
-              <p data-id={{id}}><i class="material-icons">check_circle_outline</i></p>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="movie__markup__card ">
+  <div class="movie__markup__img">
+    <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" width="300px" alt={{title}} />
+  </div>
+  <div class="movie__content">
+    <div class="card-body">
+      <h3 class="card-title">
+        {{title}} ({{release_date}})
+      </h3>
+      <p class="card-text">Рейтинг: {{vote_average}}</p>
+      <h4 class="card-title">Обзор</h4>
+      <p class="card-text">{{overview}}</p>
+      <h4 class="card-title">Жанры</h4>
+      {{#each genres}}
+      <p class="card-text">{{name}}</p>
+      {{/each}}
+    </div>
+    <div class="btn-group btn-group-sm" role="group">
+      <p data-id={{id}}><i class="material-icons">favorite_border</i></p>
+      <p data-id={{id}}><i class="material-icons">bookmark_border</i></p>
+      <p data-id={{id}}><i class="material-icons">check_circle_outline</i></p>
+    </div>
+  </div>
+</div>
