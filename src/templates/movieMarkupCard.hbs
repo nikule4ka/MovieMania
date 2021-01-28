@@ -4,18 +4,25 @@
   </div>
   <div class="movie__content">
     <div class="card-body">
-      <h3 class="card-title">
-        {{title}} ({{release_date}})
-      </h3>
-      <p class="card-text">Рейтинг: {{vote_average}}</p>
-      <h4 class="card-title">Обзор</h4>
-      <p class="card-text">{{overview}}</p>
-      <h4 class="card-title">Жанры</h4>
-      {{#each genres}}
-      <p class="card-text">{{name}}</p>
+      <h3 class="card-title">{{title}}</h3>
+      <p>{{release_date}}</p>
+      {{#each production_countries}}
+      <p class="card-text-production">{{name}}</p>
       {{/each}}
+      <div>
+        <p class="icon-runtime-min"><i class="material-icons icon-runtime">theaters</i>{{runtime}} мин</p>
+
+      </div>
+      {{#each genres}}
+      <p class="card-text-genres-name">{{name}}</p>
+      {{/each}}
+      <h4 class="card-title-overview">Обзор</h4>
+      <p class="card-text-overview">{{overview}}</p>
+      <p class="card-text-rainting" data-id={{id}}><i class="material-icons icon-raiting">star_rate</i>{{vote_average}}
+      </p>
+
     </div>
-    <div class="btn-group btn-group-sm" role="group">
+    <div class="btn-group-icons" role="group">
       <p data-id={{id}}><i class="material-icons">favorite_border</i></p>
       <p data-id={{id}}><i class="material-icons">bookmark_border</i></p>
       <p data-id={{id}}><i class="material-icons">check_circle_outline</i></p>
@@ -23,23 +30,23 @@
   </div>
 </div>
 
-  <div>
-    <div class="movie__markup__tab">
-      <button class="movie__markup__tablinks" id="defaultOpen" data-tabname="actors">Актеры</button>
-      <button class="movie__markup__tablinks" data-tabname="reviews">Отзывы</button>
-      <button class="movie__markup__tablinks" data-tabname="trailers">Трейлер</button>
-    </div>
-
-    <!-- Tab content -->
-    <div id="actors" class="movie__markup__tabcontent">
-
-    </div>
-
-    <div id="reviews" class="movie__markup__tabcontent">
-
-    </div>
-
-    <div id="trailers" class="movie__markup__tabcontent">
-
-    </div>
+<div>
+  <div class="movie__markup__tab">
+    <button class="movie__markup__tablinks " id="defaultOpen" data-tabname="actors">Актеры</button>
+    <button class="movie__markup__tablinks" data-tabname="reviews">Отзывы</button>
+    <button class="movie__markup__tablinks" data-tabname="trailers">Трейлер</button>
   </div>
+
+  <!-- Tab content -->
+  <div id="actors" class="movie__markup__tabcontent">
+
+  </div>
+
+  <div id="reviews" class="movie__markup__tabcontent">
+
+  </div>
+
+  <div id="trailers" class="movie__markup__tabcontent">
+
+  </div>
+</div>
