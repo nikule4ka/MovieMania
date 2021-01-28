@@ -22,9 +22,8 @@
     <title>MovieMania</title>
   </head>
 
-  <body >
+  <body>
     <div class="preloader">
-
       <div class="loader">
         <div class="face">
           <div class="circle"></div>
@@ -34,10 +33,11 @@
         </div>
       </div>
     </div>
-    
+
     <div class="page-preloader">
       <div class="preloader-text">
-          <b>M</b><b>O</b><b>V</b><b>I</b><b>E</b><b>M</b><b>A</b><b>N</b><b>I</b><b>A</b>
+        <b>M</b><b>O</b><b>V</b><b>I</b><b>E</b><b>M</b><b>A</b><b>N</b><b>I</b
+        ><b>A</b>
       </div>
     </div>
 
@@ -81,19 +81,7 @@
     <main class="main container">
       <div class="main_list">
         <div class="list_movies"></div>
-        <button
-          class="btn btn-primary is-hidden"
-          type="button"
-          data-action="load more"
-        >
-          <span
-            class="spinner-border spinner-border-sm is-hidden"
-            role="status"
-            aria-hidden="true"
-          ></span>
-
-          <span class="label spinner">See more</span>
-        </button>
+        <div id="pagination" class="tui tui tui-pagination"></div>
       </div>
       <div class="main_card"></div>
     </main>
