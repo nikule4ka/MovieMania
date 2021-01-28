@@ -16,6 +16,8 @@ function onPaginationsBtnClick() {
   fetchApi.setLocation('#/page/' + currentPage);
 
   getMovie();
+
+  window.scrollTo(0, 0);
 }
 
 function getMovie() {

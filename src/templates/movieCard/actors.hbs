@@ -1,11 +1,16 @@
-{{#each this}}
+{{#unless this}}
+    <p>Нет актеров</p>
+{{/unless}}
+
+
 <div class="card__actors">
     <ul class="list__actors">
-        <li class="list__actorCard">
-            <img src="" width="" alt="">
-            <h3 class="list__actorName"></h3>
-            <p class="list__actorMovieName"></p>
-        </li>
+        {{#each this}}
+            <li class="list__actorCard">
+                <img src="https://image.tmdb.org/t/p/w500{{profile_path}}" width="100px" alt="{{name}}">
+                <h3 class="list__actorName">{{name}}</h3>
+                <p class="list__actorMovieName">{{character}}</p>
+            </li>
+        {{/each}}
     </ul>
 </div>
-{{each}}
