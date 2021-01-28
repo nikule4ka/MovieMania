@@ -1,14 +1,14 @@
 {{#each this}}
     <div data-id={{id}} class="card">
-        <a href="/#/movie/{{id}}">
+        <a href="/#/movie/{{id}}" class="card__link">
             <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{poster_path}}" data-id={{id}} alt={{title}} />
             <h5 class="card-title" data-id={{id}}>{{title}} ({{release_date}}) </h5>
             <p class="card-text" data-id={{id}}><i class="material-icons icon-raiting">view_headline</i>{{vote_average}}</p>
 
-            <div class="btn-group btn-group-sm" role="group">
-                <p data-id={{id}}><i class="material-icons favorites">favorite_border</i></p>
-                <p data-id={{id}}><i class="material-icons watch__later">bookmark_border</i></p>
-                <p data-id={{id}}><i class="material-icons watched">check_circle_outline</i></p>
+            <div class="btn-group btn-group-sm status__film" role="group">
+                <p><i class="material-icons favorites__list" data-status='favorites' data-id={{id}}>favorite_border</i></p>
+                <p><i class="material-icons watch__later__list" data-status='watchedLater' data-id={{id}}>bookmark_border</i></p>
+                <p><i class="material-icons watched__list" data-status='watched' data-id={{id}}>check_circle_outline</i></p>
             </div>
         </a>
     </div>

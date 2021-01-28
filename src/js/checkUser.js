@@ -3,13 +3,11 @@
 import refs from './refs';
 import loginRegForm from '../templates/loginRegForm.hbs';
 import submitRegForm from './submitRegForm';
-import submitLogForm from './submitLogForm';
+import { submitLogForm } from './submitLogForm';
 import constData from './constData';
 import showModal from './showModal';
 
-refs.userLogin.addEventListener('click', () => {
-  console.log(2), checkUser();
-});
+refs.userLogin.addEventListener('click', checkUser);
 
 function checkUser() {
   constData.instance = showModal(loginRegForm());
@@ -36,12 +34,6 @@ function checkUser() {
     loginFormRef.addEventListener('submit', submitLogForm);
     regFormRef.removeEventListener('submit', submitRegForm);
   });
-
-  //   firebase.auth().onAuthStateChanged(function (user) {
-  //     if (user) {
-  //       console.log(user);
-  //     } else {
-  //       console.log('NoUser');
-  //     }
-  //   });
 }
+
+export default checkUser;

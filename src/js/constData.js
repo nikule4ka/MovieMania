@@ -5,6 +5,12 @@ const CONST_DATA = {
     POPULAR: 'popular',
   },
   instance: '',
+  wathedFilms: {
+    favorites: false,
+    watchedLater: false,
+    watched: false,
+  },
+  userData: [],
 };
 
 export default CONST_DATA;
