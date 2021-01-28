@@ -7,4 +7,4 @@ function deletePreloader() {
 }
 setTimeout(() => {
   deletePreloader();
-}, 10000);
+}, 5000);
