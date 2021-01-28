@@ -13,7 +13,7 @@ const MAIN_URL = 'https://api.themoviedb.org/3/';
 //http://api.themoviedb.org/3/discover/movie?api_key=fb4eca5dd3545235e4fd6796c70d4d40&language=en-US&with_genres=14,1&page=1
 
 // получить сразу и видео и картинки к фильму
-// https://api.themoviedb.org/3/movie/157336?api_key=fb4eca5dd3545235e4fd6796c70d4d40&append_to_response=videos,images
+// https://api.themoviedb.org/3/movie/495764?api_key=fb4eca5dd3545235e4fd6796c70d4d40&append_to_response=videos,reviews,credits
 
 //ссылка на картинку
 //'https://image.tmdb.org/t/p/w500/путь'

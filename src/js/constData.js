@@ -5,6 +5,7 @@ const CONST_DATA = {
     POPULAR: 'popular',
   },
   instance: '',
+  router: '',
 };
 
 export default CONST_DATA;
