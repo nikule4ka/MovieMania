@@ -78,7 +78,9 @@ async function fetchGanres() {
 }
 
 async function fetchMovieId(id) {
-  const res = await fetch(`${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}`);
+  const res = await fetch(
+    `${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}&append_to_response=videos,reviews,credits`,
+  );
   if (!res.ok) {
     throw new Error('Network response was not ok');
   }

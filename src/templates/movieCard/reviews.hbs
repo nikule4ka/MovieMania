@@ -1,12 +1,17 @@
-{{#each this}}
+{{#unless this}}
+    <p>Нет отзывов</p>
+{{/unless}}
+
+
 <div class="card__reviews">
     <p class="name-movie">{{nameOfmovie}}</p>
     <ul class="list__reviews">
+        {{#each this}}
         <li class="list__reviewCard">
-            <p class="list__nameOfUser"></p>
-            <h4 class="list__review"></h4>
-            <p class="list__dateOfReview"></p>
+            <h4 class="list__nameOfUser">{{author}}</h4>
+            <p class="list__review">{{list__review}}</p>
+            <p class="list__dateOfReview">{{created_at}}</p>
         </li>
+        {{/each}}
     </ul>
 </div>
-{{each}}
