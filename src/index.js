@@ -1,9 +1,11 @@
 import './scss/main.scss';
+// import './js/preLoaderPage';
 import Router from './js/Router';
 import './js/header';
 import main from './js/main';
 import showMovieCard from './js/showMovieCard';
 import './js/footer';
+
 import './js/preLoaderPage';
 import './js/language-localstorage';
 import './js/submitRegForm';
@@ -35,3 +37,5 @@ router
     mainList.classList.remove('is-hidden');
     main.mainInit();
   });
+
+localStorage.clear();
