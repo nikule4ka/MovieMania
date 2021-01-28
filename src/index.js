@@ -25,8 +25,13 @@ router
     mainCard.classList.remove('is-hidden');
     showMovieCard(id);
   })
+  .add(/page\/(.*)/, id => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    main.mainInit(id);
+  })
   .add('', () => {
     mainCard.classList.add('is-hidden');
     mainList.classList.remove('is-hidden');
-    main();
+    main.mainInit();
   });

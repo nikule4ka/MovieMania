@@ -1,32 +1,35 @@
 import fetchApi from '../services/apiService';
 import getConstData from '../js/constData';
+import pagination from '../js/pagination';
 
 import showMovie from './showMovieList';
-import loadMoreBtn from './loadMoreButton';
 
 const refs = {
-  btnViewMoreRef: document.querySelector('button[data-action="load more"]'),
+  paginationRef: document.getElementById('pagination'),
 };
 
-refs.btnViewMoreRef.addEventListener('click', onPaginationsBtnClick);
+refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
+
+function onPaginationsBtnClick() {
+  const currentPage = pagination.getCurrentPage();
+  fetchApi.setPage(currentPage);
+  fetchApi.setLocation('#/page/' + currentPage);
+
+  getMovie();
+}
 
 function getMovie() {
   fetchApi.setQueryString(getConstData.queryString.POPULAR);
-  loadMoreBtn.disable();
-  fetchApi.getMovieData().then(({ results }) => {
-    if (results.length === 0) loadMoreBtn.btnViewMoreOff();
+  fetchApi.getMovieData().then(({ results, total_results }) => {
+    pagination.setTotalItems(total_results);
 
-    fetchApi.incrementPage();
     showMovie(results);
-    loadMoreBtn.enable();
   });
 }
 
-function onPaginationsBtnClick() {
+function mainInit(id = 1) {
+  pagination.movePageTo(id);
+  fetchApi.setPage(id);
   getMovie();
 }
-
-export default function main() {
-  fetchApi.reset();
-  getMovie();
-}
+export default { mainInit, getMovie };

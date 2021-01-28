@@ -7,11 +7,7 @@ const refs = {
 
 export default function showMovieCard(id) {
   fetchApi.fetchMovieId(id).then(data => {
-    console.log(data);
-
     refs.cardMovies.innerHTML = '';
     refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
-
-    //showModal(movieMarkupCard());
   });
 }

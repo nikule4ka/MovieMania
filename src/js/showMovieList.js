@@ -7,4 +7,7 @@ const refs = {
 export default function showMovie(data) {
   refs.listMovies.innerHTML = '';
   refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));
+
+  // fetchApi.setLocation('#/page/' + currentPage);
+  // /#/movie/{{id}}
 }

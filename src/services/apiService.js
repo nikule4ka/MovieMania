@@ -134,8 +134,15 @@ const fetchApi = {
   incrementPage() {
     this.page += 1;
   },
+  setPage(currentPage) {
+    this.page = currentPage;
+  },
   setQueryString(newQueryString) {
     this.queryString = newQueryString;
+  },
+  setLocation(curLoc) {
+    location.href = curLoc;
+    location.hash = curLoc;
   },
 };
 
