@@ -31,12 +31,17 @@ function openTab(evt) {
   // Get all elements with class="tablinks" and remove the class "active"
   const tablinks = document.getElementsByClassName('movie__markup__tablinks');
   for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(' active', '');
+    tablinks[i].className = tablinks[i].className.replace(
+      ' tablinks__active',
+      '',
+    );
   }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(tabName).style.display = 'block';
-  target.className += ' active';
+
+  target.className += ' tablinks__active';
+
 }
 
 export default function showMovieCard(id) {
