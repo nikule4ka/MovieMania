@@ -41,7 +41,6 @@ function openTab(evt) {
   document.getElementById(tabName).style.display = 'block';
 
   target.className += ' tablinks__active';
-
 }
 
 export default function showMovieCard(id) {

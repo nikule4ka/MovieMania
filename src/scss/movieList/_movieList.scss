@@ -2,6 +2,11 @@
 .watch__later,
 .watched {
   cursor: pointer;
+  color: tomato;
+
+  &:hover {
+    border: 0 0 15px rgb(15, 219, 255), 0 17px 50px 0 rgb(25, 194, 236);
+  }
 }
 
 .modalDiv {
