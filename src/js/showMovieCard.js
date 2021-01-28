@@ -36,7 +36,7 @@ function openTab(evt) {
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(tabName).style.display = 'block';
-  evt.currentTarget.className += ' active';
+  target.className += ' active';
 }
 
 export default function showMovieCard(id) {
@@ -46,7 +46,17 @@ export default function showMovieCard(id) {
     } else {
       data.poster_path = 'https://image.tmdb.org/t/p/w500' + data.poster_path;
     }
-    data.release_date = data.release_date.split('-').reverse().join('/');
+
+    data.release_date = data.release_date.slice(0, 4);
+
+    let str = data.genres
+      .reduce((acc, el) => (acc = acc + el.name + ', '), '')
+      .trim();
+    data.allGenres = str.substring(0, str.length - 1);
+    str = data.production_countries
+      .reduce((acc, el) => (acc = acc + el.name + ', '), '')
+      .trim();
+    data.allCountries = str.substring(0, str.length - 1);
 
     refs.cardMovies.innerHTML = '';
     refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));

@@ -22,12 +22,11 @@ function onPaginationsBtnClick() {
   window.scrollTo(0, 0);
 }
 
-function getMovie() {
-  fetchApi.setQueryString(getConstData.queryString.POPULAR);
-  fetchApi.getMovieData().then(({ results, total_results }) => {
+function getMovie(param = '') {
+  fetchApi.getMovieData(param).then(({ results, total_results }) => {
     pagination.setTotalItems(total_results);
 
-    const resultsData = results.map(el => {
+    results.map(el => {
       if (el.poster_path === null) {
         el.poster_path = noPosterImg;
       } else {
@@ -38,13 +37,16 @@ function getMovie() {
 
       return el;
     });
+
     showMovie(results);
   });
 }
 
 function mainInit(id = 1) {
+  fetchApi.setQueryString(getConstData.queryString.POPULAR);
   pagination.movePageTo(id);
   fetchApi.setPage(id);
   getMovie();
 }
+
 export default { mainInit, getMovie };
