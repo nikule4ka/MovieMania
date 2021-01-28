@@ -1,32 +1,52 @@
 import fetchApi from '../services/apiService';
 import getConstData from '../js/constData';
+import pagination from '../js/pagination';
 
 import showMovie from './showMovieList';
-import loadMoreBtn from './loadMoreButton';
+
+import noPosterImg from '../images/no-movie.jpg';
 
 const refs = {
-  btnViewMoreRef: document.querySelector('button[data-action="load more"]'),
+  paginationRef: document.getElementById('pagination'),
 };
 
-refs.btnViewMoreRef.addEventListener('click', onPaginationsBtnClick);
+refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
 
-function getMovie() {
-  fetchApi.setQueryString(getConstData.queryString.POPULAR);
-  loadMoreBtn.disable();
-  fetchApi.getMovieData().then(({ results }) => {
-    if (results.length === 0) loadMoreBtn.btnViewMoreOff();
+function onPaginationsBtnClick() {
+  const currentPage = pagination.getCurrentPage();
+  fetchApi.setPage(currentPage);
+  fetchApi.setLocation('#/page/' + currentPage);
 
-    fetchApi.incrementPage();
+  getMovie();
+
+  window.scrollTo(0, 0);
+}
+
+function getMovie(param = '') {
+  fetchApi.getMovieData(param).then(({ results, total_results }) => {
+    pagination.setTotalItems(total_results);
+
+    results.map(el => {
+      if (el.poster_path === null) {
+        el.poster_path = noPosterImg;
+      } else {
+        el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
+      }
+
+      el.release_date = el.release_date.slice(0, 4);
+
+      return el;
+    });
+
     showMovie(results);
-    loadMoreBtn.enable();
   });
 }
 
-function onPaginationsBtnClick() {
+function mainInit(id = 1) {
+  fetchApi.setQueryString(getConstData.queryString.POPULAR);
+  pagination.movePageTo(id);
+  fetchApi.setPage(id);
   getMovie();
 }
 
-export default function main() {
-  fetchApi.reset();
-  getMovie();
-}
+export default { mainInit, getMovie };

@@ -17,7 +17,7 @@ $backgroundColor: #281f55;
   width: 200vw;
   height: 200vh;
   z-index: 99999;
-  animation: 10s opacity;
+  animation: 5s opacity;
 
   .loader {
     position: absolute;
@@ -30,7 +30,7 @@ $backgroundColor: #281f55;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: 10s opacity;
+    animation: 5s opacity;
 
     .face {
       position: absolute;

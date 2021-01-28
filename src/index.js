@@ -5,6 +5,8 @@ import './js/header';
 import main from './js/main';
 import showMovieCard from './js/showMovieCard';
 import './js/footer';
+
+import './js/preLoaderPage';
 import './js/language-localstorage';
 import './js/submitRegForm';
 import './js/submitLogForm';
@@ -25,10 +27,15 @@ router
     mainCard.classList.remove('is-hidden');
     showMovieCard(id);
   })
+  .add(/page\/(.*)/, id => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    main.mainInit(id);
+  })
   .add('', () => {
     mainCard.classList.add('is-hidden');
     mainList.classList.remove('is-hidden');
-    main();
+    main.mainInit();
   });
 
 localStorage.clear();

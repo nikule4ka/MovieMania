@@ -1,0 +1,104 @@
+.movie__markup__card {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+
+  .movie__markup__img {
+    align-self: flex-start;
+  }
+
+  .movie__content {
+    margin-left: 25px;
+  }
+}
+
+.icon-runtime-min {
+  position: relative;
+  padding-left: 30px;
+
+  .icon-runtime {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+  }
+}
+
+.btn-group-icons {
+  display: flex;
+}
+
+/* Style the tab */
+.movie__markup__tab {
+  overflow: hidden;
+  border-radius: 13px 13px 0 0;
+  background-color: $ListMovieColor;
+}
+
+/* Style the buttons that are used to open the tab content */
+.movie__markup__tablinks {
+  position: relative;
+}
+
+.movie__markup__tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  color: #fff;
+}
+
+/* Change background color of buttons on hover */
+.movie__markup__tab button:hover {
+  background-color: $headerFooterColor;
+  color: #fff;
+}
+
+/* Create an active/current tablink class */
+.movie__markup__tab button.tablinks__active::after {
+  // background-color: $primaryColor;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  height: 3px;
+
+  background-color: #f8104d;
+  transition: background-color 0.4s;
+}
+
+/* Style the tab content */
+.movie__markup__tabcontent {
+  display: none;
+  padding: 6px 12px;
+  background-color: $ListMovieColor;
+  border-top: none;
+}
+
+.movie__markup__tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.card-title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 900;
+  font-style: normal;
+}

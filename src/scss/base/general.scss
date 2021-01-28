@@ -1,3 +1,8 @@
+$backgroundColor: #1a143b;
+$ListMovieColor: #281f55;
+$headerFooterColor: #30246b;
+$secondaryColor: #f8104d;
+
 html {
   box-sizing: border-box;
 }
@@ -9,10 +14,55 @@ html {
 }
 
 body {
-  background-color: rgb(51, 39, 116);
+  background-color: $backgroundColor;
   color: #fff;
+  font-family: Noto Sans TC, sans-serif;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+h5 {
+  font-family: Noto Sans TC, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.19;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
 
 .is-hidden {
   display: none;
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 994px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main {
+  padding-top: 20px;
 }
