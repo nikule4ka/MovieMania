@@ -1,7 +1,7 @@
 {{#each this}}
 <div data-id={{id}} class="card">
     <a class="card__link" href="/#/movie/{{id}}">
-        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{poster_path}}" data-id={{id}} alt={{title}} />
+        <img class="card-img-top" src="{{poster_path}}" data-id={{id}} alt={{title}} />
         <h5 class="card-title" data-id={{id}}>{{title}} ({{release_date}}) </h5>
         <p class="card-text" data-id={{id}}><i class="material-icons icon-raiting">view_headline</i>{{vote_average}}</p>
 
