@@ -44,44 +44,47 @@ function openTab(evt) {
 }
 
 export default function showMovieCard(id) {
-  fetchApi.fetchMovieId(id).then(data => {
-    if (data.poster_path === null) {
-      data.poster_path = noPosterImg;
-    } else {
-      data.poster_path = 'https://image.tmdb.org/t/p/w500' + data.poster_path;
-    }
-
-    data.release_date = data.release_date.slice(0, 4);
-
-    let str = data.genres
-      .reduce((acc, el) => (acc = acc + el.name + ', '), '')
-      .trim();
-    data.allGenres = str.substring(0, str.length - 1);
-    str = data.production_countries
-      .reduce((acc, el) => (acc = acc + el.name + ', '), '')
-      .trim();
-    data.allCountries = str.substring(0, str.length - 1);
-
-    refs.cardMovies.innerHTML = '';
-    refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
-
-    const movieMarkupTab = document.querySelector('.movie__markup__tab');
-
-    movieMarkupTab.addEventListener('click', openTab);
-    document.getElementById('defaultOpen').click();
-
-    const actorsData = data.credits.cast.map(el => {
-      if (el.profile_path === null) {
-        el.profile_path = noActorImg;
+  fetchApi
+    .fetchMovieId(id)
+    .then(data => {
+      if (data.poster_path === null) {
+        data.poster_path = noPosterImg;
       } else {
-        el.profile_path = 'https://image.tmdb.org/t/p/w500' + el.profile_path;
+        data.poster_path = 'https://image.tmdb.org/t/p/w500' + data.poster_path;
       }
-      return el;
-    });
-    addExtensions(actorsData, 'actors', actors);
-    addExtensions(data.reviews.results, 'reviews', reviews);
-    addExtensions(data.videos.results, 'trailers', trailers);
-  });
+
+      data.release_date = data.release_date.slice(0, 4);
+
+      let str = data.genres
+        .reduce((acc, el) => (acc = acc + el.name + ', '), '')
+        .trim();
+      data.allGenres = str.substring(0, str.length - 1);
+      str = data.production_countries
+        .reduce((acc, el) => (acc = acc + el.name + ', '), '')
+        .trim();
+      data.allCountries = str.substring(0, str.length - 1);
+
+      refs.cardMovies.innerHTML = '';
+      refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
+
+      const movieMarkupTab = document.querySelector('.movie__markup__tab');
+
+      movieMarkupTab.addEventListener('click', openTab);
+      document.getElementById('defaultOpen').click();
+
+      const actorsData = data.credits.cast.map(el => {
+        if (el.profile_path === null) {
+          el.profile_path = noActorImg;
+        } else {
+          el.profile_path = 'https://image.tmdb.org/t/p/w500' + el.profile_path;
+        }
+        return el;
+      });
+      addExtensions(actorsData, 'actors', actors);
+      addExtensions(data.reviews.results, 'reviews', reviews);
+      addExtensions(data.videos.results, 'trailers', trailers);
+    })
+    .catch(error => console.log(error));
 }
 
 function addExtensions(dataExt, idExt, template) {

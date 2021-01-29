@@ -1,5 +1,5 @@
 import fetchApi from '../services/apiService';
-import getConstData from './constData';
+import сonstData from './constData';
 import getMovie from './main';
 import Choices from 'choices.js';
 
@@ -33,7 +33,6 @@ function onFindByGenresClick(e) {
     .fetchGanres()
     .then(({ genres }) =>
       genres.map(genre => {
-        console.log(genre.id);
         return { value: genre.id, label: genre.name };
       }),
     )
@@ -58,10 +57,9 @@ function searchFilmByQuery(e) {
   e.preventDefault();
 
   if (refs.getByNameRef.classList.contains('active__search')) {
-    const query = refs.inputNameRef.value;
-    if (query.trim() !== '') {
-      fetchApi.setQueryString(getConstData.queryString.BY_NAME);
-      getMovie.getMovie(refs.inputNameRef.value);
+    const query = refs.inputNameRef.value.trim();
+    if (query !== '') {
+      fetchApi.setLocation(`#/query/${query}/page/1`);
     }
     return;
   }
@@ -73,16 +71,12 @@ function searchFilmByQuery(e) {
 
     const arrayChoices = Object.values(getChoices);
 
-    const listGenre = arrayChoices.reduce((acc, choice) => {
-      const genreValue = choice.attributes.value.value;
-      const genres = [...acc, ...genreValue];
-      return genres.join(',');
-    }, []);
+    const listGenre = arrayChoices
+      .reduce((acc, choice) => [...acc, choice.attributes.value.value], [])
+      .join(',');
 
-    arrayChoices.map(el => console.log(el.attributes.value.value));
+    fetchApi.setLocation(`#/genres/${listGenre}/page/1`);
 
-    fetchApi.setQueryString(getConstData.queryString.BY_GANRE);
-    getMovie.getMovie(listGenre);
     const clearChoices = document.querySelector('.choices__list--multiple');
 
     clearChoices.innerHTML = '';
