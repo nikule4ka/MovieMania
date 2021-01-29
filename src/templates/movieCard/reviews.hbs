@@ -1,14 +1,13 @@
 {{#unless this}}
-{{!-- <p>Нет отзывов</p> --}}
+<p>Нет отзывов</p>
 {{/unless}}
 
 
 <div class="card__reviews">
-    <p class="name-movie">{{nameOfmovie}}</p>
-    <h4 class="list__nameOfUser">Stanislav</h4>
+    {{!-- <h4 class="list__nameOfUser">Stanislav</h4>
     <p class="list__dateOfReview">29 марта 2018 </p>
     <p class="list__review">Фильм отличный! Крутейшие экшен сцены, городские пейзажи
-        впечатлающие. Атмосфера идеально передана.. Просто супер!</p>
+        впечатлающие. Атмосфера идеально передана.. Просто супер!</p> --}}
     <ul class="list__reviews">
         {{#each this}}
         <li class="list__reviewCard">
