@@ -81,8 +81,25 @@ export default function showMovieCard(id) {
         return el;
       });
       addExtensions(actorsData, 'actors', actors);
-      addExtensions(data.reviews.results, 'reviews', reviews);
+      const reviewsData = data.reviews.results.map(el => {
+        const dateCreat = el.created_at;
+        // 2020-12-18T14:08:08.440Z
+        let newDate = '';
+
+        if (dateCreat !== null) {
+          const year = dateCreat.slice(0, 4);
+          const month = dateCreat.slice(5, 7);
+          const day = dateCreat.slice(8, 10);
+
+          newDate = `${day} ${month} ${year}`;
+        }
+        el.created_at = newDate;
+        return el;
+      });
+      addExtensions(reviewsData, 'reviews', reviews);
       addExtensions(data.videos.results, 'trailers', trailers);
+
+      window.scrollTo(0, 0);
     })
     .catch(error => console.log(error));
 }
