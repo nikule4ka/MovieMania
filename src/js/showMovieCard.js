@@ -55,14 +55,13 @@ export default function showMovieCard(id) {
 
       data.release_date = data.release_date.slice(0, 4);
 
-      let str = data.genres
-        .reduce((acc, el) => (acc = acc + el.name + ', '), '')
-        .trim();
-      data.allGenres = str.substring(0, str.length - 1);
-      str = data.production_countries
-        .reduce((acc, el) => (acc = acc + el.name + ', '), '')
-        .trim();
-      data.allCountries = str.substring(0, str.length - 1);
+      data.allGenres = data.genres
+        .reduce((acc, el) => (acc = [...acc, el.name]), [])
+        .join(', ');
+
+      data.allCountries = data.production_countries
+        .reduce((acc, el) => (acc = [...acc, el.name]), [])
+        .join(', ');
 
       refs.cardMovies.innerHTML = '';
       refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
@@ -81,9 +80,9 @@ export default function showMovieCard(id) {
         return el;
       });
       addExtensions(actorsData, 'actors', actors);
+
       const reviewsData = data.reviews.results.map(el => {
         const dateCreat = el.created_at;
-        // 2020-12-18T14:08:08.440Z
         let newDate = '';
 
         if (dateCreat !== null) {
@@ -94,9 +93,11 @@ export default function showMovieCard(id) {
           newDate = `${day} ${month} ${year}`;
         }
         el.created_at = newDate;
+
         return el;
       });
       addExtensions(reviewsData, 'reviews', reviews);
+
       addExtensions(data.videos.results, 'trailers', trailers);
 
       window.scrollTo(0, 0);
