@@ -108,6 +108,7 @@
 
 .card-title-movie {
   margin-top: 0;
+  max-width: 80%;
   margin-bottom: 20px;
   font-size: 40px;
   line-height: 44px;
@@ -201,6 +202,14 @@
     position: relative;
     padding: 10px 20px 30px 20px;
     margin-bottom: 0;
+
+    .list__review {
+      margin-top: 5px;
+      margin-bottom: 0;
+      font-size: 12px;
+      text-align: start;
+      font-weight: 300;
+    }
   }
 }
 
@@ -231,12 +240,6 @@
   text-align: start;
 }
 
-.list__review {
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-size: 12px;
-  text-align: start;
-}
 .movie__markup__tabcontent {
   padding-bottom: 15px;
 }
