@@ -7,7 +7,7 @@ setClassForLanguage();
 
 function setClassForLanguage() {
   const savedTheme = localStorage.getItem('language');
-  console.log(savedTheme);
+
   if (savedTheme === refs.Languages.RUSSIAN) {
     refs.languageEn.classList.add('hidden');
     refs.language.classList.add(refs.Languages.RUSSIAN);

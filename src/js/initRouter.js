@@ -17,10 +17,20 @@ router
     mainCard.classList.remove('is-hidden');
     showMovieCard(id);
   })
-  .add(/page\/(.*)/, id => {
+  .add(/query\/(.*)\/page\/(.*)/, (query, page) => {
     mainCard.classList.add('is-hidden');
     mainList.classList.remove('is-hidden');
-    main.mainInit(id);
+    main.mainInit(constData.queryString.BY_NAME, page, query);
+  })
+  .add(/genres\/(.*)\/page\/(.*)/, (genre, page) => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    main.mainInit(constData.queryString.BY_GANRE, page, genre);
+  })
+  .add(/page\/(.*)/, page => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    main.mainInit(constData.queryString.POPULAR, page);
   })
   .add('', () => {
     mainCard.classList.add('is-hidden');

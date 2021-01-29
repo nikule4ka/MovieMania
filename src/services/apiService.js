@@ -31,12 +31,12 @@ async function fetchTrending() {
   return res.json();
 }
 
-async function fetchMovieByGanres(ganres) {
+async function fetchMovieByGanres() {
   // ganres - список id жанров через запятую без пробелов
   const LANGUAGE = `&language=${getLanguage()}`;
 
   const res = await fetch(
-    `${MAIN_URL}discover/movie${API_KEY}${LANGUAGE}&with_genres=${ganres}&page=${this.page}`,
+    `${MAIN_URL}discover/movie${API_KEY}${LANGUAGE}&with_genres=${this.param}&page=${this.page}`,
   );
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -44,10 +44,10 @@ async function fetchMovieByGanres(ganres) {
   return res.json();
 }
 
-async function fetchSearchMovie(query) {
+async function fetchSearchMovie() {
   const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
-    `${MAIN_URL}search/movie${API_KEY}${LANGUAGE}&query=${query}&page=${this.page}`,
+    `${MAIN_URL}search/movie${API_KEY}${LANGUAGE}&query=${this.param}&page=${this.page}`,
   );
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -56,14 +56,14 @@ async function fetchSearchMovie(query) {
   return res.json();
 }
 
-function getMovieData(param = '') {
+function getMovieData() {
   const queryString = getConstData.queryString;
 
   if (this.queryString === queryString.BY_NAME) {
-    return this.fetchSearchMovie(param);
+    return this.fetchSearchMovie();
   }
   if (this.queryString === queryString.BY_GANRE) {
-    return this.fetchMovieByGanres(param);
+    return this.fetchMovieByGanres();
   }
   if (this.queryString === queryString.POPULAR) {
     return this.fetchTrending();
@@ -126,6 +126,7 @@ async function fetchReviewsId(id) {
 const fetchApi = {
   page: 1,
   queryString: '',
+  param: '',
   fetchTrending, //популярные (1 страница)
   fetchSearchMovie, //поиск по названия (нужно передавать название)
   fetchMovieByGanres,
@@ -147,8 +148,20 @@ const fetchApi = {
   setPage(currentPage) {
     this.page = currentPage;
   },
+  getPage() {
+    return this.page;
+  },
   setQueryString(newQueryString) {
     this.queryString = newQueryString;
+  },
+  getQueryString() {
+    return this.queryString;
+  },
+  getParam() {
+    return this.param;
+  },
+  setParam(param) {
+    this.param = param;
   },
   setLocation(curLoc) {
     location.href = curLoc;
