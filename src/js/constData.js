@@ -5,6 +5,7 @@ const CONST_DATA = {
     POPULAR: 'popular',
   },
   instance: '',
+  router: '',
   wathedFilms: {
     favorites: false,
     watchedLater: false,

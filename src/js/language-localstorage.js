@@ -1,4 +1,5 @@
 import refs from './refs';
+import constData from './constData';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
@@ -31,23 +32,24 @@ function removeClassForLanguage() {
 }
 
 function ChangeLanguage() {
+  let currentLanguage;
+
   if (refs.language.classList.contains(refs.Languages.RUSSIAN)) {
     removeClassForLanguage();
     refs.languageRu.classList.add('hidden');
-    refs.language.classList.add(refs.Languages.ENGLISH);
-    localStorage.setItem('language', refs.Languages.ENGLISH);
-    getLocalLanguage();
-    return;
+    currentLanguage = refs.Languages.ENGLISH;
   }
 
   if (refs.language.classList.contains(refs.Languages.ENGLISH)) {
     removeClassForLanguage();
     refs.languageEn.classList.add('hidden');
-    refs.language.classList.add(refs.Languages.RUSSIAN);
-    localStorage.setItem('language', refs.Languages.RUSSIAN);
-    getLocalLanguage();
-    return;
+    currentLanguage = refs.Languages.RUSSIAN;
   }
+
+  refs.language.classList.add(currentLanguage);
+  localStorage.setItem('language', currentLanguage);
+  constData.router.render();
+  getLocalLanguage();
 }
 
 export default function getLocalLanguage() {

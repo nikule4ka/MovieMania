@@ -69,6 +69,10 @@ class Router {
 
   interval = () => {
     if (this.current === this.getFragment()) return;
+    this.render();
+  };
+
+  render = () => {
     this.current = this.getFragment();
 
     this.routes.some(route => {
