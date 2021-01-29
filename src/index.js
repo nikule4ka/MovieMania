@@ -8,4 +8,3 @@ import './js/submitRegForm';
 import './js/submitLogForm';
 import './js/userLogOut';
 import './js/checkUser';
-

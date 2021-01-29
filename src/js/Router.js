@@ -72,8 +72,7 @@ class Router {
     this.render();
   };
 
-  render = (qqq = '') => {
-    console.log(qqq);
+  render = () => {
     this.current = this.getFragment();
 
     this.routes.some(route => {
