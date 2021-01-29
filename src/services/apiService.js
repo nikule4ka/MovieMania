@@ -1,7 +1,6 @@
 import getLanguage from '../js/language-localstorage';
 import getConstData from '../js/constData';
 
-const LANGUAGE = `&language=${getLanguage()}`;
 const API_KEY = '?api_key=fb4eca5dd3545235e4fd6796c70d4d40';
 const MAIN_URL = 'https://api.themoviedb.org/3/';
 // https://api.themoviedb.org/3/trending/movie/day?api_key=fb4eca5dd3545235e4fd6796c70d4d40
@@ -13,13 +12,14 @@ const MAIN_URL = 'https://api.themoviedb.org/3/';
 //http://api.themoviedb.org/3/discover/movie?api_key=fb4eca5dd3545235e4fd6796c70d4d40&language=en-US&with_genres=14,1&page=1
 
 // получить сразу и видео и картинки к фильму
-// https://api.themoviedb.org/3/movie/157336?api_key=fb4eca5dd3545235e4fd6796c70d4d40&append_to_response=videos,images
+// https://api.themoviedb.org/3/movie/495764?api_key=fb4eca5dd3545235e4fd6796c70d4d40&append_to_response=videos,reviews,credits
 
 //ссылка на картинку
 //'https://image.tmdb.org/t/p/w500/путь'
 //если нет картинки надо чтото поставить!!!!!
 
 async function fetchTrending() {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
     `${MAIN_URL}movie/popular${API_KEY}${LANGUAGE}&page=${this.page}`,
   );
@@ -32,6 +32,7 @@ async function fetchTrending() {
 }
 async function fetchMovieByGanres(ganres) {
   // ganres - список id жанров через запятую без пробелов
+  const LANGUAGE = `&language=${getLanguage()}`;
 
   const res = await fetch(
     `${MAIN_URL}discover/movie${API_KEY}${LANGUAGE}&with_genres=${ganres}&page=${this.page}`,
@@ -43,6 +44,7 @@ async function fetchMovieByGanres(ganres) {
 }
 
 async function fetchSearchMovie(query) {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
     `${MAIN_URL}search/movie${API_KEY}${LANGUAGE}&query=${query}&page=${this.page}`,
   );
@@ -70,6 +72,7 @@ function getMovieData(param = '') {
 }
 
 async function fetchGanres() {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(`${MAIN_URL}genre/movie/list${API_KEY}${LANGUAGE}`);
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -78,6 +81,7 @@ async function fetchGanres() {
 }
 
 async function fetchMovieId(id) {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
     `${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}&append_to_response=videos,reviews,credits`,
   );
@@ -88,6 +92,7 @@ async function fetchMovieId(id) {
 }
 
 async function fetchVideosId(id) {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(`${MAIN_URL}movie/${id}/videos${API_KEY}${LANGUAGE}`);
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -96,6 +101,7 @@ async function fetchVideosId(id) {
 }
 
 async function fetchCreditsId(id) {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
     `${MAIN_URL}movie/${id}/credits${API_KEY}${LANGUAGE}`,
   );
@@ -106,6 +112,7 @@ async function fetchCreditsId(id) {
 }
 
 async function fetchReviewsId(id) {
+  const LANGUAGE = `&language=${getLanguage()}`;
   const res = await fetch(
     `${MAIN_URL}movie/${id}/reviews${API_KEY}${LANGUAGE}`,
   );

@@ -1,4 +1,4 @@
-import firebase from '../services/firebase';
+import firebase from '@firebase/app';
 import '@firebase/auth';
 import refs from './refs';
 
@@ -10,6 +10,7 @@ function logOut() {
     .signOut()
     .then(() => {
       console.log('Sign-out successful');
+
       // Sign-out successful.
     })
     .catch(error => {
