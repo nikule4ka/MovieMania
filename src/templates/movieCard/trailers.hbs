@@ -1,16 +1,11 @@
 {{#unless this}}
-    <p>Нет трейлеров</p>
+<p>Нет трейлеров</p>
 {{/unless}}
 
 {{#each this}}
-    <div>
-    <iframe 
-        src="https://www.youtube.com/embed/{{key}}"
-        frameborder="0"
-        allowfullscreen>
+<div class="card__trailers">
+    <h4 class="card-trailers-title">{{name}}</h4>
+    <iframe class="card__trailers-video" src="https://www.youtube.com/embed/{{key}}" frameborder="0" allowfullscreen>
     </iframe>
-    <h4 >{{name}}</h4>
-    </div>
+</div>
 {{/each}}
-
-

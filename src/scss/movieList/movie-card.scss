@@ -14,6 +14,10 @@
   }
 }
 
+.card-title {
+  margin-top: 10px;
+}
+
 .card-title-text {
   margin-top: 0;
 }
@@ -49,6 +53,8 @@
 
 .movie__markup__tab button {
   background-color: inherit;
+  font-family: Noto Sans TC, sans-serif;
+  letter-spacing: 0.03em;
   float: left;
   border: none;
   outline: none;
@@ -81,7 +87,7 @@
 /* Style the tab content */
 .movie__markup__tabcontent {
   display: none;
-  padding: 6px 12px;
+
   background-color: $ListMovieColor;
   border-top: none;
 }
@@ -146,4 +152,110 @@
   flex-direction: column;
   width: 100%;
   text-align: center;
+}
+
+.list__actors {
+  width: 100%;
+  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 10px;
+  margin: 0 auto 15px;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .list__actors {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .list__actors {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.list__actor-card {
+  padding: 10px 30px 15px 30px;
+}
+
+.list__actor-name {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center;
+}
+.list__actor-moviename {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 12px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.list__reviews {
+  padding: 0 auto 15px;
+  margin: 0;
+
+  .list__review-card {
+    position: relative;
+    padding: 10px 20px 30px 20px;
+    margin-bottom: 0;
+  }
+}
+
+.list__review-card:not(:last-child):after {
+  // background-color: $primaryColor;
+  position: absolute;
+  left: 20px;
+
+  bottom: 0;
+  content: '';
+  height: 1px;
+  width: 70%;
+  background-color: #9286ca;
+}
+
+.list__name-user {
+  color: #9286ca;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: start;
+}
+
+.list__date-review {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 10px;
+  text-align: start;
+}
+
+.list__review {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 12px;
+  text-align: start;
+}
+.movie__markup__tabcontent {
+  padding-bottom: 15px;
+}
+
+.card__trailers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-trailers-title {
+  margin-top: 25px;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.card__trailers-video {
+  margin-top: 25px;
+  width: 80%;
+  height: 360px;
 }
