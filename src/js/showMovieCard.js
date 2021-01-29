@@ -83,6 +83,8 @@ export default function showMovieCard(id) {
       addExtensions(actorsData, 'actors', actors);
       addExtensions(data.reviews.results, 'reviews', reviews);
       addExtensions(data.videos.results, 'trailers', trailers);
+
+      window.scrollTo(0, 0);
     })
     .catch(error => console.log(error));
 }
