@@ -62,32 +62,28 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-const getListings = function () {
+function getListings() {
   const currentUserId = firebase.auth().currentUser.uid;
 
   const listingsRef = firebase
     .database()
     .ref('users/' + currentUserId + '/userFilms/currentStatusFilm');
-  return listingsRef.once('value');
-};
-
-let currentSnapshot;
-
-function loadListing() {
-  getListings().then(setListing, showError);
+  return listingsRef.once('value').then(getUserInfo, showError);
 }
 
-function setListing(snapshot) {
-  currentSnapshot = snapshot.val();
-  console.log(currentSnapshot);
+function getUserInfo(snapshot) {
+  let getUserData = snapshot.val();
+  // console.log(getUserData);
+  return getUserData;
 }
 
 function showError(e) {
   console.log(e);
 }
 
-export default function init() {
-  loadListing();
+function init() {
+  getListings();
 }
 
-// export default firebase;
+const fireBase = { getUserInfo, init };
+export default fireBase;
