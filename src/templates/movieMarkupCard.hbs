@@ -4,34 +4,21 @@
   </div>
   <div class="movie__content">
     <div class="card-body">
-      <h3 class="card-title">{{title}}</h3>
-      <p>{{release_date}}</p>
-      {{#each production_countries}}
-      <p class="card-text-production">{{name}}</p>
-      {{/each}}
+      <h3 class="card-title-movie">{{title}}</h3>
+      <p class="card-body-date">{{release_date}}</p>
+      <p class="card-title-text">{{allCountries}}</p>
+      <p class="card-title-text">{{allGenres}}</p>
       <div>
         <p class="icon-runtime-min"><i class="material-icons icon-runtime">theaters</i>{{runtime}} мин</p>
-
       </div>
-      {{#each genres}}
-      <p class="card-text-genres-name">{{name}}</p>
-      {{/each}}
-      <p>{{allGenres}}</p>
-      <p>{{allCountries}}</p>
-      <h4 class="card-title-overview">Обзор</h4>
       <p class="card-text-overview">{{overview}}</p>
       <p class="card-text-rainting" data-id={{id}}><i class="material-icons icon-raiting">star_rate</i>{{vote_average}}
       </p>
-
-
-
-      
-
     </div>
     <div class="btn-group-icons" role="group">
-      <p data-id={{id}}><i class="material-icons">favorite_border</i></p>
-      <p data-id={{id}}><i class="material-icons">bookmark_border</i></p>
-      <p data-id={{id}}><i class="material-icons">check_circle_outline</i></p>
+      <p class="card-group-icons" data-id={{id}}><i class="material-icons">favorite_border</i></p>
+      <p class="card-group-icons" data-id={{id}}><i class="material-icons">bookmark_border</i></p>
+      <p class="card-group-icons" data-id={{id}}><i class="material-icons">check_circle_outline</i></p>
     </div>
   </div>
 </div>
