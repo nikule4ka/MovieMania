@@ -2,14 +2,17 @@
 <div data-id={{id}} class="card">
     <a class="card__link" href="/#/movie/{{id}}">
         <img class="card-img-top" src="{{poster_path}}" data-id={{id}} alt={{title}} />
-        <h5 data-id={{id}}>{{title}}</h5>
-        <p>{{release_date}}</p>
-        <p class="card-text" data-id={{id}}><i class="material-icons icon-raiting">star_rate</i>{{vote_average}}</p>
+        <h5 class="card-main-title" data-id={{id}}>{{title}}</h5>
+        <div class="card-release-vote">
+            <p class="text-release-vote">{{release_date}}</p>
+            <p class="card-text text-release-vote" data-id={{id}}><i
+                    class="material-icons icon-raiting">star_rate</i>{{vote_average}}</p>
+        </div>
 
         <div class="btn-group btn-group-sm" role="group">
-            <p data-id={{id}}><i class="material-icons favorites">favorite_border</i></p>
-            <p data-id={{id}}><i class="material-icons watch__later">bookmark_border</i></p>
-            <p data-id={{id}}><i class="material-icons watched">check_circle_outline</i></p>
+            <p class="card-group-markup" data-id={{id}}><i class="material-icons favorites">favorite_border</i></p>
+            <p class="card-group-markup" data-id={{id}}><i class="material-icons watch__later">bookmark_border</i></p>
+            <p class="card-group-markup" data-id={{id}}><i class="material-icons watched">check_circle_outline</i></p>
         </div>
     </a>
 </div>
