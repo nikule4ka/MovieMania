@@ -67,7 +67,9 @@ function searchFilmByQuery(e) {
   }
 
   if (refs.getByGenresRef.classList.contains('active__search')) {
-    const getChoices = refs.choicesRef.querySelectorAll('option');
+    const choicesRef = document.querySelector('.genres');
+
+    const getChoices = choicesRef.querySelectorAll('option');
 
     const arrayChoices = Object.values(getChoices);
 

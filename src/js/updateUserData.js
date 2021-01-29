@@ -1,22 +1,63 @@
-import firebase from '../services/firebase';
+import firebase from '@firebase/app';
 import '@firebase/auth';
 import '@firebase/database';
 import wathedData from './constData';
-// import { getUserData } from './getSetUserData';
-import { setUserData } from './getSetUserData';
-import init from '../services/firebase';
+import { getListings, getCurrentUser } from './getSetUserData';
 
 function setStatusFilm(movieId, status) {
-  // console.log(setUserData());
-  init().then(data => console.log(data));
+  getListings().then(
+    snapshot => {
+      let getUserData = snapshot.val();
 
-  // let parseTest = setUserData();
+      let currentStatusFilm = addFilm(getUserData, movieId, status);
 
-  if (parseTest === null) {
-    parseTest = [];
+      const currentUserId = getCurrentUser();
+
+      firebase
+        .database()
+        .ref(/users/ + currentUserId + /userFilms/)
+        .set({ currentStatusFilm });
+    },
+    error => console.log(error),
+  );
+
+  // function getUserInfo(snapshot) {
+  //   let getUserData = snapshot.val();
+  //   console.log(getUserData);
+  //   return getUserData;
+  // }
+  // const perParsetest = localStorage.getItem('wathedFilms');
+  // let parseTest = JSON.parse(perParsetest);
+
+  // console.log(parseTest);
+
+  // console.log(setUserData);
+}
+
+export async function filmStatus(e) {
+  e.preventDefault();
+
+  const idFilm = e.target.dataset.id;
+  const statusFilm = e.target.dataset.status;
+
+  await setStatusFilm(idFilm, statusFilm);
+  // console.log(currentStatusFilm);
+
+  // localStorage.setItem('wathedFilms', JSON.stringify(currentStatusFilm));
+
+  // const userId = firebase.auth().currentUser.uid;
+  // firebase
+  //   .database()
+  //   .ref(/users/ + userId + /userFilms/)
+  //   .set({ currentStatusFilm });
+}
+
+function addFilm(getUserData, movieId, status) {
+  if (getUserData === null) {
+    getUserData = [];
   }
 
-  let newWatchedData = parseTest.find(el => {
+  let newWatchedData = getUserData.find(el => {
     return el.movieId === movieId;
   });
 
@@ -32,31 +73,15 @@ function setStatusFilm(movieId, status) {
     }
   });
 
-  let indexNumber = parseTest.findIndex(el => {
+  let indexNumber = getUserData.findIndex(el => {
     return el.movieId === movieId;
   });
 
   if (indexNumber === -1) {
-    parseTest.push(newWatchedData);
+    getUserData.push(newWatchedData);
   } else {
-    parseTest.splice(indexNumber, 1, newWatchedData);
+    getUserData.splice(indexNumber, 1, newWatchedData);
   }
 
-  return parseTest;
-}
-
-export async function filmStatus(e) {
-  e.preventDefault();
-
-  const idFilm = e.target.dataset.id;
-  const statusFilm = e.target.dataset.status;
-
-  const currentStatusFilm = await setStatusFilm(idFilm, statusFilm);
-
-  const userId = firebase.auth().currentUser.uid;
-
-  firebase
-    .database()
-    .ref(/users/ + userId + /userFilms/)
-    .set({ currentStatusFilm });
+  return getUserData;
 }

@@ -53,6 +53,7 @@ export async function login(email, password) {
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     init();
+    // firebase.auth().currentUser.uid;
 
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
@@ -73,7 +74,7 @@ function getListings() {
 
 function getUserInfo(snapshot) {
   let getUserData = snapshot.val();
-  // console.log(getUserData);
+  console.log(getUserData);
   return getUserData;
 }
 
