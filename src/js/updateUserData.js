@@ -4,31 +4,13 @@ import '@firebase/database';
 import wathedData from './constData';
 // import { getUserData } from './getSetUserData';
 import { setUserData } from './getSetUserData';
+import init from '../services/firebase';
 
 function setStatusFilm(movieId, status) {
-  console.log(setUserData());
-  // const currentUserId = firebase.auth().currentUser.uid;
+  // console.log(setUserData());
+  init().then(data => console.log(data));
 
-  // const ref = firebase
-  //   .database()
-  //   .ref('users/' + currentUserId + '/userFilms/currentStatusFilm');
-
-  // ref.on(
-  //   'value',
-  //   function (snapshot) {
-  //     getUserData(snapshot.val());
-  //     // console.log(snapshot.val());
-  //   },
-  //   function (error) {
-  //     console.log('Error: ' + error.code);
-  //   },
-  // );
-  // const perParsetest = localStorage.getItem('wathedFilms');
-  let parseTest = setUserData();
-
-  console.log(parseTest);
-
-  // console.log(setUserData);
+  // let parseTest = setUserData();
 
   if (parseTest === null) {
     parseTest = [];

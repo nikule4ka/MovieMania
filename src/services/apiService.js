@@ -30,6 +30,7 @@ async function fetchTrending() {
   // console.log(res.json());
   return res.json();
 }
+
 async function fetchMovieByGanres(ganres) {
   // ganres - список id жанров через запятую без пробелов
   const LANGUAGE = `&language=${getLanguage()}`;

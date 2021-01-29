@@ -66,3 +66,14 @@ ul {
 .main {
   padding-top: 20px;
 }
+
+.material-icons {
+  color: #6152a8;
+  justify-content: center;
+  align-items: center;
+}
+
+.material-icons.search {
+  color: tomato;
+  font-size: 35px;
+}
