@@ -11,7 +11,7 @@ export async function submitLogForm(event) {
   const loginPasRef = document.querySelector('.password__sign__in');
 
   login(loginEmailRef.value, loginPasRef.value);
-  init();
+  // init();
   instance.close();
   constData.instance = '';
 }

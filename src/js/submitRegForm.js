@@ -16,7 +16,7 @@ export default function submitRegForm(event) {
   const emailRef = document.querySelector('.email__sign__up');
 
   registration(emailRef.value, passwordRef.value);
-  init();
+  // init();
 
   instance.close();
   constData.instance = '';
