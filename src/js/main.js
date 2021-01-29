@@ -1,5 +1,5 @@
 import fetchApi from '../services/apiService';
-import getConstData from '../js/constData';
+import сonstData from '../js/constData';
 import pagination from '../js/pagination';
 
 import showMovie from './showMovieList';
@@ -15,40 +15,61 @@ refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
 function onPaginationsBtnClick() {
   const currentPage = pagination.getCurrentPage();
   fetchApi.setPage(currentPage);
-  fetchApi.setLocation('#/page/' + currentPage);
+  const queryString = fetchApi.getQueryString();
+  const param = fetchApi.getParam();
+
+  switch (queryString) {
+    case сonstData.queryString.BY_NAME:
+      fetchApi.setLocation(`#/query/${param}/page/${currentPage}`);
+      break;
+    case сonstData.queryString.BY_GANRE:
+      fetchApi.setLocation(`#/genres/${param}/page/${currentPage}`);
+      break;
+    default:
+      fetchApi.setLocation(`#/page/${currentPage}`);
+  }
 
   getMovie();
 
   window.scrollTo(0, 0);
 }
 
-function getMovie(param = '') {
-  fetchApi.getMovieData(param).then(({ results, total_results }) => {
-    pagination.setTotalItems(Number(total_results));
-    // pagination.reset(total_results);
-    // console.log(total_results);
-    // console.log(pagination.totalItems);
+function getMovie() {
+  fetchApi
+    .getMovieData()
+    .then(({ results, total_results }) => {
+      pagination.setTotalItems(Number(total_results));
+      pagination.reset();
+      pagination.movePageTo(fetchApi.getPage());
 
-    results.map(el => {
-      if (el.poster_path === null) {
-        el.poster_path = noPosterImg;
-      } else {
-        el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
-      }
+      results.map(el => {
+        if (el.poster_path === null) {
+          el.poster_path = noPosterImg;
+        } else {
+          el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
+        }
 
-      el.release_date = el.release_date.slice(0, 4);
+        el.release_date = el.release_date.slice(0, 4);
 
-      return el;
-    });
+        return el;
+      });
 
-    showMovie(results);
-  });
+      showMovie(results);
+    })
+    .catch(error => console.log(error));
 }
 
-function mainInit(id = 1) {
-  fetchApi.setQueryString(getConstData.queryString.POPULAR);
-  pagination.movePageTo(id);
-  fetchApi.setPage(id);
+function mainInit(
+  setQueryString = сonstData.queryString.POPULAR,
+  page = 1,
+  param = '',
+) {
+  fetchApi.setQueryString(setQueryString);
+  fetchApi.setPage(page);
+  fetchApi.setParam(param);
+
+  pagination.movePageTo(page);
+
   getMovie();
 }
 
