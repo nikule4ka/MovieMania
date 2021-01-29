@@ -6,10 +6,10 @@
         <p>{{release_date}}</p>
         <p class="card-text" data-id={{id}}><i class="material-icons icon-raiting">star_rate</i>{{vote_average}}</p>
 
-        <div class="btn-group btn-group-sm" role="group">
-            <p data-id={{id}}><i class="material-icons favorites">favorite_border</i></p>
-            <p data-id={{id}}><i class="material-icons watch__later">bookmark_border</i></p>
-            <p data-id={{id}}><i class="material-icons watched">check_circle_outline</i></p>
+        <div class="btn-group btn-group-sm status__film__js" role="group">
+            <p><i class="material-icons favorites" data-status='favorites' data-id={{id}}>favorite_border</i></p>
+            <p><i class="material-icons watch__later" data-status='watchedLater' data-id={{id}}>bookmark_border</i></p>
+            <p><i class="material-icons watched" data-status='watched' data-id={{id}}>check_circle_outline</i></p>
         </div>
     </a>
 </div>

@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <div class="preloader">
+    <!-- <div class="preloader">
       <div class="loader">
         <div class="face">
           <div class="circle"></div>
@@ -39,7 +39,7 @@
         <b>M</b><b>O</b><b>V</b><b>I</b><b>E</b><b>M</b><b>A</b><b>N</b><b>I</b
         ><b>A</b>
       </div>
-    </div>
+    </div> -->
 
     <header class="header">
       <nav class="navigation">
@@ -64,18 +64,31 @@
         </div>
 
         <div class="navigation-right-side">
-          <form class="search-form">
-            <label>
-              <input
-                class="header-search"
-                type="search"
-                placeholder="Поиск фильмов"
-              />
-              <button class="search-btn" type="submit">
-                <i class="search-i"></i>
-              </button>
+          <i class="material-icons search">search</i>
+          <form class="search__films">
+            <p class="search__films__title">
+              Поиск по
+              <span class="search_films_name active__search">названию</span
+              ><span> / </span><span class="search_films_genres">жанру</span>
+            </p>
+            <label class="search__films_by">
+              <input class="name" type="search" />
+
+              <div class="clear__choices is-hidden">
+                <select
+                  id="my-select"
+                  class="genres"
+                  multiple
+                  type="search"
+                ></select>
+              </div>
+
+              <!-- <input class="genres" type="search" /> -->
             </label>
+
+            <button type="submit"></button>
           </form>
+
           <div class="languages">
             <img
               class="language ru__icon"

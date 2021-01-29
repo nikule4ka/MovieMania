@@ -10,7 +10,7 @@ export default function showMovie(data) {
   refs.listMovies.innerHTML = '';
   refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));
 
-  const statusListFilm = document.querySelectorAll('.status__film');
+  const statusListFilm = document.querySelectorAll('.status__film__js');
   // const watchLaterListRef = document.querySelectorAll('.watch__later__list');
   // const watchedListRef = document.querySelectorAll('.watched__list');
 

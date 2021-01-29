@@ -24,7 +24,10 @@ function onPaginationsBtnClick() {
 
 function getMovie(param = '') {
   fetchApi.getMovieData(param).then(({ results, total_results }) => {
-    pagination.setTotalItems(total_results);
+    pagination.setTotalItems(Number(total_results));
+    // pagination.reset(total_results);
+    // console.log(total_results);
+    // console.log(pagination.totalItems);
 
     results.map(el => {
       if (el.poster_path === null) {
