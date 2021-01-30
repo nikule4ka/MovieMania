@@ -8,6 +8,10 @@ import trailers from '../templates/movieCard/trailers.hbs';
 import noPosterImg from '../images/no-movie.jpg';
 import noActorImg from '../images/no-actor.jpg';
 
+import { filmStatus } from './updateUserData';
+import { getStatusMovieById } from './getSetUserData';
+import interests from './showUserInterest';
+
 const refs = {
   cardMovies: document.querySelector('.main_card'),
 };
@@ -78,13 +82,34 @@ export default function showMovieCard(id) {
         } else {
           el.profile_path = 'https://image.tmdb.org/t/p/w500' + el.profile_path;
         }
+
         return el;
       });
       addExtensions(actorsData, 'actors', actors);
       addExtensions(data.reviews.results, 'reviews', reviews);
       addExtensions(data.videos.results, 'trailers', trailers);
+      return data;
+    })
+    .then(filmCard => {
+      const statusListFilm = document.querySelectorAll('.status__film__js');
+
+      statusListFilm.forEach(statusFilm =>
+        statusFilm.addEventListener('click', filmStatus),
+      );
+
+      changeInterestsOnCard(filmCard);
     })
     .catch(error => console.log(error));
+}
+
+export function changeInterestsOnCard(card) {
+  const statusMovieById = getStatusMovieById(card.id);
+
+  card.favorites = statusMovieById['favorites'];
+  card.watched = statusMovieById['watched'];
+  card.watchedLater = statusMovieById['watchedLater'];
+
+  interests.showInterestsOnCard(card);
 }
 
 function addExtensions(dataExt, idExt, template) {
