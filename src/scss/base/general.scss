@@ -11,6 +11,8 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -23,8 +25,8 @@ body {
 
 h5 {
   font-family: Noto Sans TC, sans-serif;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 22px;
   line-height: 1.19;
   text-decoration: none;
 }
@@ -33,25 +35,36 @@ ul {
   list-style: none;
 }
 
+img {
+  border-style: none;
+  display: block;
+}
+
 .is-hidden {
   display: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 540px) {
   .container {
     max-width: 540px;
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 541px) and (max-width: 767px) {
   .container {
-    max-width: 720px;
+    max-width: 767px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 1023px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    max-width: 1024px;
+    min-width: 1024px;
   }
 }
 
@@ -74,6 +87,6 @@ ul {
 }
 
 .material-icons.search {
-  color: tomato;
-  font-size: 35px;
+  color: #fff;
+  font-size: 25px;
 }

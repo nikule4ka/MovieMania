@@ -14,17 +14,31 @@
   }
 }
 
+.icon-raiting {
+  color: $secondaryColor;
+}
+
 .card-title {
   margin-top: 10px;
 }
 
+.card-body-date {
+  margin-bottom: 20px;
+}
+
 .card-title-text {
   margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.card-text-overview {
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .icon-runtime-min {
   position: relative;
-  padding-left: 30px;
+  padding-left: 40px;
   margin-top: 0;
 
   .icon-runtime {
@@ -39,6 +53,9 @@
   display: flex;
 }
 
+.icons-card-movie {
+  font-size: 40px;
+}
 /* Style the tab */
 .movie__markup__tab {
   overflow: hidden;
@@ -141,12 +158,13 @@
   margin-top: 0;
 }
 
-.card-text-overview {
-  margin-top: 0;
-}
-
 .card-group-icons {
   margin: 0;
+  font-size: 30px;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 }
 
 .card__actors {
@@ -173,7 +191,7 @@
 
 @media (min-width: 1024px) {
   .list__actors {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
   }
 }
 
@@ -212,6 +230,12 @@
       font-weight: 300;
     }
   }
+}
+
+.list__reviews.no-reviews {
+  padding-top: 40px;
+  text-align: center;
+  height: 200px;
 }
 
 .list__review-card:not(:last-child):after {
