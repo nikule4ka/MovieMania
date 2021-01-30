@@ -5,6 +5,7 @@ function deletePreloader() {
   loader.remove();
   pagePreloader.remove();
 }
+
 setTimeout(() => {
   deletePreloader();
 }, 5000);

@@ -4,6 +4,8 @@ import movieMarkupCard from '../templates/movieMarkupCard.hbs';
 import actors from '../templates/movieCard/actors.hbs';
 import reviews from '../templates/movieCard/reviews.hbs';
 import trailers from '../templates/movieCard/trailers.hbs';
+import errorMessage from '../templates/errorMessage.hbs';
+import pageLoader from '../templates/pageLoader.hbs';
 
 import noPosterImg from '../images/no-movie.jpg';
 import noActorImg from '../images/no-actor.jpg';
@@ -11,6 +13,7 @@ import noActorImg from '../images/no-actor.jpg';
 import { filmStatus } from './updateUserData';
 import { getStatusMovieById } from './getSetUserData';
 import interests from './showUserInterest';
+import showModal from './showModal';
 
 const refs = {
   cardMovies: document.querySelector('.main_card'),
@@ -48,6 +51,9 @@ function openTab(evt) {
 }
 
 export default function showMovieCard(id) {
+  const instance = showModal(pageLoader());
+  window.scrollTo(0, 0);
+
   fetchApi
     .fetchMovieId(id)
     .then(data => {
@@ -117,7 +123,13 @@ export default function showMovieCard(id) {
 
       changeInterestsOnCard(filmCard);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      refs.cardMovies.innerHTML = '';
+      refs.cardMovies.insertAdjacentHTML('beforeend', errorMessage(error));
+    })
+    .finally(() => {
+      if (instance !== '') instance.close();
+    });
 }
 
 export function changeInterestsOnCard(card) {
