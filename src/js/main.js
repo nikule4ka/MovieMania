@@ -1,20 +1,23 @@
 import fetchApi from '../services/apiService';
-import сonstData from '../js/constData';
-import pagination from '../js/pagination';
+import errorMessage from '../templates/errorMessage.hbs';
+import pageLoader from '../templates/pageLoader.hbs';
 
+import constData from './constData';
+import pagination from './pagination';
 import showMovie from './showMovieList';
+import showModal from './showModal';
+import { getStatusMovieById } from './getSetUserData';
+import interests from './showUserInterest';
 
 import noPosterImg from '../images/no-movie.jpg';
 
-import { getStatusMovieById } from './getSetUserData';
-import interests from './showUserInterest';
-import CONST_DATA from '../js/constData';
-
 const refs = {
   paginationRef: document.getElementById('pagination'),
+  listMovies: document.querySelector('.list_movies'),
 };
 
 refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
+let instance = '';
 
 function onPaginationsBtnClick() {
   const currentPage = pagination.getCurrentPage();
@@ -23,22 +26,21 @@ function onPaginationsBtnClick() {
   const param = fetchApi.getParam();
 
   switch (queryString) {
-    case сonstData.queryString.BY_NAME:
+    case constData.queryString.BY_NAME:
       fetchApi.setLocation(`#/query/${param}/page/${currentPage}`);
       break;
-    case сonstData.queryString.BY_GANRE:
+    case constData.queryString.BY_GANRE:
       fetchApi.setLocation(`#/genres/${param}/page/${currentPage}`);
       break;
     default:
       fetchApi.setLocation(`#/page/${currentPage}`);
   }
-
-  getMovie();
-
-  window.scrollTo(0, 0);
 }
 
 function getMovie() {
+  instance = showModal(pageLoader());
+  window.scrollTo(0, 0);
+
   fetchApi
     .getMovieData()
     .then(({ results, total_results }) => {
@@ -65,7 +67,13 @@ function getMovie() {
     .then(filmInformation => {
       changeUserInterests(filmInformation);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      refs.listMovies.innerHTML = '';
+      refs.listMovies.insertAdjacentHTML('beforeend', errorMessage(error));
+    })
+    .finally(() => {
+      if (instance !== '') instance.close();
+    });
 }
 
 function changeUserInterests(filmInformation) {
@@ -83,7 +91,7 @@ function changeUserInterests(filmInformation) {
 }
 
 function mainInit(
-  setQueryString = сonstData.queryString.POPULAR,
+  setQueryString = constData.queryString.POPULAR,
   page = 1,
   param = '',
 ) {
