@@ -56,12 +56,6 @@ function getMovie() {
         el.release_date =
           el.release_date === undefined ? '' : el.release_date.slice(0, 4);
 
-        // const statusMovieById = getStatusMovieById(el.id);
-
-        // el.favorites = statusMovieById['favorites'];
-        // el.watched = statusMovieById['watched'];
-        // el.watchedLater = statusMovieById['watchedLater'];
-
         return el;
       });
 

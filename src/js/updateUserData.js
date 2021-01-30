@@ -17,7 +17,7 @@ function setStatusFilm(movieId, status) {
 
       main.changeUserInterests(wathedData.userData);
 
-      const currentUserId = getCurrentUser();
+      const currentUserId = getCurrentUser(); 
 
       firebase
         .database()
