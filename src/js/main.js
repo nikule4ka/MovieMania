@@ -6,6 +6,10 @@ import showMovie from './showMovieList';
 
 import noPosterImg from '../images/no-movie.jpg';
 
+import { getStatusMovieById } from './getSetUserData';
+import interests from './showUserInterest';
+import CONST_DATA from '../js/constData';
+
 const refs = {
   paginationRef: document.getElementById('pagination'),
 };
@@ -49,14 +53,33 @@ function getMovie() {
           el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
         }
 
-        el.release_date = el.release_date.slice(0, 4);
+        el.release_date =
+          el.release_date === undefined ? '' : el.release_date.slice(0, 4);
 
         return el;
       });
 
       showMovie(results);
+      return results;
+    })
+    .then(filmInformation => {
+      changeUserInterests(filmInformation);
     })
     .catch(error => console.log(error));
+}
+
+function changeUserInterests(filmInformation) {
+  filmInformation.map(el => {
+    const statusMovieById = getStatusMovieById(el.id);
+
+    el.favorites = statusMovieById['favorites'];
+    el.watched = statusMovieById['watched'];
+    el.watchedLater = statusMovieById['watchedLater'];
+
+    return el;
+  });
+
+  interests.showInterests(filmInformation);
 }
 
 function mainInit(
@@ -73,4 +96,4 @@ function mainInit(
   getMovie();
 }
 
-export default { mainInit, getMovie };
+export default { mainInit, getMovie, changeUserInterests };

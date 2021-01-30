@@ -2,7 +2,9 @@ import firebase from '@firebase/app';
 import '@firebase/analytics';
 import '@firebase/auth';
 import refs from '../js/refs';
-import { getUserData } from '../js/getSetUserData';
+import { getListings } from '../js/getSetUserData';
+import constData from '../js/constData';
+// import Router from '../js/Router';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDxhL1yChcVJg9Bh5SNQIDffedtmC-aqsQ',
@@ -52,8 +54,10 @@ export async function login(email, password) {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    init();
-    // firebase.auth().currentUser.uid;
+    getListings().then(snapshot => {
+      constData.userData = snapshot.val();
+      constData.router.render();
+    });
 
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
@@ -62,29 +66,3 @@ firebase.auth().onAuthStateChanged(user => {
     refs.userAccount.classList.add('is-hidden');
   }
 });
-
-function getListings() {
-  const currentUserId = firebase.auth().currentUser.uid;
-
-  const listingsRef = firebase
-    .database()
-    .ref('users/' + currentUserId + '/userFilms/currentStatusFilm');
-  return listingsRef.once('value').then(getUserInfo, showError);
-}
-
-function getUserInfo(snapshot) {
-  let getUserData = snapshot.val();
-  console.log(getUserData);
-  return getUserData;
-}
-
-function showError(e) {
-  console.log(e);
-}
-
-function init() {
-  getListings();
-}
-
-const fireBase = { getUserInfo, init };
-export default fireBase;

@@ -4,7 +4,6 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 let instance = '';
 
 function onEscKeyPress(event) {
-  // console.log(event);
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
 
@@ -22,7 +21,6 @@ export default function modalShow(html) {
     onShow: () => onShowModal(),
     onClose: window.removeEventListener('keydown', onEscKeyPress),
   });
-  // instance.element().insertAdjacentHTML('beforeend', '<p>After placeholder</p>')
   instance.show();
   return instance;
 }

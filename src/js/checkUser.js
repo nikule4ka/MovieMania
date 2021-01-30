@@ -1,5 +1,3 @@
-// import firebase from '../services/firebase';
-// import '@firebase/auth';
 import refs from './refs';
 import loginRegForm from '../templates/loginRegForm.hbs';
 import submitRegForm from './submitRegForm';

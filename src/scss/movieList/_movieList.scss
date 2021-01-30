@@ -7,6 +7,10 @@
   &:hover {
     border: 0 0 15px rgb(15, 219, 255), 0 17px 50px 0 rgb(25, 194, 236);
   }
+
+  &.icon_active {
+    color: tomato;
+  }
 }
 
 .modalDiv {
@@ -89,7 +93,6 @@
   margin-bottom: 0;
 }
 
-
 .material-icons {
   color: #6152a8;
   justify-content: center;
@@ -100,7 +103,6 @@
   margin-top: 10px;
   margin-bottom: 0;
 }
-
 
 .icon-raiting {
   color: #f8114d;

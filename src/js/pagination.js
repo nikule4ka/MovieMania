@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 
 const refs = {
   paginationRef: document.getElementById('pagination'),
@@ -11,7 +10,5 @@ const paganation = new Pagination(refs.paginationRef, {
   visiblePages: 5,
   centerAlign: true,
 });
-
-// console.log(paganation);
 
 export default paganation;
