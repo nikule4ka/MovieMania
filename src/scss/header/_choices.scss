@@ -1,6 +1,15 @@
 /*===============================
 =            Choices            =
 ===============================*/
+.search__films {
+  position: relative;
+  & .btn__search_form {
+    position: absolute;
+    content: '';
+    top: 24px;
+    right: 70px;
+  }
+}
 
 .btn__search_form {
   border: none;
@@ -143,11 +152,12 @@
 .choices__inner {
   display: inline-block;
   vertical-align: top;
-
-  padding: 7.5px 7.5px 3.75px;
-
+  width: 300px;
+  height: 25px;
+  padding: 2.5px 7.5px 6px;
+  background-color: #281f55;
   font-size: 14px;
-  min-height: 44px;
+
   overflow: hidden;
 }
 
@@ -168,7 +178,6 @@
   margin: 0;
   padding-left: 0;
   list-style: none;
-  background-color: #30246b;
 }
 
 .choices__list--single {
@@ -193,14 +202,13 @@
 .choices__list--multiple .choices__item {
   display: inline-block;
   vertical-align: middle;
-  border-radius: 3px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 500;
+
+  font-size: 10px;
+  font-weight: 300;
   margin-right: 3.75px;
   margin-bottom: 3.75px;
   background-color: $secondaryColor;
-  border: 1px solid $secondaryColor;
+
   color: #ffffff;
   word-break: break-all;
 }
@@ -226,8 +234,8 @@
   display: none;
   z-index: 1;
   position: absolute;
-  width: 100%;
-  background-color: $headerFooterColor;
+
+  background-color: #ffffff;
 
   top: 100%;
   margin-top: -1px;
@@ -256,6 +264,7 @@
 .choices__list--dropdown .choices__list {
   position: relative;
   max-height: 300px;
+  width: 300px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   will-change: scroll-position;
@@ -264,7 +273,8 @@
 .choices__list--dropdown .choices__item {
   position: relative;
   padding: 10px;
-  font-size: 14px;
+  font-size: 10px;
+  color: black;
 }
 
 [dir='rtl'] .choices__list--dropdown .choices__item {
@@ -296,7 +306,8 @@
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
-  background-color: $secondaryColor;
+  color: #f8104d;
+  text-decoration: underline;
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
@@ -341,11 +352,9 @@
 }
 
 .choices__input {
-  width: 300px;
-  height: 25px;
-  background-color: #281f55;
-  color: #f7f5ff;
-  // border: rgba(97, 82, 168, 0.2);
+  background-color: transparent;
+
+  border: 0;
   font-family: Noto Sans TC, sans-serif;
   letter-spacing: 0.03em;
   display: inline-block;
