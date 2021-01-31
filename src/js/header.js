@@ -34,6 +34,7 @@ function onClickMainLink(e) {
   fetchApi.setLocation('#/');
 }
 
+
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
@@ -57,6 +58,7 @@ function openDropDownMenu() {
 
   userMenuRefs.logOutRef.addEventListener('click', logOut);
 }
+
 
 /**Burger menu for mobile and tablet */
 
