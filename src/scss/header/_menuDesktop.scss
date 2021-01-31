@@ -23,8 +23,12 @@ $menu-items: 3;
 }
 
 .wrapper {
-  position: relative;
   width: 150px;
+  position: absolute;
+  content: '';
+  top: 44px;
+  right: -55px;
+  z-index: 2020;
   // height: 50px;
   // margin: 10px auto;
 }
@@ -40,7 +44,6 @@ $menu-items: 3;
 }
 
 .menu__list__item {
-  position: relative;
   list-style: none;
   padding-bottom: 15px;
   top: 0px;

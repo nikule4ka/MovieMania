@@ -13,7 +13,7 @@ function onClickMainLink(e) {
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
-  refs.userAccount.insertAdjacentHTML('beforeend', userMenu());
+  refs.userAccount.insertAdjacentHTML('afterend', userMenu());
   // console.log(userMenu());
 
   const menuListRef = document.querySelector('.menu__list');
