@@ -6,29 +6,6 @@ import constData from './constData';
 import main from './main';
 import userMenu from '../templates/header/dropDownMenu.hbs';
 
-refs.userAccount.addEventListener('click', openDropDownMenu);
-
-function openDropDownMenu() {
-  if (refs.userAccount.classList.contains('menu__open')) {
-    refs.wrapperMenuRef.innerHTML = '';
-    refs.userAccount.classList.toggle('menu__open');
-    refs.wrapperMenuRef.classList.toggle('menu__list--animate');
-    return;
-  }
-
-  const userMenuRefs = {
-    logOutRef: document.querySelector('.user__logout'),
-    menuListRef: document.querySelector('.menu__list'),
-  };
-
-  refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenu());
-  refs.userAccount.classList.toggle('menu__open');
-
-  userMenuRefs.menuListRef.classList.toggle('menu__list--animate');
-
-  userMenuRefs.logOutRef.addEventListener('click', logOut);
-}
-
 function logOut() {
   firebase
     .auth()
@@ -57,17 +34,29 @@ function onClickMainLink(e) {
   fetchApi.setLocation('#/');
 }
 
-
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
-  refs.userAccount.insertAdjacentHTML('afterend', userMenu());
-  // console.log(userMenu());
+  if (refs.userAccount.classList.contains('menu__open')) {
+    refs.wrapperMenuRef.innerHTML = '';
+    refs.userAccount.classList.toggle('menu__open');
+    refs.wrapperMenuRef.classList.toggle('menu__list--animate');
+    return;
+  }
 
-  const menuListRef = document.querySelector('.menu__list');
-  menuListRef.classList.toggle('menu__list--animate');
+  refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenu());
+
+  refs.userAccount.classList.toggle('menu__open');
+
+  const userMenuRefs = {
+    logOutRef: document.querySelector('.user__logout'),
+    menuListRef: document.querySelector('.menu__list'),
+  };
+
+  userMenuRefs.menuListRef.classList.toggle('menu__list--animate');
+
+  userMenuRefs.logOutRef.addEventListener('click', logOut);
 }
-
 
 /**Burger menu for mobile and tablet */
 
