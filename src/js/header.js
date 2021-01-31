@@ -57,18 +57,6 @@ function onClickMainLink(e) {
   fetchApi.setLocation('#/');
 }
 
-
-refs.userAccount.addEventListener('click', openDropDownMenu);
-
-function openDropDownMenu() {
-  refs.userAccount.insertAdjacentHTML('afterend', userMenu());
-  // console.log(userMenu());
-
-  const menuListRef = document.querySelector('.menu__list');
-  menuListRef.classList.toggle('menu__list--animate');
-}
-
-
 /**Burger menu for mobile and tablet */
 
 // refs.menuRef.addEventListener('click', onClickMenu);
