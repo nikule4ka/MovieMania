@@ -7,8 +7,11 @@
 }
 
 .navigation {
+  padding-left: 117px;
+  padding-right: 32px;
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -18,7 +21,7 @@
     align-items: center;
 
     & .navigation__list__item {
-      padding: 32px 0;
+      padding: 25px 0;
       margin-right: 20px;
       margin-left: 60px;
 
@@ -42,14 +45,23 @@
   }
 }
 
+.header-logo-link {
+  position: absolute;
+  left: 16px;
+  top: 19px;
+
+  font-weight: 700;
+  font-size: 16px;
+
+  z-index: 1000;
+}
+
 .navigation-left-side {
   display: flex;
 }
 
 .navigation-right-side {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .navigation__movie__list.is-hidden {
@@ -122,22 +134,21 @@
 
 .languages {
   display: flex;
-  color: #f8104d;
+  color: #fff;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
 
   & .hidden {
     display: none;
   }
 
   & .language__icon {
-    color: blue;
+    color: #6152a8;
   }
 
   & .language {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
 
   & .languages__separator {
@@ -145,7 +156,7 @@
   }
 
   & .active__language {
-    color: #0fdbff;
+    color: #f8104d;
   }
   & .en__icon,
   .ru__icon {
@@ -161,7 +172,5 @@
   display: flex;
   position: relative;
 }
-
-
 
 /*  */
