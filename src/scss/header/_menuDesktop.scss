@@ -1,0 +1,71 @@
+// vars and keyframes
+$delay: 0.5s;
+$menu-items: 3;
+
+@keyframes drop {
+  from {
+    top: 0px;
+  }
+  70% {
+    top: 165px;
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    opacity: 1;
+    top: 165px;
+    animation-timing-function: ease-in;
+  }
+  to {
+    top: 150px;
+    animation-timing-function: ease-out;
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: 150px;
+  // height: 50px;
+  // margin: 10px auto;
+}
+
+// .menu {
+//   width: 100%;
+// }
+
+.menu__list {
+  text-align: center;
+  width: 100%;
+  padding-left: 0;
+}
+
+.menu__list__item {
+  position: relative;
+  list-style: none;
+  padding-bottom: 15px;
+  top: 0px;
+}
+
+.menu__list__item a {
+  text-decoration: none;
+  color: grey;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.menu__list__item {
+  opacity: 0;
+}
+
+.menu__list--animate .menu__list__item {
+  animation: drop 0.9s;
+  animation-fill-mode: forwards;
+  // opacity: 1;
+
+  @for $i from 2 through $menu-items {
+    &:nth-child(#{$i}) {
+      animation-delay: $delay * ($i - 1);
+    }
+  }
+}

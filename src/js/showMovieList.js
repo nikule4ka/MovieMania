@@ -6,7 +6,6 @@ const refs = {
 };
 
 export default function showMovie(data) {
-  /**map for information from firebase */
 
   refs.listMovies.innerHTML = '';
   refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));

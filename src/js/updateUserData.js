@@ -5,6 +5,7 @@ import wathedData from './constData';
 import { getListings, getCurrentUser } from './getSetUserData';
 import showInterests from './showUserInterest';
 import main from './main';
+import checkUser from './checkUser';
 
 function setStatusFilm(movieId, status) {
   getListings().then(
@@ -17,22 +18,24 @@ function setStatusFilm(movieId, status) {
 
       main.changeUserInterests(wathedData.userData);
 
-      const currentUserId = getCurrentUser(); 
+      const currentUserId = getCurrentUser();
 
       firebase
         .database()
         .ref(/users/ + currentUserId + /userFilms/)
         .set({ currentStatusFilm });
     },
-    error => console.log(error),
+    error => checkUser(),
   );
 }
 
 export async function filmStatus(e) {
   e.preventDefault();
+
   if (e.target.nodeName !== 'I') {
     return;
   }
+
   const idFilm = e.target.dataset.id;
   const statusFilm = e.target.dataset.status;
 

@@ -53,18 +53,10 @@
             <li class="navigation__list__item">
               <a href="" class="mainLink">Главная</a>
             </li>
-            <li class="navigation__list__item list">
-              <a href="">Списки</a>
-              <ul class="navigation__movie__list is-hidden">
-                <li><a href="">Просмотренные</a></li>
-                <li><a href="">Очередь</a></li>
-              </ul>
-            </li>
           </ul>
         </div>
 
         <div class="navigation-right-side">
-          <!-- <i class="material-icons search">search</i> -->
           <form class="search__films">
             <p class="search__films__title">
               Поиск по
@@ -82,8 +74,6 @@
                   type="search"
                 ></select>
               </div>
-
-              <!-- <input class="genres" type="search" /> -->
             </label>
 
             <button class="btn__search_form" type="submit">
@@ -92,27 +82,28 @@
           </form>
 
           <div class="languages">
-            <img
-              class="language ru__icon"
-              src="./images/ru.png"
-              alt="language russian"
-              width="30px"
-              height="30px"
-            />
-            <img
-              class="language en__icon"
-              src="./images/en.png"
-              alt="language english"
-              width="30px"
-              height="30px"
-            />
+            <p class="language">
+              <i class="material-icons language__icon">language</i>
+            </p>
+            <p class="ru__icon active__language" data-lang="ru-RU">RU</p>
+            <span class="languages__separator">|</span>
+            <p class="en__icon" data-lang="en-EN">EN</p>
           </div>
 
           <div class="user__navigation">
             <p class="user__account is-hidden">
               <i class="material-icons user">account_circle</i>
             </p>
+
+            <p class="menu is"></p>
             <p class="user__login"><i class="material-icons login">login</i></p>
+
+            <!-- Burger menu for mobile and tablet -->
+            <!-- <div id="menu__btn">
+              <span class="icon"></span>
+              <span class="text">MENU</span>
+            </div>
+            <div class="user__menu"></div> -->
           </div>
         </div>
       </nav>
@@ -127,7 +118,9 @@
     </main>
     <footer class="footer">
       <div class="footer_container">
-        <span class="footer_copyright">©  2020 | All Rights Reserved | Developed with </span>
+        <span class="footer_copyright"
+          >© 2020 | All Rights Reserved | Developed with
+        </span>
         <span class="material-icons footer-icon">favorite</span>
         <a href="#"><span class="footer_copyright">Angry Beavers</span></a>
       </div>

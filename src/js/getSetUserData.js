@@ -17,6 +17,10 @@ export function getCurrentUser() {
 }
 
 export function getStatusMovieById(id) {
+  if (constData.userData === null) {
+    return [];
+  }
+
   const findFilm = constData.userData.find(el => Number(el.id) === Number(id));
 
   if (findFilm === undefined) {
