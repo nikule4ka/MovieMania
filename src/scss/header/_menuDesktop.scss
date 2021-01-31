@@ -1,23 +1,23 @@
 // vars and keyframes
 $delay: 0.5s;
-$menu-items: 3;
+$menu-items: 5;
 
 @keyframes drop {
   from {
     top: 0px;
   }
   70% {
-    top: 165px;
+    top: 10px;
     animation-timing-function: ease-in;
   }
 
   100% {
     opacity: 1;
-    top: 165px;
+    top: 250px;
     animation-timing-function: ease-in;
   }
   to {
-    top: 150px;
+    top: 0px;
     animation-timing-function: ease-out;
   }
 }
@@ -51,9 +51,9 @@ $menu-items: 3;
 
 .menu__list__item a {
   text-decoration: none;
-  color: grey;
+  color: rgb(11, 241, 134);
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.1em;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -62,11 +62,11 @@ $menu-items: 3;
 }
 
 .menu__list--animate .menu__list__item {
-  animation: drop 0.9s;
+  animation: drop 0.5s;
   animation-fill-mode: forwards;
   // opacity: 1;
 
-  @for $i from 2 through $menu-items {
+  @for $i from 1 through $menu-items {
     &:nth-child(#{$i}) {
       animation-delay: $delay * ($i - 1);
     }
