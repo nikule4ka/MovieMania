@@ -67,13 +67,25 @@
     }
 
     & .active__search {
-      color: tomato;
+      color: #f8104d;
     }
   }
 
   & .name,
   .genres {
     width: 300px;
+    height: 25px;
+    background-color: #281f55;
+    color: #f7f5ff;
+    // border: none;
+    font-family: Noto Sans TC, sans-serif;
+    letter-spacing: 0.03em;
+    font-size: 300;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
   }
 
   & .header-search {

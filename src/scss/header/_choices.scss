@@ -1,6 +1,18 @@
 /*===============================
 =            Choices            =
 ===============================*/
+
+.btn__search_form {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
 .choices {
   position: relative;
   margin-bottom: 24px;
@@ -17,7 +29,7 @@
 
 .choices.is-disabled .choices__inner,
 .choices.is-disabled .choices__input {
-  background-color: #eaeaea;
+  background-color: $headerFooterColor;
   cursor: not-allowed;
   user-select: none;
 }
@@ -38,8 +50,8 @@
   display: block;
   width: 100%;
   padding: 10px;
-  border-bottom: 1px solid #dddddd;
-  background-color: #ffffff;
+  border-bottom: 1px solid $headerFooterColor;
+  background-color: $headerFooterColor;
   margin: 0;
 }
 
@@ -64,7 +76,7 @@
 }
 
 .choices[data-type*='select-one'] .choices__button:focus {
-  box-shadow: 0px 0px 0px 2px #00bcd4;
+  box-shadow: 0px 0px 0px 2px red;
 }
 
 .choices[data-type*='select-one']:after {
@@ -72,7 +84,7 @@
   height: 0;
   width: 0;
   border-style: solid;
-  border-color: #333333 transparent transparent transparent;
+  // border-color: #333333 transparent transparent transparent;
   border-width: 5px;
   position: absolute;
   right: 11.5px;
@@ -112,7 +124,7 @@
   margin-bottom: 0;
   margin-left: 8px;
   padding-left: 16px;
-  border-left: 1px solid #008fa1;
+
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
   background-size: 8px;
   width: 8px;
@@ -131,11 +143,9 @@
 .choices__inner {
   display: inline-block;
   vertical-align: top;
-  width: 100%;
-  background-color: #f9f9f9;
+
   padding: 7.5px 7.5px 3.75px;
-  border: 1px solid #dddddd;
-  border-radius: 2.5px;
+
   font-size: 14px;
   min-height: 44px;
   overflow: hidden;
@@ -143,7 +153,7 @@
 
 .is-focused .choices__inner,
 .is-open .choices__inner {
-  border-color: #b7b7b7;
+  border-color: $headerFooterColor;
 }
 
 .is-open .choices__inner {
@@ -158,6 +168,7 @@
   margin: 0;
   padding-left: 0;
   list-style: none;
+  background-color: #30246b;
 }
 
 .choices__list--single {
@@ -182,14 +193,14 @@
 .choices__list--multiple .choices__item {
   display: inline-block;
   vertical-align: middle;
-  border-radius: 20px;
+  border-radius: 3px;
   padding: 4px 10px;
   font-size: 12px;
   font-weight: 500;
   margin-right: 3.75px;
   margin-bottom: 3.75px;
-  background-color: #00bcd4;
-  border: 1px solid #00a5bb;
+  background-color: $secondaryColor;
+  border: 1px solid $secondaryColor;
   color: #ffffff;
   word-break: break-all;
 }
@@ -204,13 +215,11 @@
 }
 
 .choices__list--multiple .choices__item.is-highlighted {
-  background-color: #00a5bb;
-  border: 1px solid #008fa1;
+  background-color: $headerFooterColor;
 }
 
 .is-disabled .choices__list--multiple .choices__item {
-  background-color: #aaaaaa;
-  border: 1px solid #919191;
+  background-color: $headerFooterColor;
 }
 
 .choices__list--dropdown {
@@ -218,8 +227,8 @@
   z-index: 1;
   position: absolute;
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: $headerFooterColor;
+
   top: 100%;
   margin-top: -1px;
   border-bottom-left-radius: 2.5px;
@@ -233,7 +242,7 @@
 }
 
 .is-open .choices__list--dropdown {
-  border-color: #b7b7b7;
+  border-color: $headerFooterColor;
 }
 
 .is-flipped .choices__list--dropdown {
@@ -287,7 +296,7 @@
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
-  background-color: #f2f2f2;
+  background-color: $secondaryColor;
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
@@ -312,8 +321,8 @@
   font-weight: 600;
   font-size: 12px;
   padding: 10px;
-  border-bottom: 1px solid #f7f7f7;
-  color: gray;
+
+  color: $headerFooterColor;
 }
 
 .choices__button {
@@ -332,14 +341,17 @@
 }
 
 .choices__input {
+  width: 300px;
+  height: 25px;
+  background-color: #281f55;
+  color: #f7f5ff;
+  // border: rgba(97, 82, 168, 0.2);
+  font-family: Noto Sans TC, sans-serif;
+  letter-spacing: 0.03em;
   display: inline-block;
   vertical-align: baseline;
-  background-color: #f9f9f9;
   font-size: 14px;
   margin-bottom: 5px;
-  border: 0;
-  border-radius: 0;
-  max-width: 100%;
   padding: 4px 0 4px 2px;
 }
 
