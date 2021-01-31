@@ -13,7 +13,8 @@ function onClickMainLink(e) {
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
-  console.log(userMenu());
+  refs.userAccount.insertAdjacentHTML('beforeend', userMenu());
+  // console.log(userMenu());
 
   const menuListRef = document.querySelector('.menu__list');
   menuListRef.classList.toggle('menu__list--animate');

@@ -5,7 +5,7 @@ import constData from './constData';
 import main from './main';
 
 // refs.userAccount.addEventListener('click', logOut);
-refs.userAccount.addEventListener('click', userMenu);
+// refs.userAccount.addEventListener('click', userMenu);
 
 // function logOut() {
 //   firebase
@@ -24,16 +24,16 @@ refs.userAccount.addEventListener('click', userMenu);
 //   refs.userAccount.classList.add('is-hidden');
 // }
 
-function userMenu(e) {
-  e.preventDefault();
+// function userMenu(e) {
+//   e.preventDefault();
 
-  if (refs.menuRef.classList.contains('open')) {
-    refs.menuRef.classList.remove('open');
-    refs.menuRef.classList.add('close');
-    refs.userMenuRef.innerHTML = '';
-  } else {
-    refs.menuRef.classList.remove('close');
-    refs.menuRef.classList.add('open');
-    refs.userMenuRef.insertAdjacentHTML('beforeend', userMenu());
-  }
-}
+//   if (refs.menuRef.classList.contains('open')) {
+//     refs.menuRef.classList.remove('open');
+//     refs.menuRef.classList.add('close');
+//     refs.userMenuRef.innerHTML = '';
+//   } else {
+//     refs.menuRef.classList.remove('close');
+//     refs.menuRef.classList.add('open');
+//     refs.userMenuRef.insertAdjacentHTML('beforeend', userMenu());
+//   }
+// }
