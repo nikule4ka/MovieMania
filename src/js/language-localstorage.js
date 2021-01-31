@@ -3,50 +3,60 @@ import constData from './constData';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
+removeClassForLanguage();
 setClassForLanguage();
 
 function setClassForLanguage() {
   const savedTheme = localStorage.getItem('language');
 
   if (savedTheme === refs.Languages.RUSSIAN) {
-    refs.languageEn.classList.add('hidden');
+    refs.languageRu.classList.add('active__language');
     refs.language.classList.add(refs.Languages.RUSSIAN);
   }
   if (savedTheme === refs.Languages.ENGLISH) {
-    refs.languageRu.classList.add('hidden');
+    refs.languageEn.classList.add('active__language');
     refs.language.classList.add(refs.Languages.ENGLISH);
   }
 
   if (savedTheme === null) {
-    refs.languageEn.classList.add('hidden');
+    refs.languageRu.classList.add('active__language');
     refs.language.classList.add(refs.Languages.RUSSIAN);
     localStorage.setItem('language', refs.Languages.RUSSIAN);
   }
 }
 
 function removeClassForLanguage() {
-  refs.languageEn.classList.remove('hidden');
-  refs.languageRu.classList.remove('hidden');
+  refs.languageEn.classList.remove('active__language');
+  refs.languageRu.classList.remove('active__language');
   refs.language.classList.remove(refs.Languages.RUSSIAN);
   refs.language.classList.remove(refs.Languages.ENGLISH);
 }
 
-function ChangeLanguage() {
+function ChangeLanguage(e) {
   let currentLanguage;
 
-  if (refs.language.classList.contains(refs.Languages.RUSSIAN)) {
-    removeClassForLanguage();
-    refs.languageRu.classList.add('hidden');
-    currentLanguage = refs.Languages.ENGLISH;
+  if(e.target.tagName !== 'P') {
+    return
   }
 
-  if (refs.language.classList.contains(refs.Languages.ENGLISH)) {
-    removeClassForLanguage();
-    refs.languageEn.classList.add('hidden');
-    currentLanguage = refs.Languages.RUSSIAN;
+  if(e.target.classList.contains('active__language')) {
+    console.log('click')
+    return;
   }
 
-  refs.language.classList.add(currentLanguage);
+  if (!e.target.classList.contains('active__language')) {
+    removeClassForLanguage();
+    e.target.classList.add('active__language');
+    currentLanguage = e.target.dataset.lang;
+  }
+
+  // if (refs.language.classList.contains(refs.Languages.ENGLISH)) {
+  //   removeClassForLanguage();
+  //   refs.languageEn.classList.add('active__language');
+  //   currentLanguage = refs.Languages.RUSSIAN;
+  // }
+
+  refs.language.classList.add(currentLanguage); 
   localStorage.setItem('language', currentLanguage);
   constData.router.render();
   getLocalLanguage();

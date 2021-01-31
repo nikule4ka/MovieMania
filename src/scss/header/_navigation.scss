@@ -97,20 +97,52 @@
     height: 30px;
     margin-left: 5px;
   }
+
+  & .en__icon,
+  .ru__icon {
+    cursor: pointer;
+  }
 }
 
 .languages {
-  cursor: pointer;
-  margin-left: 300px;
+  display: flex;
   color: #f8104d;
-  /* margin-left: auto; */
+  justify-content: center;
+  align-items: center;
+
   & .hidden {
     display: none;
+  }
+
+  & .language__icon {
+    color: blue;
+  }
+
+  & .language {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+  }
+
+  & .languages__separator {
+    margin: 0 5px;
+  }
+
+  & .active__language {
+    color: #0fdbff;
+  }
+  & .en__icon,
+  .ru__icon {
+    cursor: pointer;
   }
 }
 
 .user__login {
   margin: 0;
+}
+
+.user__navigation {
+  display: flex;
 }
 
 /*  */

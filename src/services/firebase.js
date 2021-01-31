@@ -26,6 +26,10 @@ async function addUser({ user }) {
     const db = firebase.database();
     const users = db.ref('users');
     users.child(uid).set({ email: email });
+    // const currentStatusFilm = [];
+    // users
+    //   .child(uid + '/userFilms')
+    //   .set({ currentStatusFilm: constData.userData });
   } catch {
     console.error('user add failed');
   }

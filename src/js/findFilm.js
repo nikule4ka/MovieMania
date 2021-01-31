@@ -38,7 +38,7 @@ function onFindByGenresClick(e) {
     )
     .then(data => {
       choicesRef.choices = new Choices(choicesRef, {
-        maxItemCount: 5,
+        maxItemCount: 3,
         removeItemButton: true,
         choices: data,
       });
