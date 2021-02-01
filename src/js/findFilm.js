@@ -1,15 +1,8 @@
 import fetchApi from '../services/apiService';
-import сonstData from './constData';
-import getMovie from './main';
+
 import Choices from 'choices.js';
 
-const refs = {
-  submitSearch: document.querySelector('.search__films'),
-  getByNameRef: document.querySelector('.search_films_name'),
-  getByGenresRef: document.querySelector('.search_films_genres'),
-  inputNameRef: document.querySelector('.name'),
-  choicesContainerRef: document.querySelector('.clear__choices'),
-};
+import refs from './refs';
 
 refs.getByNameRef.addEventListener('click', onFindByNameClick);
 refs.getByGenresRef.addEventListener('click', onFindByGenresClick);

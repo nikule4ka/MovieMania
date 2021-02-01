@@ -12,6 +12,10 @@ const CONST_DATA = {
     watched: false,
   },
   userData: [],
+  Languages: {
+    RUSSIAN: 'ru-RU',
+    ENGLISH: 'en-EN',
+  },
 };
 
 export default CONST_DATA;
