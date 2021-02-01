@@ -33,28 +33,42 @@ $menu-items: 5;
   // margin: 10px auto;
 }
 
-// .menu {
-//   width: 100%;
-// }
-
 .menu__list {
-  text-align: center;
   width: 100%;
   padding-left: 0;
+  background-color: #fff;
+  // opacity: 0;
 }
 
 .menu__list__item {
+  display: flex;
+  cursor: pointer;
   list-style: none;
-  padding-bottom: 15px;
+  padding: 10px 5px;
   top: 0px;
+  background: #30246b;
+  box-shadow: 0 0 2px #6152a8;
+
+  .menu__list__title {
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
 }
 
 .menu__list__item a {
   text-decoration: none;
-  color: rgb(11, 241, 134);
+  color: #fff;
   text-align: center;
-  font-size: 1.1em;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+
+  &:hover {
+    color: $secondaryColor;
+  }
 }
 
 .menu__list__item {
@@ -64,11 +78,19 @@ $menu-items: 5;
 .menu__list--animate .menu__list__item {
   animation: drop 0.5s;
   animation-fill-mode: forwards;
+  align-items: center;
+
   // opacity: 1;
 
-  @for $i from 1 through $menu-items {
-    &:nth-child(#{$i}) {
-      animation-delay: $delay * ($i - 1);
-    }
-  }
+  // @for $i from 1 through $menu-items {
+  //   &:nth-child(#{$i}) {
+  //     animation-delay: $delay * ($i - 1);
+  //   }
+  // }
+}
+
+.icons__header_menu {
+  font-size: 20px;
+  vertical-align: sub;
+  margin-right: 5px;
 }
