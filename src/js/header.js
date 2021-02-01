@@ -26,14 +26,13 @@ function logOut() {
   refs.userAccount.classList.add('is-hidden');
 }
 
-refs.mainLink.addEventListener('click', onClickMainLink);
+//refs.mainLink.addEventListener('click', onClickMainLink);
 refs.headerLogoLink.addEventListener('click', onClickMainLink);
 
 function onClickMainLink(e) {
   e.preventDefault();
   fetchApi.setLocation('#/');
 }
-
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
@@ -58,7 +57,6 @@ function openDropDownMenu() {
 
   userMenuRefs.logOutRef.addEventListener('click', logOut);
 }
-
 
 /**Burger menu for mobile and tablet */
 
