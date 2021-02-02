@@ -43,6 +43,11 @@ img {
   border-style: none;
 }
 
+input,
+textarea {
+  outline: none;
+}
+
 .is-hidden {
   display: none;
 }
