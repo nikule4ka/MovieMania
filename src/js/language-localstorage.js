@@ -1,5 +1,6 @@
 import refs from './refs';
 import constData from './constData';
+import createGanresList from './findFilm';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
@@ -35,12 +36,12 @@ function removeClassForLanguage() {
 function ChangeLanguage(e) {
   let currentLanguage;
 
-  if(e.target.tagName !== 'P') {
-    return
+  if (e.target.tagName !== 'P') {
+    return;
   }
 
-  if(e.target.classList.contains('active__language')) {
-    console.log('click')
+  if (e.target.classList.contains('active__language')) {
+    console.log('click');
     return;
   }
 
@@ -56,9 +57,10 @@ function ChangeLanguage(e) {
   //   currentLanguage = refs.Languages.RUSSIAN;
   // }
 
-  refs.language.classList.add(currentLanguage); 
+  refs.language.classList.add(currentLanguage);
   localStorage.setItem('language', currentLanguage);
   constData.router.render();
+  createGanresList();
   getLocalLanguage();
 }
 
