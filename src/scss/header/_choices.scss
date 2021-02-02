@@ -1,26 +1,6 @@
 /*===============================
 =            Choices            =
 ===============================*/
-.search__films {
-  position: relative;
-  & .btn__search_form {
-    position: absolute;
-    content: '';
-    top: 22px;
-    right: 70px;
-  }
-}
-
-.btn__search_form {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-}
 
 .choices {
   position: relative;

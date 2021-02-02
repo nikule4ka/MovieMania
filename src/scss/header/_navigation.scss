@@ -73,10 +73,11 @@
 .search__films {
   width: 400px;
   height: 30px;
+  position: relative;
 
   & .search__films__title {
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     margin-left: 10px;
     font-size: 13px;
 
@@ -136,6 +137,21 @@
   }
 }
 
+.btn__search_form {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  content: '';
+  top: 26px;
+  right: 70px;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
 .languages {
   display: flex;
   color: #fff;
@@ -161,6 +177,7 @@
 
   & .active__language {
     color: #f8104d;
+    box-shadow: 0 2px 0 #6152a8, inset 0 0 0 #6152a8;
   }
   & .en__icon,
   .ru__icon {

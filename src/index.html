@@ -55,26 +55,21 @@
             </li>
           </ul>
         </div> -->
-
+        
         <div class="navigation-right-side">
           <form class="search__films">
             <p class="search__films__title">
               Поиск по
               <span class="search_films_name active__search">названию</span
-              ><span> / </span><span class="search_films_genres">жанру</span>
-            </p>
-            <label class="search__films_by">
-              <input class="name" type="search" />
+                ><span> / </span><span class="search_films_genres">жанру</span>
+              </p>
+              <label class="search__films_by">
+                <input class="name" type="search" />
+              </label>
 
-              <div class="clear__choices is-hidden">
-                <select
-                  id="my-select"
-                  class="genres"
-                  multiple
-                  type="search"
-                ></select>
+              <div class="search-genres is-hidden ">
+                <select multiple data-multi-select-plugin></select>
               </div>
-            </label>
 
             <button class="btn__search_form" type="submit">
               <i class="material-icons search">search</i>
@@ -130,5 +125,7 @@
         <a href="#"><span class="footer_copyright">Angry Beavers</span></a>
       </div>
     </footer>
+
+  
   </body>
 </html>
