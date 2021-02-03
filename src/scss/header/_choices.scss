@@ -6,7 +6,7 @@
   & .btn__search_form {
     position: absolute;
     content: '';
-    top: 24px;
+    top: 22px;
     right: 70px;
   }
 }
@@ -102,10 +102,10 @@
   pointer-events: none;
 }
 
-.choices[data-type*='select-one'].is-open:after {
-  border-color: transparent transparent #333333 transparent;
-  margin-top: -7.5px;
-}
+// .choices[data-type*='select-one'].is-open:after {
+//   border-color: transparent transparent #333333 transparent;
+//   margin-top: -7.5px;
+// }
 
 .choices[data-type*='select-one'][dir='rtl']:after {
   left: 11.5px;
@@ -129,10 +129,10 @@
   position: relative;
   display: inline-block;
   margin-top: 0;
-  margin-right: -4px;
+  margin-right: 0;
   margin-bottom: 0;
-  margin-left: 8px;
-  padding-left: 16px;
+  margin-left: 4px;
+  padding-left: 0;
 
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
   background-size: 8px;
@@ -156,8 +156,8 @@
   height: 25px;
   padding: 2.5px 7.5px 6px;
   background-color: #281f55;
-  font-size: 14px;
-
+  font-size: 18px;
+  color: #ffffff;
   overflow: hidden;
 }
 
@@ -203,7 +203,7 @@
   display: inline-block;
   vertical-align: middle;
 
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   margin-right: 3.75px;
   margin-bottom: 3.75px;
@@ -222,13 +222,13 @@
   margin-left: 3.75px;
 }
 
-.choices__list--multiple .choices__item.is-highlighted {
-  background-color: $headerFooterColor;
-}
+// .choices__list--multiple .choices__item.is-highlighted {
+//   background-color: $headerFooterColor;
+// }
 
-.is-disabled .choices__list--multiple .choices__item {
-  background-color: $headerFooterColor;
-}
+// .is-disabled .choices__list--multiple .choices__item {
+//   background-color: $headerFooterColor;
+// }
 
 .choices__list--dropdown {
   display: none;
@@ -273,7 +273,7 @@
 .choices__list--dropdown .choices__item {
   position: relative;
   padding: 10px;
-  font-size: 10px;
+  font-size: 14px;
   color: black;
 }
 
@@ -353,7 +353,7 @@
 
 .choices__input {
   background-color: transparent;
-
+  color: #ffffff;
   border: 0;
   font-family: Noto Sans TC, sans-serif;
   letter-spacing: 0.03em;

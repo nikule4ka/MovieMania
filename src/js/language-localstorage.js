@@ -1,5 +1,6 @@
 import refs from './refs';
 import constData from './constData';
+import createGanresList from './findFilm';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
@@ -59,6 +60,7 @@ function ChangeLanguage(e) {
   refs.language.classList.add(currentLanguage);
   localStorage.setItem('language', currentLanguage);
   constData.router.render();
+  createGanresList();
   getLocalLanguage();
 }
 

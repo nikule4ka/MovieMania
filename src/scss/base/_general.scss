@@ -3,7 +3,7 @@ $ListMovieColor: #281f55;
 $headerFooterColor: #30246b;
 $secondaryColor: #f8104d;
 
-$primaryColorCircle: #f8114d;
+$primaryColorCircle: #f8104d;
 $secondaryColorCircle: #fff;
 $backgroundColorCircle: #281f55;
 
@@ -41,7 +41,11 @@ ul {
 
 img {
   border-style: none;
-  display: block;
+}
+
+input,
+textarea {
+  outline: none;
 }
 
 .is-hidden {

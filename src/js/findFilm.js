@@ -1,6 +1,6 @@
 import fetchApi from '../services/apiService';
-
 import Choices from 'choices.js';
+import inputChoice from './inputChoice';
 
 import refs from './refs';
 
@@ -8,19 +8,10 @@ refs.getByNameRef.addEventListener('click', onFindByNameClick);
 refs.getByGenresRef.addEventListener('click', onFindByGenresClick);
 refs.submitSearch.addEventListener('submit', searchFilmByQuery);
 
-function onFindByGenresClick(e) {
-  if (refs.getByGenresRef.classList.contains('active__search')) {
-    return;
-  }
-
-  refs.inputNameRef.classList.add('is-hidden');
-  refs.choicesContainerRef.classList.remove('is-hidden');
-  refs.getByGenresRef.classList.add('active__search');
-  refs.getByNameRef.classList.remove('active__search');
-  refs.choicesContainerRef.innerHTML =
-    ' <select id="my-select" class="genres is-hidden" multiple type="search"></select > ';
-
+export default function createGanresList() {
   const choicesRef = document.querySelector('.genres');
+  const selectRef = document.querySelector('[data-multi-select-plugin]');
+  selectRef.innerHTML = '';
 
   fetchApi
     .fetchGanres()
@@ -35,7 +26,26 @@ function onFindByGenresClick(e) {
         removeItemButton: true,
         choices: data,
       });
+
+      data.forEach(el =>
+        inputChoice.addOption('[data-multi-select-plugin]', el.label, el.value),
+      );
     });
+}
+
+function onFindByGenresClick(e) {
+  if (refs.getByGenresRef.classList.contains('active__search')) {
+    return;
+  }
+
+  refs.inputNameRef.classList.add('is-hidden');
+  refs.choicesContainerRef.classList.remove('is-hidden');
+  refs.getByGenresRef.classList.add('active__search');
+  refs.getByNameRef.classList.remove('active__search');
+  refs.choicesContainerRef.innerHTML =
+    ' <select id="my-select" class="genres is-hidden" multiple type="search"></select > ';
+
+  createGanresList();
 }
 
 function onFindByNameClick(e) {
