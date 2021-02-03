@@ -105,8 +105,11 @@ function mainInit(
   fetchApi.setPage(page);
   fetchApi.setParam(param);
 
+  const tabContainerRef = document.querySelector('.movie__interests__tab');
+  if (tabContainerRef !== null) {
+    tabContainerRef.remove();
+  }
   pagination.movePageTo(page);
-
   getMovie();
 }
 

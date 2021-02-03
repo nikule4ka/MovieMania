@@ -7,7 +7,6 @@ import main from './main';
 import userMenu from '../templates/header/dropDownMenu.hbs';
 import userFilmsList from './userFilmsByStatus';
 
-
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
@@ -42,11 +41,11 @@ function logOut() {
     .signOut()
     .then(() => {
       console.log('Sign-out successful');
-      refs.wrapperMenuRef.innerHTML = '';
       refs.userAccount.classList.toggle('menu__open');
       refs.wrapperMenuRef.classList.toggle('menu__list--animate');
+      refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
-      main.getMovie();
+      fetchApi.setLocation(`#`);
     })
     .catch(error => {
       // An error happened.
@@ -63,7 +62,6 @@ function onClickMainLink(e) {
   e.preventDefault();
   fetchApi.setLocation('#/');
 }
-
 
 function closeDropDownMenu() {
   const getMenuAttribute = refs.containerMenuRef.getAttribute('aria-expanded');
