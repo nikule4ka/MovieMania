@@ -16,8 +16,11 @@
 
   .movie__markup__img {
     align-self: flex-start;
+    background-color: $headerFooterColor;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
 
     & img {
+      display: block;
       @media screen and (max-width: 767px) {
         width: 100%;
       }
@@ -39,23 +42,24 @@
 }
 
 .card-title-text {
-  font-size: 16px;
+  font-size: 12px;
   margin-top: 0;
   margin-bottom: 10px;
+  font-weight: 500;
 
   @media screen and (min-width: 1024px) {
     margin-bottom: 14px;
-    font-size: 22px;
+    font-size: 14px;
   }
 }
 
 .icon-runtime-min {
   position: relative;
-  padding-left: 28px;
+  padding-left: 20px;
   margin-top: 0;
 
   @media screen and (min-width: 1024px) {
-    padding-left: 40px;
+    padding-left: 24px;
   }
 
   .icon-runtime {
@@ -66,7 +70,7 @@
     font-size: 24px;
 
     @media screen and (min-width: 1024px) {
-      font-size: 30px;
+      font-size: 20px;
     }
   }
 }
@@ -75,9 +79,10 @@
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 14px;
+  font-weight: 400;
 
   @media screen and (min-width: 1024px) {
-    font-size: 22px;
+    font-size: 15px;
     margin-bottom: 40px;
   }
 }
@@ -267,10 +272,6 @@
     grid-gap: 20px;
   }
 }
-
-// .list__actor-card {
-//   padding: 10px 30px 15px 30px;
-// }
 
 .list__actor-name {
   margin-top: 10px;

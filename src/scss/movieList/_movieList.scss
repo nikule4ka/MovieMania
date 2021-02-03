@@ -57,9 +57,11 @@
 
 .card__movie_markup {
   position: relative;
-  // min-width: 273px;
-  // max-width: 454px;
+  border-radius: 13px 13px 0 0;
+  background-color: $headerFooterColor;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
   height: auto;
+  cursor: pointer;
 }
 
 .card-text {
