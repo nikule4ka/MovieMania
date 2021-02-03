@@ -54,15 +54,19 @@ function searchFilmByQuery(e) {
   if (refs.getByNameRef.classList.contains('active__search')) {
     const inputNameRef = refs.searchFilmsBy.querySelector('.name');
     const query = inputNameRef.value.trim();
-    if (query !== '') {
-      fetchApi.setLocation(`#/query/${query}/page/1`);
-      inputNameRef.value = '';
+    if (query === '') {
+      return;
     }
+    fetchApi.setLocation(`#/query/${query}/page/1`);
+    inputNameRef.value = '';
     return;
   }
 
   if (refs.getByGenresRef.classList.contains('active__search')) {
     const getChoices = document.querySelectorAll('.selected-label');
+    if (getChoices.length === 0) {
+      return;
+    }
     const listGenre = Array.from(getChoices)
       .reduce((acc, choice) => [...acc, choice.dataset.id], [])
       .join(',');
@@ -84,7 +88,7 @@ function searchFilmByQuery(e) {
       'placeholder',
       languageRu ? constData.placeholder.RU : constData.placeholder.EN,
     );
-
+    refs.btnSearchForm.focus();
     return;
   }
 }

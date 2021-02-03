@@ -1,6 +1,11 @@
 <div class='modal__container'>
   <h3 class="modal__title_loader">
-    ЗАГРУЖАЕМ....
+        {{#if languageRu}}
+          ЗАГРУЖАЕМ....
+        {{else}}
+          LOADING....
+        {{/if}}
+    
   </h3>
 
   <div class="modal__preloader">

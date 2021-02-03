@@ -2,6 +2,7 @@ import fetchApi from '../services/apiService';
 import errorMessage from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';
 
+import getLocalLanguage from './language-localstorage';
 import constData from './constData';
 import pagination from './pagination';
 import showMovie from './showMovieList';
@@ -44,7 +45,11 @@ function onPaginationsBtnClick() {
 }
 
 function getMovie() {
-  instance = showModal(pageLoader());
+  instance = showModal(
+    pageLoader({
+      languageRu: getLocalLanguage() === constData.Languages.RUSSIAN,
+    }),
+  );
   window.scrollTo(0, 0);
 
   fetchApi
