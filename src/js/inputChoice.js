@@ -210,11 +210,16 @@ function populateAutocompleteList(select, query, dropdown = false) {
 // Listener to autocomplete results when clicked set the selected property in the select option
 function selectOption(e) {
   const wrapper = e.target.parentNode.parentNode.parentNode;
+
+  const getChoices = document.querySelectorAll('.selected-label');
+  if (getChoices.length === 3) {
+    return;
+  }
+
   const input_search = wrapper.querySelector('.selected-input');
   const option = wrapper.querySelector(
     `select option[value="${e.target.dataset.value}"]`,
   );
-
   option.setAttribute('selected', '');
   createToken(wrapper, e.target.dataset.value, option.innerHTML);
   if (input_search.value) {
