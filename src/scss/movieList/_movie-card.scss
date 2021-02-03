@@ -1,51 +1,84 @@
 .movie__markup__card {
   display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 10px;
+    font-size: 20px;
+  }
 
   .movie__markup__img {
     align-self: flex-start;
-  }
 
-  .movie__content {
-    margin-left: 25px;
+    & img {
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
   }
 }
 
 .icon-raiting {
   color: $secondaryColor;
+  font-size: 22px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
 }
 
 .card-title {
   margin-top: 10px;
 }
 
-.card-body-date {
-  margin-bottom: 20px;
-}
-
 .card-title-text {
+  font-size: 16px;
   margin-top: 0;
-  margin-bottom: 15px;
-}
+  margin-bottom: 10px;
 
-.card-text-overview {
-  margin-top: 0;
-  margin-bottom: 40px;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 14px;
+    font-size: 22px;
+  }
 }
 
 .icon-runtime-min {
   position: relative;
-  padding-left: 40px;
+  padding-left: 28px;
   margin-top: 0;
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 40px;
+  }
 
   .icon-runtime {
     position: absolute;
     content: '';
     top: 0;
     left: 0;
+    font-size: 24px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.card-text-overview {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 22px;
+    margin-bottom: 40px;
   }
 }
 
@@ -124,38 +157,70 @@
 }
 
 .card-title-movie {
-  margin-top: 0;
   max-width: 80%;
   letter-spacing: 0.03em;
-  margin-bottom: 20px;
-  font-size: 40px;
-  line-height: 44px;
-  font-weight: 900;
+
+  font-size: 22px;
+  font-weight: 700;
   font-style: normal;
+  margin-top: 16px;
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 32px;
+    font-weight: 900;
+  }
 }
 
 .movie__content {
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 25px;
+    font-size: 32px;
+  }
+
   .card-text-rainting {
-    font-weight: 700;
-    font-size: 24px;
+    font-size: 18px;
     position: absolute;
     content: '';
     top: 0;
     right: 0;
     margin: 0;
     display: flex;
-
     align-items: center;
+
+    @media screen and (min-width: 768px) {
+      font-size: 24px;
+    }
   }
 }
 
 .card-body-date {
   font-weight: 700;
-  font-size: 24px;
-  margin-top: 10px;
+  font-size: 16px;
   margin-top: 0;
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 }
 
 .card-group-icons {
