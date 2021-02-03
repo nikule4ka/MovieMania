@@ -1,8 +1,6 @@
 import Pagination from 'tui-pagination';
 
-const refs = {
-  paginationRef: document.getElementById('pagination'),
-};
+import refs from './refs';
 
 const paganation = new Pagination(refs.paginationRef, {
   totalItems: 10000,

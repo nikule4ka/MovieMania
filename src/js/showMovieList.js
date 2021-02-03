@@ -1,12 +1,9 @@
 import movieMarkup from '../templates/movieMarkup.hbs';
 import { filmStatus } from './updateUserData';
 
-const refs = {
-  listMovies: document.querySelector('.list_movies'),
-};
+import refs from './refs';
 
 export default function showMovie(data) {
-
   refs.listMovies.innerHTML = '';
   refs.listMovies.insertAdjacentHTML('beforeend', movieMarkup(data));
 

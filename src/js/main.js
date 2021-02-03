@@ -11,10 +11,7 @@ import interests from './showUserInterest';
 
 import noPosterImg from '../images/no-movie.jpg';
 
-const refs = {
-  paginationRef: document.getElementById('pagination'),
-  listMovies: document.querySelector('.list_movies'),
-};
+import refs from './refs';
 
 refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
 let instance = '';
