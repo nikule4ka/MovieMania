@@ -7,6 +7,7 @@ const refs = {
   userLogin: document.querySelector('.user__login'),
   userAccount: document.querySelector('.user__account'),
   wrapperMenuRef: document.querySelector('.menu__list'),
+  containerMenuRef: document.querySelector('.wrapper'),
 
   mainLink: document.querySelector('.mainLink'),
   headerLogoLink: document.querySelector('.header-logo-link'),
@@ -21,7 +22,8 @@ const refs = {
   submitSearch: document.querySelector('.search__films'),
   getByNameRef: document.querySelector('.search_films_name'),
   getByGenresRef: document.querySelector('.search_films_genres'),
-  inputNameRef: document.querySelector('.name'),
+  searchFilmsBy: document.querySelector('.search__films_by'),
+  searchGenres: document.querySelector('.search__genres'),
   choicesContainerRef: document.querySelector('.clear__choices'),
 };
 

@@ -9,3 +9,4 @@ import './js/submitRegForm';
 import './js/submitLogForm';
 import './js/checkUser';
 import './js/findFilm';
+import './js/userFilmsByStatus';

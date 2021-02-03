@@ -2,6 +2,7 @@ import Router from './Router';
 import main from './main';
 import constData from './constData';
 import showMovieCard from './showMovieCard';
+import interests from './userFilmsByStatus';
 
 const router = new Router({
   mode: 'hash',
@@ -31,6 +32,21 @@ router
     mainCard.classList.add('is-hidden');
     mainList.classList.remove('is-hidden');
     main.mainInit(constData.queryString.POPULAR, page);
+  })
+  .add(/favorites\/(.*)/, page => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    interests.interestsInnit(constData.queryString.FAVORITES, page);
+  })
+  .add(/watched\/(.*)/, page => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    interests.interestsInnit(constData.queryString.WATCHED, page);
+  })
+  .add(/watchedLater\/(.*)/, page => {
+    mainCard.classList.add('is-hidden');
+    mainList.classList.remove('is-hidden');
+    interests.interestsInnit(constData.queryString.WATCHED_LATER, page);
   })
   .add('', () => {
     mainCard.classList.add('is-hidden');

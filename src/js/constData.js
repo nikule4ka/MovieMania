@@ -3,6 +3,9 @@ const CONST_DATA = {
     BY_NAME: 'search',
     BY_GANRE: 'discover',
     POPULAR: 'popular',
+    FAVORITES: 'favorites',
+    WATCHED: 'watched',
+    WATCHED_LATER: 'watchedLater',
   },
   instance: '',
   router: '',
@@ -16,6 +19,7 @@ const CONST_DATA = {
     RUSSIAN: 'ru-RU',
     ENGLISH: 'en-EN',
   },
+  placeholder: { RU: `3 жанра`, EN: `3 genre` },
 };
 
 export default CONST_DATA;

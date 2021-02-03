@@ -29,6 +29,15 @@ function onPaginationsBtnClick() {
     case constData.queryString.BY_GANRE:
       fetchApi.setLocation(`#/genres/${param}/page/${currentPage}`);
       break;
+    case constData.queryString.FAVORITES:
+      fetchApi.setLocation(`#/favorites/${currentPage}`);
+      break;
+    case constData.queryString.WATCHED:
+      fetchApi.setLocation(`#/watched/${currentPage}`);
+      break;
+    case constData.queryString.WATCHED_LATER:
+      fetchApi.setLocation(`#/wathedLater/${currentPage}`);
+      break;
     default:
       fetchApi.setLocation(`#/page/${currentPage}`);
   }
@@ -96,8 +105,11 @@ function mainInit(
   fetchApi.setPage(page);
   fetchApi.setParam(param);
 
+  const tabContainerRef = document.querySelector('.movie__interests__tab');
+  if (tabContainerRef !== null) {
+    tabContainerRef.remove();
+  }
   pagination.movePageTo(page);
-
   getMovie();
 }
 

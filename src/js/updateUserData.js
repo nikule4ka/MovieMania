@@ -3,7 +3,6 @@ import '@firebase/auth';
 import '@firebase/database';
 import wathedData from './constData';
 import { getListings, getCurrentUser } from './getSetUserData';
-import showInterests from './showUserInterest';
 import main from './main';
 import checkUser from './checkUser';
 
@@ -15,6 +14,17 @@ function setStatusFilm(movieId, status) {
       let currentStatusFilm = addFilm(getUserData, movieId, status);
 
       wathedData.userData = currentStatusFilm;
+
+      if (location.hash === `#/favorites/1`) {
+        wathedData.router.render();
+      }
+
+      if (location.hash === `#/watched/1`) {
+        wathedData.router.render();
+      }
+      if (location.hash === `#/watchedLater/1`) {
+        wathedData.router.render();
+      }
 
       main.changeUserInterests(wathedData.userData);
 
@@ -73,5 +83,33 @@ function addFilm(getUserData, movieId, status) {
     getUserData.splice(indexNumber, 1, newWatchedData);
   }
 
-  return getUserData;
+  const filmAtribute = addInfoToFilm(movieId);
+
+  const filmInfo = getUserData.map(el => {
+    if (Number(el.id) === Number(filmAtribute.id)) {
+      return {
+        ...el,
+        poster_path: filmAtribute.poster,
+        vote_average: filmAtribute.vote,
+        title: filmAtribute.title,
+        release_date: filmAtribute.release,
+      };
+    }
+    return el;
+  });
+
+  return filmInfo;
+}
+
+function addInfoToFilm(filmId) {
+  const films = document.querySelectorAll('.card');
+  const findCurrentFilm = Object.values(films);
+
+  const currentFilm = findCurrentFilm.find(film => {
+    if (filmId === film.dataset.id) {
+      return film;
+    }
+  });
+
+  return currentFilm.dataset;
 }
