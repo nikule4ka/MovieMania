@@ -74,6 +74,7 @@
   width: 400px;
   height: 30px;
   position: relative;
+  margin-right: 192px;
 
   & .search__films__title {
     margin: 0;
@@ -106,6 +107,7 @@
     &:active,
     &:focus {
       outline: none;
+      color: #fff;
     }
   }
 
@@ -137,14 +139,29 @@
   }
 }
 
+.search__films_by {
+  position: relative;
+
+  & .name {
+    position: absolute;
+    top: -5px;
+    left: 0;
+  }
+}
+
 .btn__search_form {
   border: none;
   background: transparent;
   cursor: pointer;
   position: absolute;
   content: '';
-  top: 26px;
-  right: 70px;
+  top: 22px;
+  right: 74px;
+
+  .material-icons.search {
+    color: #fff;
+    font-size: 22px;
+  }
 
   &:active,
   &:focus {
@@ -157,7 +174,7 @@
   color: #fff;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 50px;
 
   & .hidden {
     display: none;

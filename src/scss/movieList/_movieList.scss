@@ -44,17 +44,39 @@
   border-radius: 13px;
 
   .card-img-top {
-    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
     // height: 440.63px;
     border-radius: 13px 13px 0 0;
+    object-fit: cover;
   }
 }
 
 .card__movie_markup {
   position: relative;
+  min-width: 290px;
+  // max-width: ;
+  height: auto;
 
-  & img {
-    display: block;
+  @media screen and (max-width: 540px) {
+    max-width: 500px;
+    max-height: 750px;
+  }
+
+  @media screen and (min-width: 541px) and (max-width: 767px) {
+    max-width: 358px;
+    max-height: 537px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    max-width: 317px;
+    max-height: 476px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 291px;
+    max-height: 436px;
   }
 }
 

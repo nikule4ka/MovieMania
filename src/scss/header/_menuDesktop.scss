@@ -1,5 +1,5 @@
 // vars and keyframes
-$delay: 0.5s;
+$delay: 0.4s;
 $menu-items: 5;
 
 @keyframes drop {
@@ -23,12 +23,13 @@ $menu-items: 5;
 }
 
 .wrapper {
-  width: 150px;
-  position: absolute;
-  content: '';
-  top: 44px;
-  right: -31px;
-  z-index: 2020;
+  position: relative;
+  .menu {
+    position: absolute;
+    top: 58px;
+    left: -74px;
+    z-index: 2015;
+  }
   // height: 50px;
   // margin: 10px auto;
 }
@@ -36,7 +37,7 @@ $menu-items: 5;
 .menu__list {
   width: 100%;
   padding-left: 0;
-  background-color: #fff;
+  // background-color: #fff;
   // opacity: 0;
 }
 
@@ -76,17 +77,17 @@ $menu-items: 5;
 }
 
 .menu__list--animate .menu__list__item {
-  animation: drop 0.5s;
+  animation: drop 0.1s;
   animation-fill-mode: forwards;
   align-items: center;
 
   // opacity: 1;
 
-  // @for $i from 1 through $menu-items {
-  //   &:nth-child(#{$i}) {
-  //     animation-delay: $delay * ($i - 1);
-  //   }
-  // }
+  @for $i from 1 through $menu-items {
+    &:nth-child(#{$i}) {
+      animation-delay: $delay * ($i - 1);
+    }
+  }
 }
 
 .icons__header_menu {
