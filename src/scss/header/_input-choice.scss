@@ -9,6 +9,7 @@ select[data-multi-select-plugin] {
   display: none !important;
 }
 
+
 .search-genres {
   position: relative;
 }
@@ -26,6 +27,7 @@ select[data-multi-select-plugin] {
   font-size: 14px;
   line-height: 1.42857143;
   padding-bottom: 0px;
+
 
   width: 300px;
 
@@ -53,6 +55,7 @@ select[data-multi-select-plugin] {
 }
 
 .selected-wrapper {
+
   box-sizing: border-box;
 
   border-radius: 3px;
@@ -70,7 +73,9 @@ select[data-multi-select-plugin] {
   max-width: 514px;
   display: inline-block;
   overflow: hidden;
+
   font-size: 13px;
+
   padding-left: 4px;
   vertical-align: top;
 }
@@ -78,10 +83,12 @@ select[data-multi-select-plugin] {
 .selected-wrapper .selected-close {
   display: inline-block;
   text-decoration: none;
+
   font-size: 13px;
 
   margin-left: 5px;
   margin-bottom: 5px;
+
   height: 100%;
   vertical-align: top;
   padding-right: 4px;
@@ -161,6 +168,7 @@ select[data-multi-select-plugin] {
   display: block;
   text-align: left;
   padding: 8px 29px 2px 12px;
+
   box-shadow: 0 0 2px #6152a8;
   font-size: 14px;
   min-height: 31px;
@@ -183,6 +191,7 @@ select[data-multi-select-plugin] {
 }
 
 .search-container ul li:hover {
+
   // background: #30246b;
   // box-shadow: 0 0 2px #6152a8;
   color: $secondaryColor;

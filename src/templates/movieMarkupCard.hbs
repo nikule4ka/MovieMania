@@ -22,9 +22,27 @@
 
 <div>
   <div class="movie__markup__tab">
-    <button class="movie__markup__tablinks " id="defaultOpen" data-tabname="actors">Актеры</button>
-    <button class="movie__markup__tablinks" data-tabname="reviews">Отзывы</button>
-    <button class="movie__markup__tablinks" data-tabname="trailers">Трейлер</button>
+    <button class="movie__markup__tablinks " id="defaultOpen" data-tabname="actors">
+        {{#if languageRu}}
+          Актеры
+        {{else}}
+          Actors
+        {{/if}}
+        </button>
+    <button class="movie__markup__tablinks" data-tabname="reviews">
+        {{#if languageRu}}
+          Отзывы
+        {{else}}
+          Reviews
+        {{/if}}
+        </button>
+    <button class="movie__markup__tablinks" data-tabname="trailers">
+        {{#if languageRu}}
+          Трейлеры
+        {{else}}
+          Trailers
+        {{/if}}
+        </button>
   </div>
 
   <!-- Tab content -->

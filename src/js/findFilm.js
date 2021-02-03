@@ -1,21 +1,13 @@
 import fetchApi from '../services/apiService';
-//import Choices from 'choices.js';
 import inputChoice from './inputChoice';
+import refs from './refs';
 
-const refs = {
-  submitSearch: document.querySelector('.search__films'),
-  getByNameRef: document.querySelector('.search_films_name'),
-  getByGenresRef: document.querySelector('.search_films_genres'),
-  inputNameRef: document.querySelector('.name'),
-  choicesContainerRef: document.querySelector('.search-genres'),
-};
 
 refs.getByNameRef.addEventListener('click', onFindByNameClick);
 refs.getByGenresRef.addEventListener('click', onFindByGenresClick);
 //refs.submitSearch.addEventListener('submit', searchFilmByQuery);
 
 export default function createGanresList() {
-  //const choicesRef = document.querySelector('.genres');
   const selectRef = document.querySelector('[data-multi-select-plugin]');
   selectRef.innerHTML = '';
 
@@ -27,11 +19,11 @@ export default function createGanresList() {
       }),
     )
     .then(data => {
-      // choicesRef.choices = new Choices(choicesRef, {
-      //   maxItemCount: 3,
-      //   removeItemButton: true,
-      //   choices: data,
-      // });
+      choicesRef.choices = new Choices(choicesRef, {
+        maxItemCount: 3,
+        removeItemButton: true,
+        choices: data,
+      });
 
       data.forEach(el =>
         inputChoice.addOption('[data-multi-select-plugin]', el.label, el.value),
@@ -48,10 +40,8 @@ function onFindByGenresClick(e) {
   refs.choicesContainerRef.classList.remove('is-hidden');
   refs.getByGenresRef.classList.add('active__search');
   refs.getByNameRef.classList.remove('active__search');
-  //   refs.choicesContainerRef.innerHTML = `
-  //  <select multiple data-multi-select-plugin></select>
-  // `;
-  //' <select id="my-select" class="genres is-hidden" multiple type="search"></select > ';
+  refs.choicesContainerRef.innerHTML =
+    ' <select id="my-select" class="genres is-hidden" multiple type="search"></select > ';
 
   createGanresList();
 }
