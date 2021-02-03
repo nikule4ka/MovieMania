@@ -13,6 +13,7 @@
   flex-wrap: wrap;
   display: grid;
   margin: 0 auto 15px;
+  margin-top: 50px;
 
   @media screen and (max-width: 540px) {
     grid-template-columns: repeat(1, 1fr);
@@ -27,6 +28,7 @@
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+    margin-top: 0;
   }
 
   @media (min-width: 1024px) {
@@ -44,41 +46,20 @@
   border-radius: 13px;
 
   .card-img-top {
-    height: auto;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
     display: block;
     // height: 440.63px;
 
     border-radius: 13px 13px 0 0;
-    object-fit: cover;
   }
 }
 
 .card__movie_markup {
   position: relative;
-  min-width: 290px;
-  // max-width: ;
+  // min-width: 273px;
+  // max-width: 454px;
   height: auto;
-
-  @media screen and (max-width: 540px) {
-    max-width: 500px;
-    max-height: 750px;
-  }
-
-  @media screen and (min-width: 541px) and (max-width: 767px) {
-    max-width: 358px;
-    max-height: 537px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    max-width: 317px;
-    max-height: 476px;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 291px;
-    max-height: 436px;
-  }
 }
 
 .card-text {
@@ -140,6 +121,19 @@
 .card-main-title {
   margin-top: 0;
   margin-bottom: 20px;
+  font-family: Noto Sans TC, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.19;
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 25px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
+  }
 }
 
 .card-group-markup {
