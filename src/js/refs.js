@@ -7,6 +7,7 @@ const refs = {
   userLogin: document.querySelector('.user__login'),
   userAccount: document.querySelector('.user__account'),
   wrapperMenuRef: document.querySelector('.menu__list'),
+  containerMenuRef: document.querySelector('.wrapper'),
 
   mainLink: document.querySelector('.mainLink'),
   headerLogoLink: document.querySelector('.header-logo-link'),

@@ -48,11 +48,12 @@ export async function registration(email, password) {
 export async function login(email, password) {
   try {
     const auth = firebase.auth();
-    auth.signInWithEmailAndPassword(email, password);
+    await auth.signInWithEmailAndPassword(email, password);
+
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
   } catch {
-    console.log(errorMessage);
+    alert('User with this e-mail no exists');
   }
 }
 

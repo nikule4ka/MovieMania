@@ -5,6 +5,36 @@ import refs from './refs';
 import constData from './constData';
 import main from './main';
 import userMenu from '../templates/header/dropDownMenu.hbs';
+import userFilmsList from './userFilmsByStatus';
+
+
+refs.userAccount.addEventListener('click', openDropDownMenu);
+
+function openDropDownMenu() {
+  if (refs.userAccount.classList.contains('menu__open')) {
+    refs.wrapperMenuRef.innerHTML = '';
+    refs.userAccount.classList.toggle('menu__open');
+    refs.wrapperMenuRef.classList.toggle('menu__list--animate');
+    return;
+  }
+
+  refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenu());
+  refs.userAccount.classList.toggle('menu__open');
+
+  document.body.addEventListener('click', closeDropDownMenu);
+
+  const userMenuRefs = {
+    logOutRef: document.querySelector('.user__logout'),
+    userInterests: document.querySelectorAll('.user__item__js'),
+  };
+
+  userMenuRefs.userInterests.forEach(interes =>
+    interes.addEventListener('click', userFilmsList.userFilmsList),
+  );
+
+  refs.wrapperMenuRef.classList.toggle('menu__list--animate');
+  userMenuRefs.logOutRef.addEventListener('click', logOut);
+}
 
 function logOut() {
   firebase
@@ -34,28 +64,18 @@ function onClickMainLink(e) {
   fetchApi.setLocation('#/');
 }
 
-refs.userAccount.addEventListener('click', openDropDownMenu);
 
-function openDropDownMenu() {
-  if (refs.userAccount.classList.contains('menu__open')) {
+function closeDropDownMenu() {
+  const getMenuAttribute = refs.containerMenuRef.getAttribute('aria-expanded');
+  if (getMenuAttribute === 'false') {
+    refs.containerMenuRef.setAttribute('aria-expanded', true);
+  } else {
+    refs.containerMenuRef.setAttribute('aria-expanded', false);
     refs.wrapperMenuRef.innerHTML = '';
-    refs.userAccount.classList.toggle('menu__open');
-    refs.wrapperMenuRef.classList.toggle('menu__list--animate');
-    return;
+    refs.userAccount.classList.remove('menu__open');
+    refs.wrapperMenuRef.classList.remove('menu__list--animate');
+    document.body.removeEventListener('click', closeDropDownMenu);
   }
-
-  refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenu());
-
-  refs.userAccount.classList.toggle('menu__open');
-
-  const userMenuRefs = {
-    logOutRef: document.querySelector('.user__logout'),
-    menuListRef: document.querySelector('.menu__list'),
-  };
-
-  userMenuRefs.menuListRef.classList.toggle('menu__list--animate');
-
-  userMenuRefs.logOutRef.addEventListener('click', logOut);
 }
 
 /**Burger menu for mobile and tablet */
