@@ -55,52 +55,42 @@
             </li>
           </ul>
         </div> -->
-        <div class="container-wrapped">
-          <select multiple data-multi-select-plugin></select>
-        </div>
 
         <div class="navigation-right-side">
           <form class="search__films">
             <p class="search__films__title">
               Поиск по
               <span class="search_films_name active__search">названию</span
-              ><span> / </span><span class="search_films_genres">жанру</span>
-            </p>
-            <label class="search__films_by">
-              <input class="name" type="search" />
+                ><span> / </span><span class="search_films_genres">жанру</span>
+              </p>
+              <label class="search__films_by">
+                <input class="name" type="search" />
+              </label>
 
-              <div class="clear__choices is-hidden">
-                <select
-                  id="my-select"
-                  class="genres"
-                  multiple
-                  type="search"
-                ></select>
+              <div class="search-genres is-hidden ">
+                <select multiple data-multi-select-plugin></select>
               </div>
-            </label>
 
             <button class="btn__search_form" type="submit">
               <i class="material-icons search">search</i>
             </button>
           </form>
+        </div>
+        
+        <div class="languages">
+        
+          <p class="ru__icon active__language" data-lang="ru-RU">RU</p>
+          <span class="languages__separator">|</span>
+          <p class="en__icon" data-lang="en-EN">EN</p>
+        </div>
 
-          <div class="languages">
-            <p class="language">
-              <i class="material-icons language__icon">language</i>
-            </p>
-            <p class="ru__icon active__language" data-lang="ru-RU">RU</p>
-            <span class="languages__separator">|</span>
-            <p class="en__icon" data-lang="en-EN">EN</p>
-          </div>
-
-          <div class="user__navigation">
-            <p class="user__account is-hidden">
-              <i class="material-icons user">account_circle</i>
-            </p>
-            <div class="wrapper">
-              <div class="menu">
-                <ul class="menu__list"></ul>
-              </div>
+        <div class="user__navigation">
+          <p class="user__account is-hidden">
+            <i class="material-icons user">account_circle</i>
+          </p>
+          <div class="wrapper">
+            <div class="menu">
+              <ul class="menu__list"></ul>
             </div>
 
             <p class="menu is"></p>
@@ -133,16 +123,5 @@
         <a href="#"><span class="footer_copyright">Angry Beavers</span></a>
       </div>
     </footer>
-
-    <div class="container-wrapped">
-      <select multiple data-multi-select-plugin>
-        <option value="Volvo" selected>Volvo</option>
-        <option value="Mercedes" selected>Mercedes</option>
-        <option value="Hilux">Hilux</option>
-        <option value="Corsa">Corsa</option>
-        <option value="BMW">BMW</option>
-        <option value="Ferrari">Ferrari</option>
-      </select>
-    </div>
   </body>
 </html>

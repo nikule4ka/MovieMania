@@ -1,15 +1,13 @@
 import fetchApi from '../services/apiService';
-import Choices from 'choices.js';
 import inputChoice from './inputChoice';
-
 import refs from './refs';
+
 
 refs.getByNameRef.addEventListener('click', onFindByNameClick);
 refs.getByGenresRef.addEventListener('click', onFindByGenresClick);
-refs.submitSearch.addEventListener('submit', searchFilmByQuery);
+//refs.submitSearch.addEventListener('submit', searchFilmByQuery);
 
 export default function createGanresList() {
-  const choicesRef = document.querySelector('.genres');
   const selectRef = document.querySelector('[data-multi-select-plugin]');
   selectRef.innerHTML = '';
 
@@ -53,7 +51,7 @@ function onFindByNameClick(e) {
   refs.choicesContainerRef.classList.add('is-hidden');
   refs.getByGenresRef.classList.remove('active__search');
   refs.getByNameRef.classList.add('active__search');
-  refs.choicesContainerRef.innerHTML = '';
+  // refs.choicesContainerRef.innerHTML = '';
 }
 
 function searchFilmByQuery(e) {

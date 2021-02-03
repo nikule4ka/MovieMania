@@ -46,6 +46,20 @@ img {
 input,
 textarea {
   outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+select:focus {
+  outline: none;
 }
 
 .is-hidden {
@@ -92,9 +106,4 @@ textarea {
   color: #6152a8;
   justify-content: center;
   align-items: center;
-}
-
-.material-icons.search {
-  color: #fff;
-  font-size: 25px;
 }

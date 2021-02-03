@@ -110,7 +110,8 @@ function createToken(wrapper, value, id) {
   token.classList.add('selected-wrapper');
   const token_span = document.createElement('span');
   token_span.classList.add('selected-label');
-  token_span.innerText = value.length > 5 ? value.slice(0, 4) + '..' : value;
+  token_span.innerText = value.length > 5 ? value.slice(0, 5) + '..' : value;
+
   token_span.dataset.id = id;
   const close = document.createElement('a');
   close.classList.add('selected-close');
