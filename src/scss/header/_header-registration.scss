@@ -18,16 +18,16 @@ a {
   max-width: 525px;
   min-height: 670px;
   position: relative;
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0 2px #6152a8;
 }
 .login-html {
   width: 350px;
   height: 420px;
   padding: 50px 70px;
-  background: rgba(10, 22, 54, 0.9);
+  background: rgba(26, 20, 59, 0.9);
   border-radius: 5%;
-  box-shadow: 0 0 15px rgb(15, 219, 255), 0 17px 50px 0 rgb(25, 194, 236);
+  box-shadow: 0 3px 2px rgba(252, 251, 251, 0.5),
+    0 1px 17px rgba(97, 82, 168, 0.8);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
@@ -60,8 +60,8 @@ a {
 }
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab {
-  color: #11eeac;
-  border-color: #1161ee;
+  color: $secondaryColor;
+  box-shadow: 0 2px 0 #6152a8, inset 0 0 0 #6152a8;
 }
 .tab {
   color: #fff;
@@ -80,7 +80,7 @@ a {
 .login-form .group .input,
 .login-form .group .button {
   width: 100%;
-  color: rgb(3, 3, 3);
+  color: #fff;
   display: block;
 }
 .login-form .group .input,
@@ -99,7 +99,9 @@ a {
   font-size: 12px;
 }
 .login-form .group .button {
-  background: #1161ee;
+  margin-top: 10px;
+  background: #6152a8;
+  cursor: pointer;
 }
 .login-form .group label .icon {
   width: 15px;
@@ -133,7 +135,7 @@ a {
   color: #fff;
 }
 .login-form .group .check:checked + label .icon {
-  background: #1161ee;
+  background: $secondaryColor;
 }
 .login-form .group .check:checked + label .icon:before {
   transform: scale(1) rotate(45deg);
@@ -160,11 +162,14 @@ a {
   background: rgba(255, 255, 255, 0.2);
 }
 .foot-lnk {
-  color: rgb(219, 54, 54);
+  text-decoration: underline;
   text-align: center;
+  font-size: 12px;
+
+  &:hover {
+    color: $secondaryColor;
+  }
 }
-
-
 
 .svg {
   width: 100px;
@@ -172,5 +177,5 @@ a {
 }
 
 .login {
-  color: #1161ee;
+  color: $secondaryColor;
 }

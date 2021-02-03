@@ -15,6 +15,11 @@ const CONST_DATA = {
     watched: false,
   },
   userData: [],
+  Languages: {
+    RUSSIAN: 'ru-RU',
+    ENGLISH: 'en-EN',
+  },
+  placeholder: { RU: `3 жанра`, EN: `3 genre` },
 };
 
 export default CONST_DATA;

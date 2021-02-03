@@ -3,6 +3,10 @@ $ListMovieColor: #281f55;
 $headerFooterColor: #30246b;
 $secondaryColor: #f8104d;
 
+$primaryColorCircle: #f8104d;
+$secondaryColorCircle: #fff;
+$backgroundColorCircle: #281f55;
+
 html {
   box-sizing: border-box;
 }
@@ -37,7 +41,25 @@ ul {
 
 img {
   border-style: none;
-  display: block;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+select:focus {
+  outline: none;
 }
 
 .is-hidden {
@@ -84,9 +106,4 @@ img {
   color: #6152a8;
   justify-content: center;
   align-items: center;
-}
-
-.material-icons.search {
-  color: #fff;
-  font-size: 25px;
 }

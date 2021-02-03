@@ -14,10 +14,9 @@ import { filmStatus } from './updateUserData';
 import { getStatusMovieById } from './getSetUserData';
 import interests from './showUserInterest';
 import showModal from './showModal';
-
-const refs = {
-  cardMovies: document.querySelector('.main_card'),
-};
+import getLocalLanguage from './language-localstorage';
+import refs from './refs';
+import constData from './constData';
 
 function openTab(evt) {
   evt.preventDefault();
@@ -72,6 +71,8 @@ export default function showMovieCard(id) {
       data.allCountries = data.production_countries
         .reduce((acc, el) => (acc = [...acc, el.name]), [])
         .join(', ');
+
+      data.languageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
 
       refs.cardMovies.innerHTML = '';
       refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));

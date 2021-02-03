@@ -7,6 +7,7 @@ import main from './main';
 import userMenu from '../templates/header/dropDownMenu.hbs';
 import userFilmsList from './userFilmsByStatus';
 
+
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
 function openDropDownMenu() {
@@ -55,13 +56,14 @@ function logOut() {
   refs.userAccount.classList.add('is-hidden');
 }
 
-refs.mainLink.addEventListener('click', onClickMainLink);
+//refs.mainLink.addEventListener('click', onClickMainLink);
 refs.headerLogoLink.addEventListener('click', onClickMainLink);
 
 function onClickMainLink(e) {
   e.preventDefault();
   fetchApi.setLocation('#/');
 }
+
 
 function closeDropDownMenu() {
   const getMenuAttribute = refs.containerMenuRef.getAttribute('aria-expanded');
