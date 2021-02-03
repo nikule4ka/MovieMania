@@ -19,15 +19,15 @@ function interestsInnit(status, page) {
   window.scrollTo(0, 0);
 
   const allFIlms = constData.userData;
-  const filterFilmsByStatus = allFIlms.filter(el => el[status]);
+  let filterFilmsByStatus = [];
+  if (allFIlms !== null) {
+    filterFilmsByStatus = allFIlms.filter(el => el[status]);
+  }
 
   const perPage = 20;
   const prevPage = page - 1;
 
   const filmsPerPage = filterFilmsByStatus.filter((index, el) => {
-    if (page === 1) {
-      return el < perPage;
-    }
     return el < page * perPage && el >= prevPage * perPage;
   });
 
@@ -38,9 +38,14 @@ function interestsInnit(status, page) {
   pagination.reset();
   pagination.movePageTo(page);
 
+  const tabContainerRef = document.querySelector('.movie__interests__tab');
+  if (tabContainerRef === null) {
+    const listMovies = document.querySelector('.main_list');
+    listMovies.insertAdjacentHTML('afterbegin', interestsBtn());
+  }
+
   getMovie(filmsPerPage);
-  //   const listMovies = document.querySelector('.main_list');
-  //   listMovies.insertAdjacentHTML('afterbegin', interestsBtn());
+
   main.changeUserInterests(filmsPerPage);
 }
 
