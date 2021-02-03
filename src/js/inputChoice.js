@@ -1,3 +1,6 @@
+import constData from './constData';
+import getLocalLanguage from './language-localstorage';
+
 // Initialize function, create initial tokens with itens that are already selected by the user
 function init(element) {
   // Create div that wroaps all the elements inside (select, elements selected, search div) to put select inside
@@ -16,8 +19,8 @@ function init(element) {
   input.addEventListener('keydown', deletePressed);
   input.addEventListener('click', openOptions);
 
-  const dropdown_icon = document.createElement('a');
-  dropdown_icon.setAttribute('href', '#');
+  const dropdown_icon = document.createElement('p');
+  //  dropdown_icon.setAttribute('href', '#');
   dropdown_icon.classList.add('dropdown-icon');
 
   dropdown_icon.addEventListener('click', clickDropdown);
@@ -45,8 +48,14 @@ function removePlaceholder(wrapper) {
 function addPlaceholder(wrapper) {
   const input_search = wrapper.querySelector('.selected-input');
   const tokens = wrapper.querySelectorAll('.selected-wrapper');
-  if (!tokens.length && !(document.activeElement === input_search))
-    input_search.setAttribute('placeholder', '---------');
+  if (!tokens.length && !(document.activeElement === input_search)) {
+    const languageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
+
+    input_search.setAttribute(
+      'placeholder',
+      languageRu ? constData.placeholder.RU : constData.placeholder.EN,
+    );
+  }
 }
 
 // Function that create the initial set of tokens with the options selected by the users
@@ -113,12 +122,12 @@ function createToken(wrapper, value, id) {
   token_span.innerText = value.length > 5 ? value.slice(0, 5) + '..' : value;
 
   token_span.dataset.id = id;
-  const close = document.createElement('a');
+  const close = document.createElement('p');
   close.classList.add('selected-close');
   close.setAttribute('tabindex', '-1');
   close.setAttribute('data-option', value);
   close.setAttribute('data-hits', 0);
-  close.setAttribute('href', '#');
+  //close.setAttribute('href', '#');
   close.innerText = 'x';
   close.addEventListener('click', removeToken);
   token.appendChild(token_span);
@@ -275,24 +284,30 @@ function getOptions(select) {
   };
 }
 
-// Listener for when the user wants to remove a given token.
-function removeToken(e) {
+function removeTokemEl(el) {
   // Get the value to remove
-  const value_to_remove = e.target.dataset.option;
-  const wrapper = e.target.parentNode.parentNode;
+  const value_to_remove = el.dataset.option;
+  const wrapper = el.parentNode.parentNode;
   const input_search = wrapper.querySelector('.selected-input');
   const dropdown = wrapper.querySelector('.dropdown-icon');
+
   // Get the options in the select to be unselected
   const option_to_unselect = wrapper.querySelector(
     `select option[value="${value_to_remove}"]`,
   );
   option_to_unselect.removeAttribute('selected');
   // Remove token attribute
-  e.target.parentNode.remove();
+  el.parentNode.remove();
   input_search.focus();
   dropdown.classList.remove('active');
   const event = new Event('click');
   dropdown.dispatchEvent(event);
+}
+
+// Listener for when the user wants to remove a given token.
+function removeToken(e) {
+  removeTokemEl(e.target);
+
   e.stopPropagation();
 }
 
@@ -366,4 +381,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-export default { init, addOption };
+export default {
+  init,
+  addOption,
+  removeTokemEl,
+  clearAutocompleteList,
+};
