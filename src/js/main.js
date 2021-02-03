@@ -32,6 +32,15 @@ function onPaginationsBtnClick() {
     case constData.queryString.BY_GANRE:
       fetchApi.setLocation(`#/genres/${param}/page/${currentPage}`);
       break;
+    case constData.queryString.FAVORITES:
+      fetchApi.setLocation(`#/favorites/${currentPage}`);
+      break;
+    case constData.queryString.WATCHED:
+      fetchApi.setLocation(`#/watched/${currentPage}`);
+      break;
+    case constData.queryString.WATCHED_LATER:
+      fetchApi.setLocation(`#/wathedLater/${currentPage}`);
+      break;
     default:
       fetchApi.setLocation(`#/page/${currentPage}`);
   }

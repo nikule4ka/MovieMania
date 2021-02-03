@@ -139,8 +139,6 @@ export function changeInterestsOnCard(card) {
   card.watched = statusMovieById['watched'];
   card.watchedLater = statusMovieById['watchedLater'];
 
-  console.log(card.watchedLater);
-
   interests.showInterestsOnCard(card);
 }
 
