@@ -16,6 +16,7 @@ const CONST_DATA = {
     RUSSIAN: 'ru-RU',
     ENGLISH: 'en-EN',
   },
+  placeholder: { RU: `3 жанра`, EN: `3 genre` },
 };
 
 export default CONST_DATA;
