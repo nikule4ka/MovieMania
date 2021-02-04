@@ -17,8 +17,8 @@
 
   .modal__loader {
     position: absolute;
-    right: 53px;
-    bottom: 90px;
+    right: 101px;
+    bottom: 121px;
     width: 20em;
     height: 20em;
     font-size: 10px;
@@ -38,7 +38,10 @@
 }
 
 .modal__title_loader {
-  text-align: left;
+  font-size: 16px;
+  position: absolute;
+  top: 98px;
+  left: -59px;
 }
 
 .modal__loader {
