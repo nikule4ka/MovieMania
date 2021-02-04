@@ -6,6 +6,7 @@ import constData from './constData';
 
 refs.getByNameRef.addEventListener('click', onFindByNameClick);
 refs.getByGenresRef.addEventListener('click', onFindByGenresClick);
+refs.getByActorsRef.addEventListener('click', onFindByActorsClick);
 refs.submitSearch.addEventListener('submit', searchFilmByQuery);
 
 export default function createGanresList() {
@@ -34,33 +35,36 @@ function onFindByGenresClick(e) {
   refs.searchFilmsBy.classList.add('is-hidden');
   refs.searchGenres.classList.remove('is-hidden');
 
-  refs.getByGenresRef.classList.add('active__search');
   refs.getByNameRef.classList.remove('active__search');
+  refs.getByGenresRef.classList.add('active__search');
+  refs.getByActorsRef.classList.remove('active__search');
 
   createGanresList();
+  refs.searchGenres.focus();
 }
 
 function onFindByNameClick(e) {
   refs.searchFilmsBy.classList.remove('is-hidden');
   refs.searchGenres.classList.add('is-hidden');
 
-  refs.getByGenresRef.classList.remove('active__search');
   refs.getByNameRef.classList.add('active__search');
+  refs.getByGenresRef.classList.remove('active__search');
+  refs.getByActorsRef.classList.remove('active__search');
+}
+
+function onFindByActorsClick(e) {
+  refs.searchFilmsBy.classList.remove('is-hidden');
+  refs.searchGenres.classList.add('is-hidden');
+
+  refs.getByNameRef.classList.remove('active__search');
+  refs.getByGenresRef.classList.remove('active__search');
+  refs.getByActorsRef.classList.add('active__search');
+
+  refs.searchString.focus();
 }
 
 function searchFilmByQuery(e) {
   e.preventDefault();
-
-  if (refs.getByNameRef.classList.contains('active__search')) {
-    const inputNameRef = refs.searchFilmsBy.querySelector('.name');
-    const query = inputNameRef.value.trim();
-    if (query === '') {
-      return;
-    }
-    fetchApi.setLocation(`#/query/${query}/page/1`);
-    inputNameRef.value = '';
-    return;
-  }
 
   if (refs.getByGenresRef.classList.contains('active__search')) {
     const getChoices = document.querySelectorAll('.selected-label');
@@ -89,6 +93,23 @@ function searchFilmByQuery(e) {
       languageRu ? constData.placeholder.RU : constData.placeholder.EN,
     );
     refs.btnSearchForm.focus();
+    return;
+  }
+
+  const query = refs.searchString.value.trim();
+  if (query === '') {
+    return;
+  }
+
+  if (refs.getByNameRef.classList.contains('active__search')) {
+    fetchApi.setLocation(`#/query/${query}/page/1`);
+    refs.searchString.value = '';
+    return;
+  }
+
+  if (refs.getByActorsRef.classList.contains('active__search')) {
+    fetchApi.setLocation(`#/actors/${query}/page/1`);
+    refs.searchString.value = '';
     return;
   }
 }
