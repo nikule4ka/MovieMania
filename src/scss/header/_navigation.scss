@@ -1,25 +1,21 @@
-/* .is-hidden {
-  display: none;
-} */
-
 .header {
   background-color: $headerFooterColor;
 
-  // position: sticky;
-  // top: -1px;
-  // z-index: 99999;
+  position: sticky;
+  top: -1px;
+  z-index: 888;
 }
 
 .navigation {
   width: 100%;
-  height: 66px;
-  padding-top: 10px;
+  position: relative;
+  padding-top: 20px;
   padding-right: 15px;
   padding-left: 85px;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    height: 137px;
+  }
 
   @media screen and (min-width: 768px) {
     height: 80px;
@@ -27,14 +23,32 @@
     padding-right: 15px;
   }
 
-  // @media screen and (min-width: 1024px) {
+  &::before {
+    position: absolute;
+    content: '';
+    height: 66px;
+    width: 96px;
+    top: 0;
+    left: 0;
+    background-color: #f8104d;
+    transform: skewX(20deg);
+    margin-left: -20px;
 
-  // }
+    @media screen and (min-width: 768px) {
+      width: 140px;
+      height: 80px;
+    }
+  }
+}
+
+.navigation-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   & .navigation__list {
     display: flex;
     margin-right: 20px;
-    align-items: center;
 
     & .navigation__list__item {
       padding: 25px 0;
@@ -47,28 +61,12 @@
       }
     }
   }
-
-  &::before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 96px;
-    top: 0;
-    left: 0;
-    background-color: #f8104d;
-    transform: skewX(20deg);
-    margin-left: -20px;
-
-    @media screen and (min-width: 768px) {
-      width: 140px;
-    }
-  }
 }
 
 .header-logo-link {
   position: absolute;
   left: -12px;
-  top: 0px;
+  top: 5px;
   padding: 16px 39px 16px 21px;
   font-weight: 600;
   font-size: 13px;
@@ -84,7 +82,14 @@
 
 .navigation-left-side {
   width: 77%;
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
+    // margin-right: 165px;
+    width: 27%;
+  }
+
+  @media screen and (min-width: 1024px) {
     // margin-right: 165px;
     width: 50%;
   }
@@ -100,18 +105,16 @@
 
 .navigation-right-side {
   display: flex;
-
-  @media screen and (max-width: 767px) {
-    display: block;
-    position: absolute;
-    top: 70px;
-    right: 17%;
-    width: 80%;
-  }
+  display: block;
+  position: absolute;
+  top: 70px;
+  right: 15%;
+  width: 80%;
 
   @media screen and (min-width: 768px) {
-    // margin-right: 204px;
-    width: 100%;
+    top: 17px;
+    right: 40%;
+    width: 300px;
   }
 }
 
@@ -125,8 +128,12 @@
   & .search__films__title {
     margin: 0;
     margin-bottom: 8px;
-    margin-left: 10px;
+
     font-size: 13px;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 10px;
+    }
 
     & .search_films_name,
     .search_films_genres,
@@ -141,7 +148,7 @@
 
   & .name,
   .genres {
-    width: 108%;
+    width: 106%;
     height: 30px;
     padding: 2.5px 8.5px 3px;
     background-color: #281f55;
@@ -201,8 +208,8 @@
 
   display: block;
   position: absolute;
-  top: 54%;
-  left: 110%;
+  top: 50%;
+  left: 107%;
 
   @media screen and (min-width: 768px) {
     right: -25px;
@@ -221,13 +228,14 @@
 
 .menu-lang-user {
   display: flex;
+  align-items: center;
 }
 
 .languages {
   display: flex;
   color: #fff;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   margin-right: 10px;
 
   @media screen and (min-width: 768px) {
@@ -252,7 +260,6 @@
 
   & .active__language {
     color: #f8104d;
-    box-shadow: 0 2px 0 #6152a8, inset 0 0 0 #6152a8;
   }
   & .en__icon,
   .ru__icon {
