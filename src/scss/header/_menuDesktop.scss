@@ -1,5 +1,5 @@
 // vars and keyframes
-$delay: 0.4s;
+$delay: 0.2s;
 $menu-items: 5;
 
 @keyframes drop {
@@ -26,8 +26,8 @@ $menu-items: 5;
   position: relative;
   .menu {
     position: absolute;
-    top: 58px;
-    left: -95px;
+    top: 61px;
+    left: -91px;
     z-index: 3000;
   }
   // height: 50px;
