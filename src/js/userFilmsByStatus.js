@@ -38,15 +38,56 @@ function interestsInnit(status, page) {
   pagination.reset();
   pagination.movePageTo(page);
 
+  getMovie(filmsPerPage);
+
   const tabContainerRef = document.querySelector('.movie__interests__tab');
+
   if (tabContainerRef === null) {
     const listMovies = document.querySelector('.main_list');
     listMovies.insertAdjacentHTML('afterbegin', interestsBtn());
   }
 
-  getMovie(filmsPerPage);
+  const interestsBtns = document.querySelectorAll(
+    '.movie__interests__tablinks',
+  );
+
+  interestsBtns.forEach(interestBtn =>
+    interestBtn.addEventListener('click', choisenInterest),
+  );
+
+  interestsBtns.forEach(el => {
+    el.classList.remove('tablinks__active');
+    if (el.dataset.status === status) {
+      el.classList.toggle('tablinks__active');
+    }
+    el.children.forEach(child => {
+      child.classList.remove('icon_active');
+      if (child.dataset.status === status) {
+        child.classList.toggle('icon_active');
+      }
+    });
+  });
 
   main.changeUserInterests(filmsPerPage);
+}
+
+function choisenInterest(e) {
+  e.preventDefault();
+
+  const target = e.target;
+
+  if (target.nodeName !== 'BUTTON' && target.nodeName !== 'I') {
+    return;
+  }
+
+  const currentInteres = e.target.dataset.status;
+
+  if (currentInteres === 'onMain') {
+    fetchApi.setLocation(`#/`);
+    return;
+  }
+
+  fetchApi.setLocation(`#/${currentInteres}/1`);
 }
 
 export default { userFilmsList, interestsInnit };
