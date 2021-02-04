@@ -15,14 +15,10 @@ function setStatusFilm(movieId, status) {
 
       wathedData.userData = currentStatusFilm;
 
-      if (location.hash === `#/favorites/1`) {
-        wathedData.router.render();
-      }
-
-      if (location.hash === `#/watched/1`) {
-        wathedData.router.render();
-      }
-      if (location.hash === `#/watchedLater/1`) {
+      if (
+        location.hash.includes('favorites') ||
+        location.hash.includes('watched')
+      ) {
         wathedData.router.render();
       }
 
