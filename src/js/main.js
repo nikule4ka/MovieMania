@@ -27,6 +27,9 @@ function onPaginationsBtnClick() {
     case constData.queryString.BY_NAME:
       fetchApi.setLocation(`#/query/${param}/page/${currentPage}`);
       break;
+    case constData.queryString.BY_ACTORS:
+      fetchApi.setLocation(`#/actors/${param}/page/${currentPage}`);
+      break;
     case constData.queryString.BY_GANRE:
       fetchApi.setLocation(`#/genres/${param}/page/${currentPage}`);
       break;

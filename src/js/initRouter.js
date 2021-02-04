@@ -12,6 +12,11 @@ const router = new Router({
 const mainList = document.querySelector('.main_list');
 const mainCard = document.querySelector('.main_card');
 
+function hideCard() {
+  mainCard.classList.add('is-hidden');
+  mainList.classList.remove('is-hidden');
+}
+
 router
   .add(/movie\/(.*)/, id => {
     mainList.classList.add('is-hidden');
@@ -19,38 +24,35 @@ router
     showMovieCard(id);
   })
   .add(/query\/(.*)\/page\/(.*)/, (query, page) => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     main.mainInit(constData.queryString.BY_NAME, page, query);
   })
+  .add(/actors\/(.*)\/page\/(.*)/, (query, page) => {
+    hideCard();
+    main.mainInit(constData.queryString.BY_ACTORS, page, query);
+  })
   .add(/genres\/(.*)\/page\/(.*)/, (genre, page) => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     main.mainInit(constData.queryString.BY_GANRE, page, genre);
   })
   .add(/page\/(.*)/, page => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     main.mainInit(constData.queryString.POPULAR, page);
   })
   .add(/favorites\/(.*)/, page => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     interests.interestsInnit(constData.queryString.FAVORITES, page);
   })
   .add(/watched\/(.*)/, page => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     interests.interestsInnit(constData.queryString.WATCHED, page);
   })
   .add(/watchedLater\/(.*)/, page => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     interests.interestsInnit(constData.queryString.WATCHED_LATER, page);
   })
   .add('', () => {
-    mainCard.classList.add('is-hidden');
-    mainList.classList.remove('is-hidden');
+    hideCard();
     main.mainInit();
   });
 
