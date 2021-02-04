@@ -74,7 +74,6 @@ function inputChange(e) {
   const dropdown = wrapper.querySelector('.dropdown-icon');
 
   const input_val = e.target.value;
-
   if (input_val) {
     dropdown.classList.add('active');
     populateAutocompleteList(select, input_val.trim());
@@ -146,7 +145,6 @@ function clickDropdown(e) {
   if (dropdown.classList.contains('active')) {
     removePlaceholder(wrapper);
     input_search.focus();
-
     if (!input_search.value) {
       populateAutocompleteList(select, '', true);
     } else {
@@ -169,7 +167,6 @@ function clearAutocompleteList(select) {
 // Populate the autocomplete list following a given query from the user
 function populateAutocompleteList(select, query, dropdown = false) {
   const { autocomplete_options } = getOptions(select);
-
   let options_to_show;
 
   if (dropdown) options_to_show = autocomplete_options;

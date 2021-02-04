@@ -1,11 +1,7 @@
-{{#unless this}}
-<p class="list__reviews no-reviews">Нет трейлеров</p>
-{{/unless}}
-
 {{#each this}}
-<div class="card__trailers">
-    <h4 class="card-trailers-title">{{name}}</h4>
-    <iframe class="card__trailers-video" src="https://www.youtube.com/embed/{{key}}" frameborder="0" allowfullscreen>
-    </iframe>
-</div>
+    <div class="card__trailers">
+        <h4 class="card-trailers-title">{{name}}</h4>
+        <iframe class="card__trailers-video" src="https://www.youtube.com/embed/{{key}}" frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
 {{/each}}

@@ -25,6 +25,7 @@ const refs = {
   searchFilmsBy: document.querySelector('.search__films_by'),
   searchGenres: document.querySelector('.search__genres'),
   choicesContainerRef: document.querySelector('.clear__choices'),
+  btnSearchForm: document.querySelector('.btn__search_form'),
 };
 
 export default refs;

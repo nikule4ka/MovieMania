@@ -2,8 +2,11 @@ import fetchApi from '../services/apiService';
 
 import movieMarkupCard from '../templates/movieMarkupCard.hbs';
 import actors from '../templates/movieCard/actors.hbs';
+import noActors from '../templates/movieCard/noActors.hbs';
 import reviews from '../templates/movieCard/reviews.hbs';
+import noReviews from '../templates/movieCard/noReviews.hbs';
 import trailers from '../templates/movieCard/trailers.hbs';
+import noTrailers from '../templates/movieCard/noTrailers.hbs';
 import errorMessage from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';
 
@@ -91,7 +94,7 @@ export default function showMovieCard(id) {
 
         return el;
       });
-      addExtensions(actorsData, 'actors', actors);
+      addExtensions(actorsData, 'actors', actors, noActors);
 
       const reviewsData = data.reviews.results.map(el => {
         const dateCreat = el.created_at;
@@ -108,9 +111,9 @@ export default function showMovieCard(id) {
 
         return el;
       });
-      addExtensions(reviewsData, 'reviews', reviews);
+      addExtensions(reviewsData, 'reviews', reviews, noReviews);
 
-      addExtensions(data.videos.results, 'trailers', trailers);
+      addExtensions(data.videos.results, 'trailers', trailers, noTrailers);
       window.scrollTo(0, 0);
 
       return data;
@@ -143,11 +146,17 @@ export function changeInterestsOnCard(card) {
   interests.showInterestsOnCard(card);
 }
 
-function addExtensions(dataExt, idExt, template) {
+function addExtensions(dataExt, idExt, template, noTamplate) {
   if (dataExt.length === 0) {
-    dataExt === false;
+    document.getElementById(idExt).insertAdjacentHTML(
+      'beforeend',
+      noTamplate({
+        languageRu: getLocalLanguage() === constData.Languages.RUSSIAN,
+      }),
+    );
+  } else {
+    document
+      .getElementById(idExt)
+      .insertAdjacentHTML('beforeend', template(dataExt));
   }
-  document
-    .getElementById(idExt)
-    .insertAdjacentHTML('beforeend', template(dataExt));
 }
