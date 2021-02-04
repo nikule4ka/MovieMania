@@ -116,6 +116,8 @@ export default function showMovieCard(id) {
       addExtensions(data.videos.results, 'trailers', trailers, noTrailers);
       window.scrollTo(0, 0);
 
+      const btnBack = document.querySelector('.btn__back');
+      btnBack.addEventListener('click', onBtnBackClick);
       return data;
     })
     .then(filmCard => {
@@ -144,6 +146,11 @@ export function changeInterestsOnCard(card) {
   card.watchedLater = statusMovieById['watchedLater'];
 
   interests.showInterestsOnCard(card);
+}
+
+function onBtnBackClick(e) {
+  e.preventDefault();
+  history.back();
 }
 
 function addExtensions(dataExt, idExt, template, noTamplate) {

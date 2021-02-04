@@ -11,6 +11,12 @@ const MAIN_URL = 'https://api.themoviedb.org/3/';
 //api.themoviedb.org/3/discover/movie?api_key=fb4eca5dd3545235e4fd6796c70d4d40&language=en-US&with_genres=14&sort_by=popularity.desc
 //http://api.themoviedb.org/3/discover/movie?api_key=fb4eca5dd3545235e4fd6796c70d4d40&language=en-US&with_genres=14,1&page=1
 
+//Поиск актера
+//http://api.themoviedb.org/3/search/person?api_key=fb4eca5dd3545235e4fd6796c70d4d40&query=%22Tom%20Cruise%22
+
+//поиск фильмов с актером
+//http://api.themoviedb.org/3/discover/movie?api_key=fb4eca5dd3545235e4fd6796c70d4d40&with_cast=500|2852639&sort_by=vote_average.desc
+
 // получить сразу и видео и картинки к фильму
 // https://api.themoviedb.org/3/movie/495764?api_key=fb4eca5dd3545235e4fd6796c70d4d40&append_to_response=videos,reviews,credits
 
@@ -56,6 +62,36 @@ async function fetchSearchMovie() {
   return res.json();
 }
 
+async function fetchActorsMovie() {
+  const LANGUAGE = `&language=${getLanguage()}`;
+  const resActors = await fetch(
+    `${MAIN_URL}search/person${API_KEY}${LANGUAGE}&query=${this.param}`,
+  );
+  if (!resActors.ok) {
+    throw new Error('Network response was not ok, actors not found');
+  }
+
+  const actors = await resActors.json();
+  if (actors.results.length === 0) {
+    return actors;
+  }
+
+  const castList = actors.results
+    .reduce((acc, el) => {
+      acc.push(el.id);
+      return acc;
+    }, [])
+    .join('|');
+
+  const res = await fetch(
+    `${MAIN_URL}discover/movie${API_KEY}${LANGUAGE}&with_cast=${castList}&page=${this.page}&sort_by=popularity.desc`,
+  );
+  if (!res.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return res.json();
+}
+
 function getMovieData() {
   const queryString = getConstData.queryString;
 
@@ -64,6 +100,9 @@ function getMovieData() {
   }
   if (this.queryString === queryString.BY_GANRE) {
     return this.fetchMovieByGanres();
+  }
+  if (this.queryString === queryString.BY_ACTORS) {
+    return this.fetchActorsMovie();
   }
   if (this.queryString === queryString.POPULAR) {
     return this.fetchTrending();
@@ -130,6 +169,7 @@ const fetchApi = {
   fetchTrending, //популярные (1 страница)
   fetchSearchMovie, //поиск по названия (нужно передавать название)
   fetchMovieByGanres,
+  fetchActorsMovie, //поиск актеру (нужно передавать название)
   //**список фильмов согласно выбраных жанров(айди жанров через запятую)*/
   getMovieData,
 
