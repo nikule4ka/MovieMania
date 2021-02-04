@@ -1,6 +1,7 @@
 const CONST_DATA = {
   queryString: {
     BY_NAME: 'search',
+    BY_ACTORS: 'actors',
     BY_GANRE: 'discover',
     POPULAR: 'popular',
     FAVORITES: 'favorites',

@@ -43,13 +43,13 @@
 
     <header class="header">
       <nav class="navigation">
-     <div class="header-logo-nav">
-      <a class="header-logo-link" href="./">
-        <span>MOVIE</span>
-        <br />
-        <span>MANIA</span>
-      </a>
-     </div>
+        <div class="header-logo-nav">
+          <a class="header-logo-link" href="./">
+            <span>MOVIE</span>
+            <br />
+            <span>MANIA</span>
+          </a>
+        </div>
         <!-- <div class="navigation-left-side">
           <ul class="navigation__list">
             <li class="navigation__list__item">
@@ -65,15 +65,13 @@
         <div class="navigation-right-side">
           <form class="search__films">
             <p class="search__films__title">
-              Поиск по
+              Поиск по:
               <span class="search_films_name active__search">названию</span>
-              <span> / </span>
-              <span class="search_films_genres">жанру</span>
-              <span> / </span>
-              <span class="search_films_genres">актеру</span>
+              <span> / </span> <span class="search_films_genres">жанру</span>
+              <span> / </span> <span class="search_films_actors">актеру</span>
             </p>
             <label class="search__films_by">
-              <input class="name" type="search" />
+              <input class="name search__string" type="search" />
             </label>
 
             <div class="search__genres is-hidden">
@@ -86,47 +84,46 @@
           </form>
         </div>
 
-    <div class="menu-lang-user">
-  <div class="languages">
-    <p class="ru__icon active__language" data-lang="ru-RU">RU</p>
-    <span class="languages__separator">|</span>
-    <p class="en__icon" data-lang="en-EN">EN</p>
-  </div>
+        <div class="menu-lang-user">
+          <div class="languages">
+            <p class="ru__icon active__language" data-lang="ru-RU">RU</p>
+            <span class="languages__separator">|</span>
+            <p class="en__icon" data-lang="en-EN">EN</p>
+          </div>
 
+          <div class="user__navigation">
+            <p class="user__account is-hidden">
+              <i class="material-icons user">account_circle</i>
+            </p>
+            <div class="wrapper" aria-expanded="false">
+              <div class="menu">
+                <ul class="menu__list"></ul>
+              </div>
+            </div>
 
-    <div class="user__navigation">
-      <p class="user__account is-hidden">
-        <i class="material-icons user">account_circle</i>
-      </p>
-      <div class="wrapper" aria-expanded="false">
-        <div class="menu">
-          <ul class="menu__list"></ul>
-        </div>
+            <div class="user__navigation">
+              <p class="user__account is-hidden">
+                <i class="material-icons user">account_circle</i>
+              </p>
+              <div class="wrapper">
+                <div class="menu">
+                  <ul class="menu__list"></ul>
+                </div>
+                <p class="menu is"></p>
+                <p class="user__login">
+                  <i class="material-icons login">login</i>
+                </p>
 
-      </div>
-
-
-<div class="user__navigation">
-  <p class="user__account is-hidden">
-    <i class="material-icons user">account_circle</i>
-  </p>
-  <div class="wrapper">
-    <div class="menu">
-      <ul class="menu__list"></ul>
-    </div>
-    <p class="menu is"></p>
-    <p class="user__login"><i class="material-icons login">login</i></p>
-
-    <!-- Burger menu for mobile and tablet -->
-    <!-- <div id="menu__btn">
+                <!-- Burger menu for mobile and tablet -->
+                <!-- <div id="menu__btn">
       <span class="icon"></span>
       <span class="text">MENU</span>
     </div>
     <div class="user__menu"></div> -->
-  </div>
-</div>
-</div>
-    </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
 
