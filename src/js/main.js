@@ -36,7 +36,7 @@ function onPaginationsBtnClick() {
       fetchApi.setLocation(`#/watched/${currentPage}`);
       break;
     case constData.queryString.WATCHED_LATER:
-      fetchApi.setLocation(`#/wathedLater/${currentPage}`);
+      fetchApi.setLocation(`#/watсhedLater/${currentPage}`);
       break;
     default:
       fetchApi.setLocation(`#/page/${currentPage}`);
