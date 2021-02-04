@@ -13,7 +13,9 @@
 .navigation {
   width: 100%;
   height: 66px;
-  padding: 10px 15px 0;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-left: 85px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -21,7 +23,7 @@
 
   @media screen and (min-width: 768px) {
     height: 80px;
-    padding-left: 15px;
+    padding-left: 150px;
     padding-right: 15px;
   }
 
@@ -81,8 +83,10 @@
 }
 
 .navigation-left-side {
+  width: 77%;
   @media screen and (min-width: 768px) {
-    margin-right: 165px;
+    // margin-right: 165px;
+    width: 50%;
   }
 
   & .icons__header__home {
@@ -106,7 +110,8 @@
   }
 
   @media screen and (min-width: 768px) {
-    margin-right: 204px;
+    // margin-right: 204px;
+    width: 100%;
   }
 }
 
