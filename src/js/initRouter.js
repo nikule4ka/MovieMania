@@ -58,7 +58,6 @@ router
   })
   .add(/page\/(.*)/, page => {
     clearSearchString();
-    s;
     hideCard();
     main.mainInit(constData.queryString.POPULAR, page);
   })
