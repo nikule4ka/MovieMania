@@ -8,5 +8,7 @@ import './js/language-localstorage';
 import './js/submitRegForm';
 import './js/submitLogForm';
 import './js/checkUser';
-import './js/findFilm';
+import findFilm from './js/findFilm';
 import './js/userFilmsByStatus';
+
+findFilm.createGanresList();

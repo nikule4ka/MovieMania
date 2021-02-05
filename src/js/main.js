@@ -76,7 +76,13 @@ function getMovie() {
       languageRu: currentLanguageRu,
     }),
   );
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
+  const messageDiv = document.querySelector('.message');
+  if (messageDiv !== undefined && messageDiv !== null) messageDiv.remove();
 
   fetchApi
     .getMovieData()
@@ -107,7 +113,7 @@ function getMovie() {
 
       if (filmInformation.length === 0) {
         hidePagination();
-        refs.mainContainer.innerHTML = '';
+        //refs.mainContainer.innerHTML = '';
         refs.mainContainer.insertAdjacentHTML(
           'beforeend',
           message({
