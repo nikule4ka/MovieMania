@@ -22,15 +22,7 @@ const refs = {
   mainContainer: document.querySelector('.main.container'),
   footerTeam: document.querySelector('.footer_copyright.team'),
 
-  submitSearch: document.querySelector('.search__films'),
-  getByNameRef: document.querySelector('.search_films_name'),
-  getByGenresRef: document.querySelector('.search_films_genres'),
-  getByActorsRef: document.querySelector('.search_films_actors'),
-  searchFilmsBy: document.querySelector('.search__films_by'),
-  searchGenres: document.querySelector('.search__genres'),
-  choicesContainerRef: document.querySelector('.clear__choices'),
-  btnSearchForm: document.querySelector('.btn__search_form'),
-  searchString: document.querySelector('.search__string'),
+  //choicesContainerRef: document.querySelector('.clear__choices'),
 };
 
 export default refs;

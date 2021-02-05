@@ -1,6 +1,6 @@
 import refs from './refs';
 import constData from './constData';
-import createGanresList from './findFilm';
+import findFilm from './findFilm';
 
 refs.language.addEventListener('click', ChangeLanguage);
 
@@ -60,8 +60,8 @@ function ChangeLanguage(e) {
   refs.language.classList.add(currentLanguage);
   localStorage.setItem('language', currentLanguage);
   constData.router.render();
-  createGanresList();
-  getLocalLanguage();
+  findFilm.createGanresList();
+  findFilm.showFindHeader();
 }
 
 export default function getLocalLanguage() {
