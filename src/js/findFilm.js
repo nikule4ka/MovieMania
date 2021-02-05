@@ -34,15 +34,14 @@ function showFindHeader() {
   refs.getByNameRef.addEventListener('click', onFindByNameClick);
   refs.getByGenresRef.addEventListener('click', onFindByGenresClick);
   refs.getByActorsRef.addEventListener('click', onFindByActorsClick);
+
   refs.submitSearch.addEventListener('submit', searchFilmByQuery);
 }
-
-showFindHeader();
 
 function createGanresList() {
   const selectRef = document.querySelector('[data-multi-select-plugin]');
   selectRef.innerHTML = '';
-
+  console.log(fetchApi);
   fetchApi
     .fetchGanres()
     .then(({ genres }) =>
@@ -69,7 +68,6 @@ function onFindByGenresClick(e) {
   refs.getByGenresRef.classList.add('active__search');
   refs.getByActorsRef.classList.remove('active__search');
 
-  createGanresList();
   refs.searchGenres.focus();
 }
 
@@ -109,22 +107,6 @@ function searchFilmByQuery(e) {
 
     fetchApi.setLocation(`#/genres/${listGenre}/page/1`);
 
-    // const wrapper = refs.searchGenres;
-    // const select = wrapper.querySelector('select');
-    // const getChoicesRemove = wrapper.querySelectorAll('.selected-close');
-    // getChoicesRemove.forEach(el => inputChoice.removeTokemEl(el));
-
-    // const dropdown = wrapper.querySelector('.dropdown-icon');
-    // dropdown.classList.toggle('active');
-    // inputChoice.clearAutocompleteList(select);
-
-    // const input_search = wrapper.querySelector('.selected-input');
-    // const languageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
-    // input_search.setAttribute(
-    //   'placeholder',
-    //   languageRu ? constData.placeholder.RU : constData.placeholder.EN,
-    // );
-
     refs.btnSearchForm.focus();
     return;
   }
@@ -136,15 +118,15 @@ function searchFilmByQuery(e) {
 
   if (refs.getByNameRef.classList.contains('active__search')) {
     fetchApi.setLocation(`#/query/${query}/page/1`);
-    //refs.searchString.value = '';
     return;
   }
 
   if (refs.getByActorsRef.classList.contains('active__search')) {
     fetchApi.setLocation(`#/actors/${query}/page/1`);
-    //refs.searchString.value = '';
     return;
   }
 }
+
+showFindHeader();
 
 export default { createGanresList, showFindHeader };
