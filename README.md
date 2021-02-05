@@ -5,11 +5,11 @@
 ## ANgry Beavers team
 
 
-Team lead - [Ruslan aka Bulka Z Djemom](https://github.com/RuslanZahriadskyi);
+Team lead - [Ruslan](https://github.com/RuslanZahriadskyi) aka Bulka Z Djemom;
 
-Scrum Master - [Dima aka DimRom76](https://github.com/DimRom76);
+Scrum Master - [Dima](https://github.com/DimRom76) aka DimRom76;
 
-Leading developer - [Nika aka Nikule4ka](https://github.com/nikule4ka);
+Leading developer - [Nika](https://github.com/nikule4ka) aka Nikule4ka;
 
 
 
