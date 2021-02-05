@@ -1,6 +1,6 @@
 # MOVIEMANIA; 
 
-![z](https://github.com/nikule4ka)
+[z](https://github.com/nikule4ka)
 
 
 
