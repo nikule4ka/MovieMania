@@ -19,6 +19,9 @@ const refs = {
   paginationRef: document.getElementById('pagination'),
   cardMovies: document.querySelector('.main_card'),
 
+  mainContainer: document.querySelector('.main.container'),
+  footerTeam: document.querySelector('.footer_copyright.team'),
+
   submitSearch: document.querySelector('.search__films'),
   getByNameRef: document.querySelector('.search_films_name'),
   getByGenresRef: document.querySelector('.search_films_genres'),
