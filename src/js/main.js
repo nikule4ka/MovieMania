@@ -81,6 +81,9 @@ function getMovie() {
     behavior: 'smooth',
   });
 
+  const messageDiv = document.querySelector('.message');
+  if (messageDiv !== undefined && messageDiv !== null) messageDiv.remove();
+
   fetchApi
     .getMovieData()
     .then(({ results, total_results }) => {
@@ -110,7 +113,7 @@ function getMovie() {
 
       if (filmInformation.length === 0) {
         hidePagination();
-        refs.mainContainer.innerHTML = '';
+        //refs.mainContainer.innerHTML = '';
         refs.mainContainer.insertAdjacentHTML(
           'beforeend',
           message({
