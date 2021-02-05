@@ -1,8 +1,10 @@
 .page-preloader {
   background: linear-gradient(
-    to right,
+    135deg,
     $primaryColorCircle,
-    $backgroundColorCircle
+    $headerFooterColor,
+    $headerFooterColor,
+    $primaryColorCircle
   );
   width: 100%;
   height: 100%;
@@ -18,22 +20,35 @@
 
   .preloader-text {
     position: absolute;
-    bottom: 30px;
-    right: -10px;
+    bottom: 103px;
+    right: -61px;
     width: 100%;
     text-align: center;
     margin: 20%;
     animation: 10s opacity;
+
+    @media (min-width: 768px) {
+      bottom: 30px;
+      right: -10px;
+    }
   }
 }
 
 .preloader-text > b {
   display: inline-block;
-  font-size: 50px;
+  font-size: 25px;
   line-height: 1.5;
 
   animation: flip 3s ease-out infinite;
   text-shadow: 2px 2px 4px $secondaryColorCircle;
+
+  @media (min-width: 768px) {
+    font-size: 35px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 50px;
+  }
 }
 
 @keyframes flip {

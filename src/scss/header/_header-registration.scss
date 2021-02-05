@@ -21,13 +21,18 @@ a {
   box-shadow: 0 0 2px #6152a8;
 }
 .login-html {
-  width: 350px;
+  width: 296px;
   height: 420px;
-  padding: 50px 70px;
+  padding: 50px 46px;
   background: rgba(26, 20, 59, 0.9);
   border-radius: 5%;
   box-shadow: 0 3px 2px rgba(252, 251, 251, 0.5),
     0 1px 17px rgba(97, 82, 168, 0.8);
+
+  @media (min-width: 768px) {
+    width: 350px;
+    padding: 50px 70px;
+  }
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {

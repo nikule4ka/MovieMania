@@ -113,8 +113,12 @@
 
   @media screen and (min-width: 768px) {
     top: 17px;
-    right: 40%;
+    right: 32%;
     width: 300px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 40%;
   }
 }
 
@@ -260,6 +264,7 @@
 
   & .active__language {
     color: #f8104d;
+    box-shadow: 0 2px 0 #6152a8, inset 0 0 0 #6152a8;
   }
   & .en__icon,
   .ru__icon {

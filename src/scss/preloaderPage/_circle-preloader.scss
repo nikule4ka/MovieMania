@@ -1,25 +1,21 @@
-.preloader.modal {
-  width: 20vw;
+// .preloader.modal {
+//   width: 20vw;
 
-  .loader {
-    width: 20em;
-    height: 20em;
-    right: 0px;
-  }
-}
+//   .loader {
+//     width: 20em;
+//     height: 20em;
+//     right: 0px;
+//   }
+// }
 
 .preloader {
   position: relative;
-  color: $secondaryColorCircle;
-  font-family: Arial, sans-serif;
-  font-size: 45px;
-  font-weight: 700;
-  margin: 0 auto;
+
   display: flex;
   position: fixed;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
   width: 200vw;
   height: 200vh;
   z-index: 99999;
@@ -27,16 +23,29 @@
 
   .loader {
     position: absolute;
-    right: 400px;
+    right: 136px;
     bottom: 300px;
-    width: 30em;
-    height: 30em;
+    width: 15em;
+    height: 15em;
     font-size: 10px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     animation: 5s opacity;
+
+    @media (min-width: 768px) {
+      width: 20em;
+      height: 20em;
+      right: 274px;
+      bottom: 277px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 30em;
+      height: 30em;
+      right: 424px;
+    }
 
     .face {
       position: absolute;
