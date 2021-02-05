@@ -1,9 +1,9 @@
-$primaryColor: #f8114d;
-$secondaryColor: #fff;
-$backgroundColor: #281f55;
-
 .page-preloader {
-  background: rgba(26, 20, 59, 1);
+  background: linear-gradient(
+    to right,
+    $primaryColorCircle,
+    $backgroundColorCircle
+  );
   width: 100%;
   height: 100%;
   position: fixed;
@@ -33,54 +33,54 @@ $backgroundColor: #281f55;
   line-height: 1.5;
 
   animation: flip 3s ease-out infinite;
-  text-shadow: 2px 2px 4px white;
+  text-shadow: 2px 2px 4px $secondaryColorCircle;
 }
 
 @keyframes flip {
   0% {
-    color: $primaryColor;
+    color: $primaryColorCircle;
     font-weight: 400;
     letter-spacing: -0.1em;
   }
 
   30%,
   70% {
-    color: $primaryColor;
+    color: $primaryColorCircle;
     font-weight: 400;
   }
 
   35%,
   65% {
-    color: $primaryColor;
+    color: $primaryColorCircle;
     font-weight: 700;
     transform: rotateY(0);
   }
 
   40% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
   }
 
   45% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
   }
 
   50% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
     font-weight: 700;
     letter-spacing: 0.3em;
     transform: rotateY(90deg);
   }
 
   55% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
   }
 
   60% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
   }
 
   100% {
-    color: $secondaryColor;
+    color: $secondaryColorCircle;
     letter-spacing: -0.1em;
     font-weight: 400;
   }
