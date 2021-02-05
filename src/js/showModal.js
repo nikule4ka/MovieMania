@@ -17,7 +17,6 @@ function onShowModal() {
 }
 
 export default function modalShow(html) {
-  console.log(html);
   instance = basicLightbox.create(html, {
     onShow: () => onShowModal(),
     onClose: window.removeEventListener('keydown', onEscKeyPress),

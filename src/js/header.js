@@ -3,7 +3,6 @@ import '@firebase/auth';
 import fetchApi from '../services/apiService';
 import refs from './refs';
 import constData from './constData';
-import main from './main';
 import userMenu from '../templates/header/dropDownMenu.hbs';
 import userFilmsList from './userFilmsByStatus';
 
