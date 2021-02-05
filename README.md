@@ -1,6 +1,6 @@
 # MOVIEMANIA; 
 
-## ANgry Beavers 
+## ANgry Beavers team
 
 
 Team lead - [Ruslan aka Bulka Z Djemom](https://github.com/RuslanZahriadskyi);
