@@ -16,8 +16,10 @@ let instance = '';
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
-  console.log('ESC');
+  console.log('ESC', ESC_KEY_CODE);
+
   if (isEscKey) {
+    console.log('ESC');
     instance.close();
   }
 }

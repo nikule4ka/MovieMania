@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import '@firebase/auth';
 
+import checkUser from './checkUser';
 import Router from './router';
 import main from './main';
 import constData from './constData';
@@ -75,6 +76,8 @@ router
           main.changeUserInterests(constData.userData);
           interests.interestsInnit(constData.queryString.FAVORITES, page);
         });
+      } else {
+        checkUser();
       }
     });
   })
@@ -88,6 +91,8 @@ router
           main.changeUserInterests(constData.userData);
           interests.interestsInnit(constData.queryString.WATCHED, page);
         });
+      } else {
+        checkUser();
       }
     });
   })
@@ -101,6 +106,8 @@ router
           main.changeUserInterests(constData.userData);
           interests.interestsInnit(constData.queryString.WATCHED_LATER, page);
         });
+      } else {
+        checkUser();
       }
     });
   })
