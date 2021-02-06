@@ -1,4 +1,4 @@
-import getLanguage from '../js/language-localstorage';
+import getLanguage from '../js/changeLanguage';
 import getConstData from '../js/constData';
 
 const API_KEY = '?api_key=fb4eca5dd3545235e4fd6796c70d4d40';
@@ -32,8 +32,6 @@ async function fetchTrending() {
   if (!res.ok) {
     throw new Error('Network response was not ok');
   }
-
-  // console.log(res.json());
   return res.json();
 }
 
@@ -165,18 +163,17 @@ const fetchApi = {
   page: 1,
   queryString: '',
   param: '',
-  fetchTrending, //популярные (1 страница)
-  fetchSearchMovie, //поиск по названия (нужно передавать название)
+  fetchTrending,
+  fetchSearchMovie,
   fetchMovieByGanres,
-  fetchActorsMovie, //поиск актеру (нужно передавать название)
-  //**список фильмов согласно выбраных жанров(айди жанров через запятую)*/
+  fetchActorsMovie,
   getMovieData,
 
-  fetchMovieId, //получить фильм по id
-  fetchCreditsId, //список актеров (для получение нужен id фильма)
-  fetchReviewsId, //обзоры (для получение нужен id фильма)
-  fetchVideosId, //трейлеры (для получение нужен id фильма)
-  fetchGanres, //полный список жанров
+  fetchMovieId,
+  fetchCreditsId,
+  fetchReviewsId,
+  fetchVideosId,
+  fetchGanres,
 
   reset() {
     this.page = 1;

@@ -1,6 +1,6 @@
 import fetchApi from '../services/apiService';
 import inputChoice from './inputChoice';
-import getLocalLanguage from './language-localstorage';
+import getLocalLanguage from './changeLanguage';
 import constData from './constData';
 
 import findHeaderRU from '../templates/header/findHeaderRU.hbs';

@@ -17,7 +17,7 @@ import { filmStatus } from './updateUserData';
 import { getStatusMovieById } from './getSetUserData';
 import interests from './showUserInterest';
 import showModal from './showModal';
-import getLocalLanguage from './language-localstorage';
+import getLocalLanguage from './changeLanguage';
 import refs from './refs';
 import constData from './constData';
 

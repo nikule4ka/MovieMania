@@ -6,7 +6,7 @@ import interestsBtnRu from '../templates/header/interestsBtn.hbs';
 import interestsBtnEn from '../templates/header/interestsBtnEn.hbs';
 import main from './main';
 import refs from './refs';
-import getLanguage from '../js/language-localstorage';
+import getLanguage from './changeLanguage';
 
 function userFilmsList(e) {
   refs.wrapperMenuRef.classList.toggle('menu__list--animate');
@@ -18,11 +18,6 @@ function userFilmsList(e) {
 }
 
 function interestsInnit(status, page) {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  })
-
   const allFIlms = constData.userData;
   let filterFilmsByStatus = [];
   if (allFIlms !== null) {
@@ -76,7 +71,6 @@ function interestsInnit(status, page) {
   getMovie(filmsByLanguage);
 
   const tabContainerRef = document.querySelector('.movie__interests__tab');
-  // console.log(languageRu);
 
   if (tabContainerRef === null) {
     const listMovies = document.querySelector('.main_list');

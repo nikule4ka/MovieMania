@@ -4,7 +4,7 @@ import '@firebase/database';
 import wathedData from './constData';
 import { getCurrentUser } from './getSetUserData';
 import main from './main';
-import getLanguage from '../js/language-localstorage';
+import getLanguage from './changeLanguage';
 import fetchApi from '../services/apiService';
 
 function setStatusFilm(movieId, status) {
