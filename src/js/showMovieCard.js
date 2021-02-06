@@ -54,7 +54,10 @@ function openTab(evt) {
 
 export default function showMovieCard(id) {
   const instance = showModal(pageLoader());
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 
   fetchApi
     .fetchMovieId(id)
