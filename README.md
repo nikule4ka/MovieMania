@@ -13,7 +13,7 @@
 - Authorized users can add films to the three lists: Watched list & Watched
   Later list & Favorites list.
 - Popup with details about film: rating, popularity, genres, description,
-  trailers, actors, rewievs, official page of film.
+  trailers, actors, rewievs.
 - Pagination with Vanilla JS (pages navigation).
 - Responsive design of site.
 - Routing. Thanks to which you can share movies with friends, acquaintances and
