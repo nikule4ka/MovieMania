@@ -1,6 +1,6 @@
 ![Logo](./src/images/3_beavers.jpg)
 
-# MOVIEMANIA
+# MOVIEMANIA 🐾
 
 ## ANgry Beavers team
 
