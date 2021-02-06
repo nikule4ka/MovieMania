@@ -36,6 +36,24 @@ function clearSearchString() {
     'placeholder',
     languageRu ? constData.placeholder.RU : constData.placeholder.EN,
   );
+
+  const refs = {
+    getByNameRef: document.querySelector('.search_films_name'),
+    getByGenresRef: document.querySelector('.search_films_genres'),
+    getByActorsRef: document.querySelector('.search_films_actors'),
+    searchFilmsBy: document.querySelector('.search__films_by'),
+    searchGenres: document.querySelector('.search__genres'),
+    searchString: document.querySelector('.search__string'),
+  };
+
+  refs.searchFilmsBy.classList.remove('is-hidden');
+  refs.searchGenres.classList.add('is-hidden');
+
+  refs.getByNameRef.classList.add('active__search');
+  refs.getByGenresRef.classList.remove('active__search');
+  refs.getByActorsRef.classList.remove('active__search');
+
+  refs.searchString.focus();
 }
 
 function hideCard() {
