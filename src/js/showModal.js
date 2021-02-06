@@ -16,7 +16,7 @@ let instance = '';
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
-
+  console.log('ESC');
   if (isEscKey) {
     instance.close();
   }
@@ -29,7 +29,7 @@ function onShowModal() {
 export default function modalShow(html) {
   instance = basicLightbox.create(html, {
     onShow: () => onShowModal(),
-    onClose: window.removeEventListener('keydown', onEscKeyPress),
+    onClose: () => window.removeEventListener('keydown', onEscKeyPress),
   });
   instance.show();
   return instance;
