@@ -127,6 +127,7 @@ function getMovie() {
 }
 
 function checkInformation(filmInformation) {
+  const currentLanguageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
   if (filmInformation.length === 0) {
     hidePagination();
     refs.mainContainer.insertAdjacentHTML(
