@@ -28,11 +28,10 @@ $menu-items: 5;
     position: absolute;
     z-index: 3000;
     top: 115px;
-    left: -152px;
+    left: -132px;
 
     @media (min-width: 768px) {
       top: 58px;
-      left: -152px;
     }
 
     @media (min-width: 1024px) {
