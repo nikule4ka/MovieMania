@@ -4,7 +4,7 @@ import '@firebase/auth';
 import refs from '../js/refs';
 import { getListings } from '../js/getSetUserData';
 import constData from '../js/constData';
-// import Router from '../js/Router';
+import main from '../js/main';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDxhL1yChcVJg9Bh5SNQIDffedtmC-aqsQ',
@@ -26,10 +26,6 @@ async function addUser({ user }) {
     const db = firebase.database();
     const users = db.ref('users');
     users.child(uid).set({ email: email });
-    // const currentStatusFilm = [];
-    // users
-    //   .child(uid + '/userFilms')
-    //   .set({ currentStatusFilm: constData.userData });
   } catch {
     console.error('user add failed');
   }
@@ -61,7 +57,8 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     getListings().then(snapshot => {
       constData.userData = snapshot.val();
-      constData.router.render();
+      main.changeUserInterests(constData.userData);
+      // constData.router.render();
     });
 
     refs.userLogin.classList.add('is-hidden');

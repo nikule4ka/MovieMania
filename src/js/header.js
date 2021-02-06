@@ -3,8 +3,12 @@ import '@firebase/auth';
 import fetchApi from '../services/apiService';
 import refs from './refs';
 import constData from './constData';
-import userMenu from '../templates/header/dropDownMenu.hbs';
+import userMenuRu from '../templates/header/dropDownMenu.hbs';
+import userMenuEn from '../templates/header/dropDownMenuEn.hbs';
 import userFilmsList from './userFilmsByStatus';
+import getLanguage from '../js/language-localstorage';
+import interests from './showUserInterest';
+import main from './main';
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
@@ -16,8 +20,15 @@ function openDropDownMenu() {
     return;
   }
 
-  refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenu());
-  refs.userAccount.classList.toggle('menu__open');
+  const languageRu = getLanguage() === constData.Languages.RUSSIAN;
+
+  if (languageRu) {
+    refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenuRu());
+    refs.userAccount.classList.toggle('menu__open');
+  } else {
+    refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenuEn());
+    refs.userAccount.classList.toggle('menu__open');
+  }
 
   document.body.addEventListener('click', closeDropDownMenu);
 
@@ -44,10 +55,10 @@ function logOut() {
       refs.wrapperMenuRef.classList.toggle('menu__list--animate');
       refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
+      main.mainInit();
       fetchApi.setLocation(`#`);
     })
     .catch(error => {
-      // An error happened.
       console.log(error);
     });
   refs.userLogin.classList.remove('is-hidden');
