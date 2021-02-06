@@ -4,7 +4,7 @@ import message from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';
 import team from '../templates/team.hbs';
 
-import getLocalLanguage from './language-localstorage';
+import getLocalLanguage from './changeLanguage';
 import constData from './constData';
 import pagination from './pagination';
 import showMovie from './showMovieList';
@@ -36,7 +36,10 @@ function onPaginationsBtnClick() {
   fetchApi.setPage(currentPage);
   const queryString = fetchApi.getQueryString();
   const param = fetchApi.getParam();
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 
   switch (queryString) {
     case constData.queryString.BY_NAME:
@@ -111,17 +114,7 @@ function getMovie() {
     })
     .then(filmInformation => {
       changeUserInterests(filmInformation);
-
-      if (filmInformation.length === 0) {
-        hidePagination();
-        //refs.mainContainer.innerHTML = '';
-        refs.mainContainer.insertAdjacentHTML(
-          'beforeend',
-          message({
-            message: currentLanguageRu ? 'Ничего не найдено' : 'Nothing found',
-          }),
-        );
-      }
+      checkInformation(filmInformation);
     })
     .catch(error => {
       hidePagination();
@@ -131,6 +124,18 @@ function getMovie() {
     .finally(() => {
       if (instance !== '') instance.close();
     });
+}
+
+function checkInformation(filmInformation) {
+  if (filmInformation.length === 0) {
+    hidePagination();
+    refs.mainContainer.insertAdjacentHTML(
+      'beforeend',
+      message({
+        message: currentLanguageRu ? 'Ничего не найдено' : 'Nothing found',
+      }),
+    );
+  }
 }
 
 function changeUserInterests(filmInformation) {
@@ -144,7 +149,6 @@ function changeUserInterests(filmInformation) {
     return el;
   });
 
-  console.log(filmInformation);
   interests.showInterests(filmInformation);
 }
 
@@ -165,4 +169,4 @@ function mainInit(
   getMovie();
 }
 
-export default { mainInit, getMovie, changeUserInterests };
+export default { mainInit, getMovie, changeUserInterests, checkInformation };

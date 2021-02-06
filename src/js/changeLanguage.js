@@ -51,12 +51,6 @@ function ChangeLanguage(e) {
     currentLanguage = e.target.dataset.lang;
   }
 
-  // if (refs.language.classList.contains(constData.Languages.ENGLISH)) {
-  //   removeClassForLanguage();
-  //   refs.languageEn.classList.add('active__language');
-  //   currentLanguage = constData.Languages.RUSSIAN;
-  // }
-
   refs.language.classList.add(currentLanguage);
   localStorage.setItem('language', currentLanguage);
   constData.router.render();

@@ -6,8 +6,7 @@ import constData from './constData';
 import userMenuRu from '../templates/header/dropDownMenu.hbs';
 import userMenuEn from '../templates/header/dropDownMenuEn.hbs';
 import userFilmsList from './userFilmsByStatus';
-import getLanguage from '../js/language-localstorage';
-import interests from './showUserInterest';
+import getLanguage from './changeLanguage';
 import main from './main';
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
@@ -65,7 +64,6 @@ function logOut() {
   refs.userAccount.classList.add('is-hidden');
 }
 
-//refs.mainLink.addEventListener('click', onClickMainLink);
 refs.headerLogoLink.addEventListener('click', onClickMainLink);
 refs.homeRef.addEventListener('click', onClickMainLink);
 
@@ -86,20 +84,3 @@ function closeDropDownMenu() {
     document.body.removeEventListener('click', closeDropDownMenu);
   }
 }
-
-/**Burger menu for mobile and tablet */
-
-// refs.menuRef.addEventListener('click', onClickMenu);
-
-// function onClickMenu(e) {
-//   e.preventDefault();
-//   if (refs.menuRef.classList.contains('open')) {
-//     refs.menuRef.classList.remove('open');
-//     refs.menuRef.classList.add('close');
-//     refs.userMenuRef.innerHTML = '';
-//   } else {
-//     refs.menuRef.classList.remove('close');
-//     refs.menuRef.classList.add('open');
-//     refs.userMenuRef.insertAdjacentHTML('beforeend', userMenu());
-//   }
-// }

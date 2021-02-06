@@ -1,5 +1,5 @@
 import constData from './constData';
-import getLocalLanguage from './language-localstorage';
+import getLocalLanguage from './changeLanguage';
 
 // Initialize function, create initial tokens with itens that are already selected by the user
 function init(element) {

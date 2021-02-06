@@ -7,7 +7,6 @@ export default function submitRegForm(event) {
 
   const instance = constData.instance;
 
-  // const usernameRef = document.querySelector('.username__sign__up');
   const passwordRef = document.querySelector('.password__sign__up');
   const emailRef = document.querySelector('.email__sign__up');
 

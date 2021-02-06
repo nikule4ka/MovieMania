@@ -12,9 +12,6 @@ const refs = {
   mainLink: document.querySelector('.mainLink'),
   headerLogoLink: document.querySelector('.header-logo-link'),
 
-  /**Burger menu for mobile and tablet */
-  // userMenuRef: document.querySelector('.user__menu'),
-  // menuBtnRef: document.getElementById('menu__btn'),
   listMovies: document.querySelector('.list_movies'),
   paginationRef: document.getElementById('pagination'),
   cardMovies: document.querySelector('.main_card'),
@@ -23,7 +20,6 @@ const refs = {
   footerTeam: document.querySelector('.footer_copyright.team'),
 
   homeRef: document.querySelector('.icons__header__home'),
-  //choicesContainerRef: document.querySelector('.clear__choices'),
 };
 
 export default refs;

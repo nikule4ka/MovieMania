@@ -58,7 +58,6 @@ firebase.auth().onAuthStateChanged(user => {
     getListings().then(snapshot => {
       constData.userData = snapshot.val();
       main.changeUserInterests(constData.userData);
-      // constData.router.render();
     });
 
     refs.userLogin.classList.add('is-hidden');

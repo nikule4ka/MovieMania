@@ -1,9 +1,9 @@
-import Router from './Router';
+import Router from './router';
 import main from './main';
 import constData from './constData';
 import showMovieCard from './showMovieCard';
 import interests from './userFilmsByStatus';
-import getLocalLanguage from './language-localstorage';
+import getLocalLanguage from './changeLanguage';
 import inputChoice from './inputChoice';
 
 const router = new Router({
