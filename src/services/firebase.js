@@ -57,6 +57,7 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     getListings().then(snapshot => {
       constData.userData = snapshot.val();
+      // console.log(constData.userData);
       main.changeUserInterests(constData.userData);
     });
 
