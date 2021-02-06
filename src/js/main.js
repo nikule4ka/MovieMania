@@ -142,7 +142,6 @@ function checkInformation(filmInformation) {
 
 function changeUserInterests(filmInformation) {
   if (filmInformation === null) {
-    hidePagination();
     return;
   }
   // checkInformation(filmInformation);
