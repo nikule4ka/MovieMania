@@ -18,12 +18,12 @@
   }
 
   .movie__markup__img {
-    align-self: flex-start;
     background-color: $headerFooterColor;
     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
 
     & img {
       display: block;
+
       @media screen and (max-width: 767px) {
         width: 100%;
         height: auto;
@@ -294,12 +294,12 @@
     grid-gap: 10px;
   }
 
-  @media screen and (min-width: 541px) and (max-width: 767px) {
+  @media screen and (min-width: 541px) and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (min-width: 768px) and (max-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 20px;
   }
