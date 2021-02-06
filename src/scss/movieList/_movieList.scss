@@ -45,6 +45,10 @@
 
   .card-img-top {
     width: 100%;
+
+    max-width: 400px;
+    height: auto;
+    min-height: 491.25px;
     //height: inherit;
     display: block;
     border-radius: 13px 13px 0 0;
