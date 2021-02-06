@@ -1,4 +1,4 @@
-![Logo](./3_beavers.jpg)
+![Logo](./src/images/3_beavers.jpg)
 
 # MOVIEMANIA
 
