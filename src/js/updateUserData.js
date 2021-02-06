@@ -2,40 +2,94 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 import '@firebase/database';
 import wathedData from './constData';
-import { getListings, getCurrentUser } from './getSetUserData';
+import { getCurrentUser } from './getSetUserData';
 import main from './main';
-import checkUser from './checkUser';
+import getLanguage from '../js/language-localstorage';
+import fetchApi from '../services/apiService';
 
 function setStatusFilm(movieId, status) {
-  getListings().then(
-    snapshot => {
-      let getUserData = snapshot.val();
+  let getUserData = wathedData.userData;
 
-      let currentStatusFilm = addFilm(getUserData, movieId, status);
+  let currentStatusFilm = addFilm(getUserData, movieId, status);
 
-      wathedData.userData = currentStatusFilm;
+  wathedData.userData = currentStatusFilm;
 
-      if (
-        location.hash.includes('favorites') ||
-        location.hash.includes('watched')
-      ) {
-        wathedData.router.render();
-      }
+  let addFilmFirstTime = currentStatusFilm[currentStatusFilm.length - 1];
 
-      main.changeUserInterests(wathedData.userData);
+  if (
+    addFilmFirstTime.posterPathEn === '' ||
+    addFilmFirstTime.posterPathRu === ''
+  ) {
+    let language = '';
+    let languageRu = getLanguage() === wathedData.Languages.RUSSIAN;
+    if (languageRu) {
+      language = 'en-EN';
+    } else {
+      language = 'ru-RU';
+    }
 
-      const currentUserId = getCurrentUser();
+    fetchApi
+      .fetchMovieId(addFilmFirstTime.id, `&language=${language}`)
+      .then(el => {
+        let currentFilm;
 
-      firebase
-        .database()
-        .ref(/users/ + currentUserId + /userFilms/)
-        .set({ currentStatusFilm });
-    },
-    error => checkUser(),
-  );
+        if (el.poster_path === null) {
+          el.poster_path = noPosterImg;
+        } else {
+          el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
+        }
+
+        if (language === 'ru-RU') {
+          currentFilm = {
+            ...addFilmFirstTime,
+            posterPathRu: el.poster_path,
+            titleRu: el.title,
+          };
+        }
+        if (language === 'en-EN') {
+          currentFilm = {
+            ...addFilmFirstTime,
+            posterPathEn: el.poster_path,
+            titleEn: el.title,
+          };
+        }
+
+        let currentStatusFilm = wathedData.userData.map(el => {
+          if (el.id === currentFilm.id) {
+            return { ...currentFilm };
+          }
+          return el;
+        });
+
+        wathedData.userData = currentStatusFilm;
+
+        const currentUserId = getCurrentUser();
+
+        firebase
+          .database()
+          .ref(/users/ + currentUserId + /userFilms/)
+          .set({ currentStatusFilm });
+      });
+  }
+
+  if (
+    location.hash.includes('favorites') ||
+    location.hash.includes('watched')
+  ) {
+    wathedData.router.render();
+  }
+
+  main.changeUserInterests(wathedData.userData);
+
+  const currentUserId = getCurrentUser();
+
+  firebase
+    .database()
+    .ref(/users/ + currentUserId + /userFilms/)
+    .set({ currentStatusFilm });
 }
 
-export async function filmStatus(e) {
+export function filmStatus(e) {
   e.preventDefault();
 
   if (e.target.nodeName !== 'I') {
@@ -45,7 +99,7 @@ export async function filmStatus(e) {
   const idFilm = e.target.dataset.id;
   const statusFilm = e.target.dataset.status;
 
-  await setStatusFilm(idFilm, statusFilm);
+  setStatusFilm(idFilm, statusFilm);
 }
 
 function addFilm(getUserData, movieId, status) {
@@ -83,13 +137,30 @@ function addFilm(getUserData, movieId, status) {
 
   const filmInfo = getUserData.map(el => {
     if (Number(el.id) === Number(filmAtribute.id)) {
-      return {
-        ...el,
-        poster_path: filmAtribute.poster,
-        vote_average: filmAtribute.vote,
-        title: filmAtribute.title,
-        release_date: filmAtribute.release,
-      };
+      if (!el.hasOwnProperty('posterPathEn')) {
+        let posterPathRu = '';
+        let posterPathEn = '';
+        let titleRu = '';
+        let titleEn = '';
+        if (getLanguage() === wathedData.Languages.RUSSIAN) {
+          posterPathRu = filmAtribute.poster;
+          titleRu = filmAtribute.title;
+        }
+        if (getLanguage() === wathedData.Languages.ENGLISH) {
+          posterPathEn = filmAtribute.poster;
+          titleEn = filmAtribute.title;
+        }
+        return {
+          ...el,
+          posterPathRu: posterPathRu,
+          posterPathEn: posterPathEn,
+          titleRu: titleRu,
+          titleEn: titleEn,
+          vote_average: filmAtribute.vote,
+          release_date: filmAtribute.release,
+        };
+      }
+      return el;
     }
     return el;
   });

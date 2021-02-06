@@ -120,8 +120,7 @@ async function fetchGanres() {
   return res.json();
 }
 
-async function fetchMovieId(id) {
-  const LANGUAGE = `&language=${getLanguage()}`;
+async function fetchMovieId(id, LANGUAGE = `&language=${getLanguage()}`) {
   const res = await fetch(
     `${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}&append_to_response=videos,reviews,credits`,
   );

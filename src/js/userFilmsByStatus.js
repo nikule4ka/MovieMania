@@ -2,9 +2,11 @@ import constData from './constData';
 import pagination from './pagination';
 import fetchApi from '../services/apiService';
 import getMovie from './showMovieList';
-import interestsBtn from '../templates/header/interestsBtn.hbs';
+import interestsBtnRu from '../templates/header/interestsBtn.hbs';
+import interestsBtnEn from '../templates/header/interestsBtnEn.hbs';
 import main from './main';
 import refs from './refs';
+import getLanguage from '../js/language-localstorage';
 
 function userFilmsList(e) {
   refs.wrapperMenuRef.classList.toggle('menu__list--animate');
@@ -16,7 +18,7 @@ function userFilmsList(e) {
 }
 
 function interestsInnit(status, page) {
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   const allFIlms = constData.userData;
   let filterFilmsByStatus = [];
@@ -38,13 +40,59 @@ function interestsInnit(status, page) {
   pagination.reset();
   pagination.movePageTo(page);
 
-  getMovie(filmsPerPage);
+  const languageRu = getLanguage() === constData.Languages.RUSSIAN;
+
+  let filmsByLanguage;
+
+  filmsByLanguage = filmsPerPage.map(el => {
+    if (languageRu) {
+      return {
+        title: el.titleRu,
+        poster_path: el.posterPathRu,
+        vote_average: el.vote_average,
+        watched: el.watched,
+        watchedLater: el.watchedLater,
+        release_date: el.release_date,
+        id: el.id,
+        favorites: el.favorites,
+      };
+    } else {
+      return {
+        title: el.titleEn,
+        poster_path: el.posterPathEn,
+        vote_average: el.vote_average,
+        watched: el.watched,
+        watchedLater: el.watchedLater,
+        release_date: el.release_date,
+        id: el.id,
+        favorites: el.favorites,
+      };
+    }
+  });
+
+  getMovie(filmsByLanguage);
 
   const tabContainerRef = document.querySelector('.movie__interests__tab');
+  // console.log(languageRu);
 
   if (tabContainerRef === null) {
     const listMovies = document.querySelector('.main_list');
-    listMovies.insertAdjacentHTML('afterbegin', interestsBtn());
+    if (languageRu) {
+      listMovies.insertAdjacentHTML('afterbegin', interestsBtnRu());
+    } else {
+      listMovies.insertAdjacentHTML('afterbegin', interestsBtnEn());
+    }
+  }
+
+  if (tabContainerRef !== null) {
+    const listMovies = document.querySelector('.main_list');
+    if (languageRu) {
+      tabContainerRef.innerHTML = '';
+      listMovies.insertAdjacentHTML('afterbegin', interestsBtnRu());
+    } else {
+      tabContainerRef.innerHTML = '';
+      listMovies.insertAdjacentHTML('afterbegin', interestsBtnEn());
+    }
   }
 
   const interestsBtns = document.querySelectorAll(

@@ -22,6 +22,7 @@ function onPaginationsBtnClick() {
   fetchApi.setPage(currentPage);
   const queryString = fetchApi.getQueryString();
   const param = fetchApi.getParam();
+  window.scrollTo(0, 0);
 
   switch (queryString) {
     case constData.queryString.BY_NAME:
@@ -101,6 +102,7 @@ function changeUserInterests(filmInformation) {
     return el;
   });
 
+  console.log(filmInformation);
   interests.showInterests(filmInformation);
 }
 
