@@ -31,18 +31,22 @@
 .tui-pagination .tui-page-btn {
   display: inline-block;
   position: relative;
-  width: 28px;
+  width: 27px;
+
   padding: 8px 0 6px;
   margin-left: 0;
   border-radius: 8px;
   box-shadow: 0 0 2px #6152a8;
   font-size: 12px;
-  font-weight: normal;
+
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
   border: 1px solid #6152a8;
-  border-width: 1px 0;
+
+  @media (min-width: 768px) {
+    width: 28px;
+  }
 }
 
 .tui-pagination .tui-page-btn:hover {

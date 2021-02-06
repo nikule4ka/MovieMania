@@ -1,14 +1,15 @@
-<button type="button" class="btn__back">        
+<button type="button" class="btn__back">
+  <span class="material-icons">reply</span>
   {{#if languageRu}}
-    Назад
+  Назад
   {{else}}
-    Back
+  Back
   {{/if}}
 </button>
 
 <div class="movie__markup__card ">
   <div class="movie__markup__img">
-    <img src="{{poster_path}}" width="300px" alt={{title}}  width="300px" height="450px" />
+    <img src="{{poster_path}}" alt={{title}}  width="300px" height="450px" />
   </div>
   <div class="movie__content">
     <div class="card-body">
@@ -31,26 +32,26 @@
 <div>
   <div class="movie__markup__tab">
     <button class="movie__markup__tablinks " id="defaultOpen" data-tabname="actors">
-        {{#if languageRu}}
-          Актеры
-        {{else}}
-          Actors
-        {{/if}}
-        </button>
+      {{#if languageRu}}
+      Актеры
+      {{else}}
+      Actors
+      {{/if}}
+    </button>
     <button class="movie__markup__tablinks" data-tabname="reviews">
-        {{#if languageRu}}
-          Отзывы
-        {{else}}
-          Reviews
-        {{/if}}
-        </button>
+      {{#if languageRu}}
+      Отзывы
+      {{else}}
+      Reviews
+      {{/if}}
+    </button>
     <button class="movie__markup__tablinks" data-tabname="trailers">
-        {{#if languageRu}}
-          Трейлеры
-        {{else}}
-          Trailers
-        {{/if}}
-        </button>
+      {{#if languageRu}}
+      Трейлеры
+      {{else}}
+      Trailers
+      {{/if}}
+    </button>
   </div>
 
   <!-- Tab content -->

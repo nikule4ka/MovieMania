@@ -1,6 +1,8 @@
 import fetchApi from '../services/apiService';
-import errorMessage from '../templates/errorMessage.hbs';
+
+import message from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';
+import team from '../templates/team.hbs';
 
 import getLocalLanguage from './language-localstorage';
 import constData from './constData';
@@ -9,13 +11,25 @@ import showMovie from './showMovieList';
 import showModal from './showModal';
 import { getStatusMovieById } from './getSetUserData';
 import interests from './showUserInterest';
+import modalShow from './showModal';
 
 import noPosterImg from '../images/no-movie.jpg';
+
+import baevers from '../images/3_beavers.jpg';
+import dagget from '../images/Daggett.png';
+import norb from '../images/Norb.jpg';
+import treeflower from '../images/treeflower.jpg';
 
 import refs from './refs';
 
 refs.paginationRef.addEventListener('click', onPaginationsBtnClick);
+refs.footerTeam.addEventListener('click', onTeamClick);
+
 let instance = '';
+
+function onTeamClick() {
+  modalShow(team({ baevers, dagget, norb, treeflower }));
+}
 
 function onPaginationsBtnClick() {
   const currentPage = pagination.getCurrentPage();
@@ -48,17 +62,33 @@ function onPaginationsBtnClick() {
   }
 }
 
+function showPagination() {
+  refs.paginationRef.classList.remove('is-hidden');
+}
+
+function hidePagination() {
+  refs.paginationRef.classList.add('is-hidden');
+}
+
 function getMovie() {
+  const currentLanguageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
   instance = showModal(
     pageLoader({
-      languageRu: getLocalLanguage() === constData.Languages.RUSSIAN,
+      languageRu: currentLanguageRu,
     }),
   );
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
+  const messageDiv = document.querySelector('.message');
+  if (messageDiv !== undefined && messageDiv !== null) messageDiv.remove();
 
   fetchApi
     .getMovieData()
     .then(({ results, total_results }) => {
+      showPagination();
       pagination.setTotalItems(Number(total_results));
       pagination.reset();
       pagination.movePageTo(fetchApi.getPage());
@@ -81,10 +111,22 @@ function getMovie() {
     })
     .then(filmInformation => {
       changeUserInterests(filmInformation);
+
+      if (filmInformation.length === 0) {
+        hidePagination();
+        //refs.mainContainer.innerHTML = '';
+        refs.mainContainer.insertAdjacentHTML(
+          'beforeend',
+          message({
+            message: currentLanguageRu ? 'Ничего не найдено' : 'Nothing found',
+          }),
+        );
+      }
     })
     .catch(error => {
-      refs.listMovies.innerHTML = '';
-      refs.listMovies.insertAdjacentHTML('beforeend', errorMessage(error));
+      hidePagination();
+      refs.mainContainer.innerHTML = '';
+      refs.mainContainer.insertAdjacentHTML('beforeend', message(error));
     })
     .finally(() => {
       if (instance !== '') instance.close();

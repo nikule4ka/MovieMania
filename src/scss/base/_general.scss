@@ -1,6 +1,6 @@
 $backgroundColor: #1a143b;
 $ListMovieColor: #281f55;
-$headerFooterColor: #30246b;
+$headerFooterColor: #3c3075;
 $secondaryColor: #f8104d;
 
 $primaryColorCircle: #f8104d;
@@ -60,44 +60,36 @@ select {
   display: none;
 }
 
-@media screen and (max-width: 540px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media screen and (min-width: 541px) and (max-width: 767px) {
-  .container {
-    max-width: 767px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .container {
-    max-width: 1023px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    min-width: 1024px;
-  }
-}
-
 .container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
+  @media screen and (max-width: 540px) {
+    max-width: 540px;
+  }
+
+  @media screen and (min-width: 541px) and (max-width: 767px) {
+    max-width: 767px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    max-width: 1023px;
+  }
+
+  @media (min-width: 1024px) {
+    min-width: 1024px;
+  }
 }
 
 .main {
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
 .material-icons {
-  color: #6152a8;
+  color: #c8c0ed;
   justify-content: center;
   align-items: center;
 }

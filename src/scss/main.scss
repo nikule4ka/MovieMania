@@ -1,16 +1,23 @@
 @import './base/general.scss';
-// @import './preloaderPage/circle-preloader.scss';
-// @import './preloaderPage/words-preloader.scss';
+
+@import './preloaderPage/circle-preloader.scss';
+@import './preloaderPage/words-preloader.scss';
+
 @import './pagination/pagination.scss';
+
+@import './header/menu';
+@import './header/menuDesktop';
 @import './header/header-registration';
 @import './header/_input-choice';
 @import './header/navigation';
 @import './header/login';
+
 @import './movieList/movieList';
 @import './movieList/movie-card.scss';
-@import './footer/footer-main.scss';
-// @import './header/choices';
-@import './header/menu';
-@import './header/menuDesktop';
-@import './modal/modal';
 @import './movieList/interestsBtn';
+@import './movieList/message';
+
+@import './footer/footer-main.scss';
+@import './footer/team.scss';
+
+@import './modal/modal';

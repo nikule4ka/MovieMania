@@ -1,5 +1,5 @@
 // vars and keyframes
-$delay: 0.4s;
+$delay: 0.2s;
 $menu-items: 5;
 
 @keyframes drop {
@@ -26,9 +26,19 @@ $menu-items: 5;
   position: relative;
   .menu {
     position: absolute;
-    top: 58px;
-    left: -95px;
     z-index: 3000;
+    top: 115px;
+    left: -100px;
+
+    @media (min-width: 768px) {
+      top: 58px;
+      left: -101px;
+    }
+
+    @media (min-width: 1024px) {
+      top: 55px;
+      left: -100px;
+    }
   }
   // height: 50px;
   // margin: 10px auto;
@@ -50,14 +60,16 @@ $menu-items: 5;
   background: #30246b;
   box-shadow: 0 0 2px #6152a8;
 
+  &:hover i + p,
+  &:hover i + a,
+  &:hover > .material-icons.icons__header_menu {
+    color: $secondaryColor;
+  }
+
   .menu__list__title {
     color: #fff;
     font-size: 15px;
     cursor: pointer;
-
-    &:hover {
-      color: $secondaryColor;
-    }
   }
 }
 
@@ -66,10 +78,6 @@ $menu-items: 5;
   color: #fff;
   text-align: center;
   font-size: 15px;
-
-  &:hover {
-    color: $secondaryColor;
-  }
 }
 
 .menu__list__item {
@@ -92,6 +100,6 @@ $menu-items: 5;
 
 .icons__header_menu {
   font-size: 20px;
-  vertical-align: sub;
+  vertical-align: middle;
   margin-right: 5px;
 }
