@@ -5,21 +5,22 @@
 Функционал MovieMania:
 
 - Single page application.
+- Remote DATA-base (Firebase).
 - User registration (additional registration).
-- Remote DATA-base (firebase).
-- Multilingual site (English,Russian).
-- Work with The Movie Database API themoviedb.org.
-- Multilingual search. Where you can find film by: genres, film name and actors.
 - Authorized users can add films to the three lists: Watched list & Watched
   Later list & Favorites list.
-- Popup with details about film: rating, popularity, genres, description,
+- Multilingual site (English, Russian).
+- Multilingual search. Where you can find film by: genres, film name and actors.
+- Work with The Movie Database API themoviedb.org.
+- Details information about film: rating, popularity, genres, description,
   trailers, actors, rewievs.
 - Pagination with Vanilla JS (pages navigation).
 - Responsive design of site.
 - Routing. Thanks to which you can share movies with friends, acquaintances and
-  they will not need to waste time searching for a movie
+  they will not need to waste time searching for a movie.
 
-Technologies stack: JS, REST API, WebPack, Firebase, Git, SaSS, HTML5, Routing.
+Technologies stack: JS, REST API, WebPack, Firebase, Git, SaSS, HTML5, Routing,
+Handlebars.
 
 ## Angry Beavers team
 
