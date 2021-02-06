@@ -70,8 +70,6 @@ select {
   margin-right: auto;
   margin-left: auto;
 
-  min-height: calc(100vh - 50px);
-
   @media screen and (max-width: 540px) {
     //max-width: 540px;
     max-width: 400px;
