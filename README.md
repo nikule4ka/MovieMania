@@ -19,7 +19,7 @@
 - Routing. Thanks to which you can share movies with friends, acquaintances and
   they will not need to waste time searching for a movie
 
-Technologies stack: JS, REST API, WebPack, Firebase, Axios, Git, SaSS, HTML5
+Technologies stack: JS, REST API, WebPack, Firebase, Git, SaSS, HTML5, Routing.
 
 ## Angry Beavers team
 
