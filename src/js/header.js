@@ -7,7 +7,6 @@ import userMenuRu from '../templates/header/dropDownMenu.hbs';
 import userMenuEn from '../templates/header/dropDownMenuEn.hbs';
 import userFilmsList from './userFilmsByStatus';
 import getLanguage from './changeLanguage';
-import main from './main';
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
