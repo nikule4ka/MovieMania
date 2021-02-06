@@ -7,6 +7,7 @@ import interestsBtnEn from '../templates/header/interestsBtnEn.hbs';
 import main from './main';
 import refs from './refs';
 import getLanguage from './changeLanguage';
+import message from '../templates/errorMessage.hbs';
 
 function userFilmsList(e) {
   refs.wrapperMenuRef.classList.toggle('menu__list--animate');
@@ -91,6 +92,20 @@ function interestsInnit(status, page) {
       listMovies.insertAdjacentHTML('afterbegin', interestsBtnEn());
     }
   }
+
+  const messageDiv = document.querySelector('.message');
+  if (messageDiv !== undefined && messageDiv !== null) {
+    messageDiv.remove();
+  }
+
+  refs.mainContainer.insertAdjacentHTML(
+    'beforeend',
+    message({
+      message: languageRu
+        ? 'Вы еще ничего не добавили'
+        : 'You have not added anything yet',
+    }),
+  );
 
   const interestsBtns = document.querySelectorAll(
     '.movie__interests__tablinks',
