@@ -1,14 +1,21 @@
 import refs from './refs';
-import loginRegForm from '../templates/loginRegForm.hbs';
+import loginRegFormEn from '../templates/loginRegFormEn.hbs';
+import loginRegFormRu from '../templates/loginRegFormRu.hbs';
 import submitRegForm from './submitRegForm';
 import { submitLogForm } from './submitLogForm';
 import constData from './constData';
 import showModal from './showModal';
+import getLanguage from './changeLanguage';
 
 refs.userLogin.addEventListener('click', checkUser);
 
 function checkUser() {
-  constData.instance = showModal(loginRegForm());
+  const languageRu = getLanguage() === constData.Languages.RUSSIAN;
+  if (languageRu) {
+    constData.instance = showModal(loginRegFormRu());
+  } else {
+    constData.instance = showModal(loginRegFormEn());
+  }
   const modalRef = document.querySelector('.login-html');
   modalRef.classList.remove('is-hidden');
   const signInRef = document.querySelector('.sign-in');

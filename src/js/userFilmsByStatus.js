@@ -84,10 +84,10 @@ function interestsInnit(status, page) {
   if (tabContainerRef !== null) {
     const listMovies = document.querySelector('.main_list');
     if (languageRu) {
-      tabContainerRef.innerHTML = '';
+      tabContainerRef.remove();
       listMovies.insertAdjacentHTML('afterbegin', interestsBtnRu());
     } else {
-      tabContainerRef.innerHTML = '';
+      tabContainerRef.remove();
       listMovies.insertAdjacentHTML('afterbegin', interestsBtnEn());
     }
   }

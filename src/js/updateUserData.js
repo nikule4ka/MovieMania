@@ -6,6 +6,7 @@ import { getCurrentUser } from './getSetUserData';
 import main from './main';
 import getLanguage from './changeLanguage';
 import fetchApi from '../services/apiService';
+import checkUser from './checkUser';
 
 function setStatusFilm(movieId, status) {
   let getUserData = wathedData.userData;
@@ -96,10 +97,16 @@ export function filmStatus(e) {
     return;
   }
 
-  const idFilm = e.target.dataset.id;
-  const statusFilm = e.target.dataset.status;
+  const currentUserId = getCurrentUser();
 
-  setStatusFilm(idFilm, statusFilm);
+  if (currentUserId) {
+    const idFilm = e.target.dataset.id;
+    const statusFilm = e.target.dataset.status;
+
+    setStatusFilm(idFilm, statusFilm);
+  } else {
+    checkUser();
+  }
 }
 
 function addFilm(getUserData, movieId, status) {

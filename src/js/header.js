@@ -49,13 +49,11 @@ function logOut() {
     .auth()
     .signOut()
     .then(() => {
-      console.log('Sign-out successful');
       refs.userAccount.classList.toggle('menu__open');
       refs.wrapperMenuRef.classList.toggle('menu__list--animate');
       refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
-      main.mainInit();
-      fetchApi.setLocation(`#`);
+      fetchApi.setLocation(`#/`);
     })
     .catch(error => {
       console.log(error);

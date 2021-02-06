@@ -41,7 +41,6 @@ function showFindHeader() {
 function createGanresList() {
   const selectRef = document.querySelector('[data-multi-select-plugin]');
   selectRef.innerHTML = '';
-  console.log(fetchApi);
   fetchApi
     .fetchGanres()
     .then(({ genres }) =>
