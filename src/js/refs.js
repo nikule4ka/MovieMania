@@ -22,6 +22,7 @@ const refs = {
   mainContainer: document.querySelector('.main.container'),
   footerTeam: document.querySelector('.footer_copyright.team'),
 
+  homeRef: document.querySelector('.icons__header__home'),
   //choicesContainerRef: document.querySelector('.clear__choices'),
 };
 

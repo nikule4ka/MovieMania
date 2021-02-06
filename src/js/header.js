@@ -67,6 +67,7 @@ function logOut() {
 
 //refs.mainLink.addEventListener('click', onClickMainLink);
 refs.headerLogoLink.addEventListener('click', onClickMainLink);
+refs.homeRef.addEventListener('click', onClickMainLink);
 
 function onClickMainLink(e) {
   e.preventDefault();
