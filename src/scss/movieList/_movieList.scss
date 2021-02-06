@@ -48,10 +48,14 @@
 
     max-width: 400px;
     height: auto;
-    min-height: 491.25px;
+
     //height: inherit;
     display: block;
     border-radius: 13px 13px 0 0;
+
+    @media screen and (min-width: 1024px) {
+      min-height: 450px;
+    }
   }
 
   &:hover {
