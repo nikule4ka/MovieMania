@@ -81,6 +81,7 @@ a {
 .login-form .group {
   margin-bottom: 15px;
 }
+
 .login-form .group .label,
 .login-form .group .input,
 .login-form .group .button {
@@ -88,6 +89,7 @@ a {
   color: #fff;
   display: block;
 }
+
 .login-form .group .input,
 .login-form .group .button {
   border: none;
@@ -95,19 +97,18 @@ a {
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.1);
 }
-/* .login-form .group input[data-type='password'] {
-  text-security: circle;
-  -webkit-text-security: circle;foot
-} */
+
 .login-form .group .label {
   color: #aaa;
   font-size: 12px;
 }
+
 .login-form .group .button {
   margin-top: 10px;
   background: #6152a8;
   cursor: pointer;
 }
+
 .login-form .group label .icon {
   width: 15px;
   height: 15px;
@@ -116,6 +117,7 @@ a {
   display: inline-block;
   background: rgba(255, 255, 255, 0.1);
 }
+
 .login-form .group label .icon:before,
 .login-form .group label .icon:after {
   content: '';
@@ -125,29 +127,36 @@ a {
   position: absolute;
   transition: all 0.2s ease-in-out 0s;
 }
+
 .login-form .group label .icon:before {
   left: 3px;
   width: 5px;
   bottom: 6px;
   transform: scale(0) rotate(0);
 }
+
 .login-form .group label .icon:after {
   top: 6px;
   right: 0;
   transform: scale(0) rotate(0);
 }
+
 .login-form .group .check:checked + label {
   color: #fff;
 }
+
 .login-form .group .check:checked + label .icon {
   background: $secondaryColor;
 }
+
 .login-form .group .check:checked + label .icon:before {
   transform: scale(1) rotate(45deg);
 }
+
 .login-form .group .check:checked + label .icon:after {
   transform: scale(1) rotate(-45deg);
 }
+
 .login-html
   .sign-in:checked
   + .tab
@@ -157,6 +166,7 @@ a {
   .sign-in-htm {
   transform: rotate(0);
 }
+
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
   transform: rotate(0);
 }
@@ -166,6 +176,7 @@ a {
   margin: 20px 0;
   background: rgba(255, 255, 255, 0.2);
 }
+
 .foot-lnk {
   text-decoration: underline;
   text-align: center;
