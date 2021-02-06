@@ -49,6 +49,10 @@
     display: block;
     border-radius: 13px 13px 0 0;
   }
+
+  &:hover {
+    box-shadow: 10px 10px 10px -10px rgba(158, 197, 226, 0.6);
+  }
 }
 
 .card__movie_markup {
