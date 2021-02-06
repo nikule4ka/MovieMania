@@ -6,10 +6,12 @@
   display: flex;
   justify-content: space-between;
   width: 290px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 5px auto;
 
   @media (min-width: 768px) {
     width: 425px;
+
+    margin: 0 auto 10px auto;
   }
 }
 
@@ -29,6 +31,10 @@
   padding: 10px 6px;
   transition: 0.3s;
   color: #fff;
+
+  @media (min-width: 768px) {
+    padding: 10px 19px;
+  }
 }
 
 /* Change background color of buttons on hover */
