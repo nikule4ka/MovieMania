@@ -130,6 +130,7 @@ function checkInformation(filmInformation) {
   const currentLanguageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
   if (filmInformation.length === 0) {
     hidePagination();
+    fefs.mainContainer.innerHTML = '';
     refs.mainContainer.insertAdjacentHTML(
       'beforeend',
       message({
@@ -144,7 +145,7 @@ function changeUserInterests(filmInformation) {
   if (filmInformation === null) {
     return;
   }
-  // checkInformation(filmInformation);
+
   filmInformation.map(el => {
     const statusMovieById = getStatusMovieById(el.id);
 
@@ -175,4 +176,11 @@ function mainInit(
   getMovie();
 }
 
-export default { mainInit, getMovie, changeUserInterests, checkInformation };
+export default {
+  mainInit,
+  getMovie,
+  changeUserInterests,
+  checkInformation,
+  showPagination,
+  hidePagination,
+};

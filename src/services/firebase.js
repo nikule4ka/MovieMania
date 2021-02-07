@@ -57,8 +57,15 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     getListings().then(snapshot => {
       constData.userData = snapshot.val();
-      // console.log(constData.userData);
-      main.changeUserInterests(constData.userData);
+
+      if (
+        window.location.href.includes('watched') ||
+        window.location.href.includes('favorites')
+      ) {
+        constData.router.render();
+      } else {
+        main.changeUserInterests(constData.userData);
+      }
     });
 
     refs.userLogin.classList.add('is-hidden');
