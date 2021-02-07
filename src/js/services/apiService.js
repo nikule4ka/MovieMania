@@ -1,5 +1,5 @@
-import getLanguage from '../js/changeLanguage';
-import getConstData from '../js/constData';
+import getLanguage from '../changeLanguage';
+import getConstData from '../constData';
 
 const API_KEY = '?api_key=fb4eca5dd3545235e4fd6796c70d4d40';
 const MAIN_URL = 'https://api.themoviedb.org/3/';
@@ -118,7 +118,8 @@ async function fetchGanres() {
   return res.json();
 }
 
-async function fetchMovieId(id, LANGUAGE = `&language=${getLanguage()}`) {
+async function fetchMovieId(id, language = getLanguage()) {
+  const LANGUAGE = `&language=${language}`;
   const res = await fetch(
     `${MAIN_URL}movie/${id}${API_KEY}${LANGUAGE}&append_to_response=videos,reviews,credits`,
   );

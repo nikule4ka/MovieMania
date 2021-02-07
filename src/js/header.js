@@ -1,6 +1,6 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 import refs from './refs';
 import constData from './constData';
 import userMenuRu from '../templates/header/dropDownMenu.hbs';

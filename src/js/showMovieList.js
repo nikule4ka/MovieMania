@@ -1,6 +1,6 @@
 import movieMarkup from '../templates/movieMarkup.hbs';
 import { filmStatus } from './updateUserData';
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 
 import refs from './refs';
 

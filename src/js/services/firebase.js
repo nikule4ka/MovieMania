@@ -1,10 +1,10 @@
 import firebase from '@firebase/app';
 import '@firebase/analytics';
 import '@firebase/auth';
-import refs from '../js/refs';
-import { getListings } from '../js/getSetUserData';
-import constData from '../js/constData';
-import main from '../js/main';
+import refs from '../refs';
+import { getListings } from '../getSetUserData';
+import constData from '../constData';
+import main from '../main';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDxhL1yChcVJg9Bh5SNQIDffedtmC-aqsQ',
@@ -57,8 +57,15 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     getListings().then(snapshot => {
       constData.userData = snapshot.val();
-      // console.log(constData.userData);
-      main.changeUserInterests(constData.userData);
+
+      if (
+        window.location.href.includes('watched') ||
+        window.location.href.includes('favorites')
+      ) {
+        constData.router.render();
+      } else {
+        main.changeUserInterests(constData.userData);
+      }
     });
 
     refs.userLogin.classList.add('is-hidden');

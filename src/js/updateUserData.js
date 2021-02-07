@@ -5,7 +5,7 @@ import wathedData from './constData';
 import { getCurrentUser } from './getSetUserData';
 import main from './main';
 import getLanguage from './changeLanguage';
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 import checkUser from './checkUser';
 
 function setStatusFilm(movieId, status) {
@@ -24,53 +24,51 @@ function setStatusFilm(movieId, status) {
     let language = '';
     let languageRu = getLanguage() === wathedData.Languages.RUSSIAN;
     if (languageRu) {
-      language = 'en-EN';
+      language = wathedData.Languages.ENGLISH;
     } else {
-      language = 'ru-RU';
+      language = wathedData.Languages.RUSSIAN;
     }
 
-    fetchApi
-      .fetchMovieId(addFilmFirstTime.id, `&language=${language}`)
-      .then(el => {
-        let currentFilm;
+    fetchApi.fetchMovieId(addFilmFirstTime.id, language).then(el => {
+      let currentFilm;
 
-        if (el.poster_path === null) {
-          el.poster_path = noPosterImg;
-        } else {
-          el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
+      if (el.poster_path === null) {
+        el.poster_path = noPosterImg;
+      } else {
+        el.poster_path = 'https://image.tmdb.org/t/p/w500' + el.poster_path;
+      }
+
+      if (language === wathedData.Languages.RUSSIAN) {
+        currentFilm = {
+          ...addFilmFirstTime,
+          posterPathRu: el.poster_path,
+          titleRu: el.title,
+        };
+      }
+      if (language === wathedData.Languages.ENGLISH) {
+        currentFilm = {
+          ...addFilmFirstTime,
+          posterPathEn: el.poster_path,
+          titleEn: el.title,
+        };
+      }
+
+      let currentStatusFilm = wathedData.userData.map(el => {
+        if (el.id === currentFilm.id) {
+          return { ...currentFilm };
         }
-
-        if (language === 'ru-RU') {
-          currentFilm = {
-            ...addFilmFirstTime,
-            posterPathRu: el.poster_path,
-            titleRu: el.title,
-          };
-        }
-        if (language === 'en-EN') {
-          currentFilm = {
-            ...addFilmFirstTime,
-            posterPathEn: el.poster_path,
-            titleEn: el.title,
-          };
-        }
-
-        let currentStatusFilm = wathedData.userData.map(el => {
-          if (el.id === currentFilm.id) {
-            return { ...currentFilm };
-          }
-          return el;
-        });
-
-        wathedData.userData = currentStatusFilm;
-
-        const currentUserId = getCurrentUser();
-
-        firebase
-          .database()
-          .ref(/users/ + currentUserId + /userFilms/)
-          .set({ currentStatusFilm });
+        return el;
       });
+
+      wathedData.userData = currentStatusFilm;
+
+      const currentUserId = getCurrentUser();
+
+      firebase
+        .database()
+        .ref(/users/ + currentUserId + /userFilms/)
+        .set({ currentStatusFilm });
+    });
   }
 
   if (

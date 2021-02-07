@@ -1,4 +1,4 @@
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 
 import message from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';
@@ -142,10 +142,9 @@ function checkInformation(filmInformation) {
 
 function changeUserInterests(filmInformation) {
   if (filmInformation === null) {
-    hidePagination();
     return;
   }
-  // checkInformation(filmInformation);
+
   filmInformation.map(el => {
     const statusMovieById = getStatusMovieById(el.id);
 
@@ -176,4 +175,15 @@ function mainInit(
   getMovie();
 }
 
-export default { mainInit, getMovie, changeUserInterests, checkInformation };
+window.addEventListener('unload', function () {
+  if (instance !== '') instance.close();
+});
+
+export default {
+  mainInit,
+  getMovie,
+  changeUserInterests,
+  checkInformation,
+  showPagination,
+  hidePagination,
+};

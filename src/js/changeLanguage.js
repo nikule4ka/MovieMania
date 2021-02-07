@@ -59,6 +59,5 @@ function ChangeLanguage(e) {
 }
 
 export default function getLocalLanguage() {
-  const savedTheme = localStorage.getItem('language');
-  return savedTheme;
+  return localStorage.getItem('language');
 }
