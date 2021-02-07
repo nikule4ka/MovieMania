@@ -130,7 +130,6 @@ function checkInformation(filmInformation) {
   const currentLanguageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
   if (filmInformation.length === 0) {
     hidePagination();
-    fefs.mainContainer.innerHTML = '';
     refs.mainContainer.insertAdjacentHTML(
       'beforeend',
       message({
