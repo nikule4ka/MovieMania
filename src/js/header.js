@@ -48,11 +48,11 @@ function logOut() {
     .auth()
     .signOut()
     .then(() => {
-      refs.userAccount.classList.toggle('menu__open');
-      refs.wrapperMenuRef.classList.toggle('menu__list--animate');
+      refs.userAccount.classList.remove('menu__open');
+      refs.wrapperMenuRef.classList.remove('menu__list--animate');
       refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
-      fetchApi.setLocation(`#/`);
+      fetchApi.setLocation('#/');
     })
     .catch(error => {
       console.log(error);
