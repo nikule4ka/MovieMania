@@ -1,4 +1,4 @@
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 
 import message from '../templates/errorMessage.hbs';
 import pageLoader from '../templates/pageLoader.hbs';

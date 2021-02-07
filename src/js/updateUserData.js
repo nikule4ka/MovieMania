@@ -5,7 +5,7 @@ import wathedData from './constData';
 import { getCurrentUser } from './getSetUserData';
 import main from './main';
 import getLanguage from './changeLanguage';
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 import checkUser from './checkUser';
 
 function setStatusFilm(movieId, status) {

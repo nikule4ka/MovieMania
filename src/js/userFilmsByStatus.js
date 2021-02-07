@@ -1,6 +1,6 @@
 import constData from './constData';
 import pagination from './pagination';
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 import getMovie from './showMovieList';
 import interestsBtnRu from '../templates/header/interestsBtn.hbs';
 import interestsBtnEn from '../templates/header/interestsBtnEn.hbs';
