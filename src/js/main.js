@@ -136,10 +136,16 @@ function checkInformation(filmInformation) {
         message: currentLanguageRu ? 'Ничего не найдено' : 'Nothing found',
       }),
     );
+    return;
   }
 }
 
 function changeUserInterests(filmInformation) {
+  if (filmInformation === null) {
+    hidePagination();
+    return;
+  }
+  // checkInformation(filmInformation);
   filmInformation.map(el => {
     const statusMovieById = getStatusMovieById(el.id);
 
