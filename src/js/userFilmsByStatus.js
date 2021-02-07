@@ -8,6 +8,7 @@ import main from './main';
 import refs from './refs';
 import getLanguage from './changeLanguage';
 import message from '../templates/errorMessage.hbs';
+import { getCurrentUser } from './getSetUserData';
 
 function userFilmsList(e) {
   refs.wrapperMenuRef.classList.toggle('menu__list--animate');
@@ -69,7 +70,10 @@ function interestsInnit(status, page) {
 
   const languageRu = getLanguage() === constData.Languages.RUSSIAN;
 
-  showTabs(languageRu, status);
+  const currentUserId = getCurrentUser();
+  if (currentUserId !== null) {
+    showTabs(languageRu, status);
+  }
 
   const messageDiv = document.querySelector('.message');
   if (messageDiv !== undefined && messageDiv !== null) {

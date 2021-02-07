@@ -44,6 +44,10 @@
   vertical-align: middle;
   border: 1px solid #6152a8;
 
+  @media screen and (min-width: 320px) and (max-width: 540px) {
+    width: 24px;
+  }
+
   @media (min-width: 768px) {
     width: 28px;
   }

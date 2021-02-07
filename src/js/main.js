@@ -176,6 +176,10 @@ function mainInit(
   getMovie();
 }
 
+window.addEventListener('unload', function () {
+  if (instance !== '') instance.close();
+});
+
 export default {
   mainInit,
   getMovie,
