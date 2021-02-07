@@ -1,4 +1,4 @@
-import fetchApi from '../services/apiService';
+import fetchApi from './services/apiService';
 
 import movieMarkupCard from '../templates/movieMarkupCard.hbs';
 import actors from '../templates/movieCard/actors.hbs';

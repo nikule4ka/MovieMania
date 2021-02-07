@@ -1,4 +1,4 @@
-import { registration } from '../services/firebase';
+import { registration } from './services/firebase';
 
 import constData from './constData';
 

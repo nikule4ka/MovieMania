@@ -1,10 +1,10 @@
 import firebase from '@firebase/app';
 import '@firebase/analytics';
 import '@firebase/auth';
-import refs from '../js/refs';
-import { getListings } from '../js/getSetUserData';
-import constData from '../js/constData';
-import main from '../js/main';
+import refs from '../refs';
+import { getListings } from '../getSetUserData';
+import constData from '../constData';
+import main from '../main';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDxhL1yChcVJg9Bh5SNQIDffedtmC-aqsQ',

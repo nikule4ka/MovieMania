@@ -1,5 +1,5 @@
-import getLanguage from '../js/changeLanguage';
-import getConstData from '../js/constData';
+import getLanguage from '../changeLanguage';
+import getConstData from '../constData';
 
 const API_KEY = '?api_key=fb4eca5dd3545235e4fd6796c70d4d40';
 const MAIN_URL = 'https://api.themoviedb.org/3/';

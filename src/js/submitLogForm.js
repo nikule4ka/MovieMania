@@ -1,4 +1,4 @@
-import { login } from '../services/firebase';
+import { login } from './services/firebase';
 import constData from './constData';
 
 export async function submitLogForm(event) {

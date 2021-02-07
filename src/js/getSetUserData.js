@@ -5,18 +5,18 @@ import constData from './constData';
 
 export async function getListings() {
   const currentUserId = getCurrentUser();
-  const listingsRef = firebase
+  return firebase
     .database()
-    .ref('users/' + currentUserId + '/userFilms/currentStatusFilm');
-  return listingsRef.once('value');
+    .ref('users/' + currentUserId + '/userFilms/currentStatusFilm')
+    .once('value');
 }
 
 export function getCurrentUser() {
   if (firebase.auth().currentUser === null) {
     return null;
   }
-  const currentUserId = firebase.auth().currentUser.uid;
-  return currentUserId;
+
+  return firebase.auth().currentUser.uid;
 }
 
 export function getStatusMovieById(id) {
