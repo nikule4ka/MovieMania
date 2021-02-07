@@ -13,7 +13,7 @@ export async function getListings() {
 
 export function getCurrentUser() {
   if (firebase.auth().currentUser === null) {
-    return;
+    return null;
   }
   const currentUserId = firebase.auth().currentUser.uid;
   return currentUserId;

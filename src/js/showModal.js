@@ -8,8 +8,6 @@
 //   if (instance !== '') instance.close();
 // });
 
-//проблему нашли вроде бы щас норм
-
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
