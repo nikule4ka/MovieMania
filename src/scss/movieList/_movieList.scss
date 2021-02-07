@@ -45,15 +45,19 @@
 
   .card-img-top {
     width: 100%;
-
-    max-width: 400px;
+    height: auto;
     display: block;
     border-radius: 13px 13px 0 0;
 
-    // @media screen and (min-width: 1024px) {
-    //   min-height: 340px;
-    //   max-height: 420px;
-    // }
+    @media screen and (min-width: 768px) {
+      max-height: 370px;
+      max-width: 400px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      min-height: 450px;
+    }
+
   }
 
   &:hover {
