@@ -11,6 +11,14 @@ export async function getListings() {
     .once('value');
 }
 
+export async function getUserName() {
+  const currentUserId = getCurrentUser();
+  return firebase
+    .database()
+    .ref('users/' + currentUserId)
+    .once('value');
+}
+
 export function getCurrentUser() {
   if (firebase.auth().currentUser === null) {
     return null;
@@ -33,6 +41,11 @@ export function getStatusMovieById(id) {
   return findFilm;
 }
 
-const userData = { getListings, getCurrentUser, getStatusMovieById };
+const userData = {
+  getListings,
+  getCurrentUser,
+  getStatusMovieById,
+  getUserName,
+};
 
 export default userData;
