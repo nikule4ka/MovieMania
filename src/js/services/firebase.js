@@ -8,6 +8,7 @@ import main from '../main';
 import notification from '../notification';
 import getLanguage from '../changeLanguage';
 import { getUserName } from '../getSetUserData';
+import fetchApi from './apiService';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDxhL1yChcVJg9Bh5SNQIDffedtmC-aqsQ',
@@ -42,6 +43,7 @@ export async function registration(email, password, username) {
     const auth = firebase.auth();
     const user = await auth.createUserWithEmailAndPassword(email, password);
     await addUser(user, username);
+    fetchApi.setLocation('#/');
   } catch {
     const languageRu = language();
     notifications(languageRu);
@@ -52,6 +54,7 @@ export async function login(email, password) {
   try {
     const auth = firebase.auth();
     await auth.signInWithEmailAndPassword(email, password);
+    fetchApi.setLocation('#/');
     getUserName().then(snapshot => {
       const userInfo = snapshot.val();
       const languageRu = language();
@@ -81,6 +84,7 @@ async function userExists(user) {
       const userInfo = getUser.val();
       const languageRu = language();
       notificationLogin(languageRu, userInfo);
+      fetchApi.setLocation('#/');
     }
   } catch {
     const languageRu = language();
@@ -96,6 +100,7 @@ async function addUserGogleReg(user, username) {
     users.child(uid).set({ email: email, username: username });
     const languageRu = language();
     notificationsReg(languageRu);
+    fetchApi.setLocation('#/');
   } catch {
     console.error('user add failed');
   }
