@@ -24,7 +24,9 @@ $menu-items: 5;
 
 .wrapper {
   position: relative;
+
   .menu {
+    width: 144px;
     position: absolute;
     z-index: 3000;
     top: 115px;
