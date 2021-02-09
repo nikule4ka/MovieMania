@@ -17,9 +17,14 @@ function successNotifications(title) {
   });
 }
 
+function infoNotification(title) {
+  info({ title });
+}
+
 const notification = {
   errorNotifications,
   successNotifications,
+  infoNotification,
 };
 
 export default notification;

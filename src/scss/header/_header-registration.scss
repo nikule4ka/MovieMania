@@ -179,7 +179,7 @@ a {
 
 .hr {
   height: 2px;
-  margin: 20px 0;
+  margin: 10px 0;
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -200,4 +200,74 @@ a {
 
 .login {
   color: $secondaryColor;
+}
+
+.google__login {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login__wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.google_login {
+  width: 30px;
+  height: 30px;
+  background: url(../images/google.svg) no-repeat 0 0;
+  display: inline-block;
+
+  &:hover {
+    width: 30px;
+    height: 30px;
+    background: url(../images/google-hover.svg) no-repeat 0 0;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+
+.github_login {
+  width: 30px;
+  height: 30px;
+  background: url(../images/github-login.svg) no-repeat 0 0;
+  display: inline-block;
+
+  &:hover {
+    width: 30px;
+    height: 30px;
+    background: url(../images/github-login-hover.svg) no-repeat 0 0;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+
+.facebook_login {
+  width: 30px;
+  height: 30px;
+  background: url(../images/facebook.svg) no-repeat 0 0;
+  display: inline-block;
+
+  &:hover {
+    width: 30px;
+    height: 30px;
+    background: url(../images/facebook-hover.svg) no-repeat 0 0;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+
+.twitter_login {
+  width: 30px;
+  height: 30px;
+  background: url(../images/twitter.svg) no-repeat 0 0;
+  display: inline-block;
+
+  &:hover {
+    width: 30px;
+    height: 30px;
+    background: url(../images/twitter-hover.svg) no-repeat 0 0;
+    cursor: pointer;
+    display: inline-block;
+  }
 }

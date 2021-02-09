@@ -41,14 +41,8 @@ export async function registration(email, password, username) {
     const user = await auth.createUserWithEmailAndPassword(email, password);
     await addUser(user, username);
   } catch {
-    const languageRu = getLanguage() === constData.Languages.RUSSIAN;
-    if (languageRu) {
-      notification.errorNotifications(
-        'Пользователь с таким e-mail уже существует',
-      );
-    } else {
-      notification.errorNotifications('User with this e-mail already exists');
-    }
+    const languageRu = language();
+    notifications(languageRu);
   }
 }
 
@@ -58,28 +52,68 @@ export async function login(email, password) {
     await auth.signInWithEmailAndPassword(email, password);
     getUserName().then(snapshot => {
       const userInfo = snapshot.val();
-      const languageRu = getLanguage() === constData.Languages.RUSSIAN;
-      if (languageRu) {
-        notification.successNotifications(`Вы вошли как ${userInfo.username}`);
-      } else {
-        notification.successNotifications(
-          `You are signed as ${userInfo.username}`,
-        );
-      }
+      const languageRu = language();
+      notificationLogin(languageRu, userInfo);
     });
 
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
   } catch {
-    const languageRu = getLanguage() === constData.Languages.RUSSIAN;
-    if (languageRu) {
-      notification.errorNotifications(
-        'Пользователя с таким e-mail не существует',
-      );
-    } else {
-      notification.errorNotifications('User with this e-mail no exists');
-    }
+    const languageRu = language();
+    errorNotify(languageRu);
   }
+}
+
+async function userExists(user) {
+  try {
+    const { uid } = user;
+    const db = firebase.database();
+    const users = db.ref('users/');
+    const dataSnapshot = await users.once('value');
+    const data = dataSnapshot.val();
+    if (!data.hasOwnProperty(uid)) {
+      await addUserGogleReg(user, user.displayName);
+    } else {
+      const getUser = await db.ref('users/' + uid).once('value');
+      const userInfo = getUser.val();
+      const languageRu = language();
+      notificationLogin(languageRu, userInfo);
+    }
+  } catch {
+    const languageRu = language();
+    notifications(languageRu);
+  }
+}
+
+async function addUserGogleReg(user, username) {
+  try {
+    const { uid, email } = user;
+    const db = firebase.database();
+    const users = db.ref('users');
+    users.child(uid).set({ email: email, username: username });
+  } catch {
+    console.error('user add failed');
+  }
+}
+
+export function googleAuthorization() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  getProvider(provider);
+}
+
+export function facebookAuthorization() {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  getProvider(provider);
+}
+
+export function githubAuthorization() {
+  const provider = new firebase.auth.GithubAuthProvider();
+  getProvider(provider);
+}
+
+export function twitterAuthorization() {
+  const provider = new firebase.auth.TwitterAuthProvider();
+  getProvider(provider);
 }
 
 firebase.auth().onAuthStateChanged(user => {
@@ -104,3 +138,62 @@ firebase.auth().onAuthStateChanged(user => {
     refs.userAccount.classList.add('is-hidden');
   }
 });
+
+function notifications(languageRu) {
+  if (languageRu) {
+    notification.errorNotifications(
+      'Пользователь с таким e-mail уже существует',
+    );
+  } else {
+    notification.errorNotifications('User with this e-mail already exists');
+  }
+}
+
+function notificationLogin(languageRu, userInfo) {
+  if (languageRu) {
+    notification.successNotifications(`Вы вошли как ${userInfo.username}`);
+  } else {
+    notification.successNotifications(`You are signed as ${userInfo.username}`);
+  }
+}
+
+function errorNotify(languageRu) {
+  if (languageRu) {
+    notification.errorNotifications(
+      'Пользователя с таким e-mail не существует',
+    );
+  } else {
+    notification.errorNotifications('User with this e-mail no exists');
+  }
+}
+
+function language() {
+  const languageRu = getLanguage() === constData.Languages.RUSSIAN;
+  return languageRu;
+}
+
+function getProvider(provider) {
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(function (result) {
+      userExists(result.user);
+    })
+    .catch(function (error) {
+      const languageRu = language();
+      if (languageRu) {
+        notification.infoNotification('Отменено пользователем');
+      } else {
+        notification.infoNotification('Canceled by user');
+      }
+    });
+}
+
+const authorization = {
+  googleAuthorization,
+  facebookAuthorization,
+  twitterAuthorization,
+  githubAuthorization,
+};
+
+export default authorization;
