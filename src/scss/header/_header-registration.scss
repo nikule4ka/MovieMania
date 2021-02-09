@@ -205,6 +205,7 @@ a {
 .google__login {
   text-align: center;
   margin-bottom: 10px;
+  font-size: 12px;
 }
 
 .login__wrap {
@@ -213,14 +214,14 @@ a {
 }
 
 .google_login {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: url(../images/google.svg) no-repeat 0 0;
   display: inline-block;
 
   &:hover {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: url(../images/google-hover.svg) no-repeat 0 0;
     cursor: pointer;
     display: inline-block;
@@ -228,14 +229,14 @@ a {
 }
 
 .github_login {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: url(../images/github-login.svg) no-repeat 0 0;
   display: inline-block;
 
   &:hover {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: url(../images/github-login-hover.svg) no-repeat 0 0;
     cursor: pointer;
     display: inline-block;
@@ -243,14 +244,14 @@ a {
 }
 
 .facebook_login {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: url(../images/facebook.svg) no-repeat 0 0;
   display: inline-block;
 
   &:hover {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: url(../images/facebook-hover.svg) no-repeat 0 0;
     cursor: pointer;
     display: inline-block;
@@ -258,14 +259,14 @@ a {
 }
 
 .twitter_login {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: url(../images/twitter.svg) no-repeat 0 0;
   display: inline-block;
 
   &:hover {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: url(../images/twitter-hover.svg) no-repeat 0 0;
     cursor: pointer;
     display: inline-block;
