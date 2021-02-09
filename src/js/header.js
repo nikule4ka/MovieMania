@@ -8,7 +8,6 @@ import userMenuEn from '../templates/header/dropDownMenuEn.hbs';
 import userFilmsList from './userFilmsByStatus';
 import getLanguage from './changeLanguage';
 import main from './main';
-import { getUserName } from './getSetUserData';
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
