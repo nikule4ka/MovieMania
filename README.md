@@ -6,8 +6,8 @@
 
 - Single page application.
 - Remote DATA-base (Firebase).
-- User registration (additional registration).
-- Authorized users can add films to the three lists: Watched list & Watched
+- User registration (additional registration and authorization with google, facebook, github or twitter account).
+- Authorized users can add films to the three lists: Watched list & Watched.
   Later list & Favorites list.
 - Multilingual site (English, Russian).
 - Multilingual search. Where you can find film by: genres, film name and actors.
@@ -20,7 +20,7 @@
   they will not need to waste time searching for a movie.
 
 Technologies stack: JS, REST API, WebPack, Firebase, Git, SaSS, HTML5, Routing,
-Handlebars.
+Handlebars, GRID.
 
 ## Angry Beavers team
 
