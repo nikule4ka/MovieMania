@@ -202,6 +202,7 @@ function getProvider(provider) {
       userExists(result.user);
     })
     .catch(function (error) {
+      console.log(error);
       const languageRu = language();
       if (languageRu) {
         notification.infoNotification('Отменено пользователем');
