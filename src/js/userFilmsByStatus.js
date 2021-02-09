@@ -11,6 +11,9 @@ import message from '../templates/errorMessage.hbs';
 import { getCurrentUser } from './getSetUserData';
 
 function userFilmsList(e) {
+  if (e.target.textContent === constData.username) {
+    return;
+  }
   refs.wrapperMenuRef.classList.toggle('menu__list--animate');
   refs.userAccount.classList.toggle('menu__open');
   refs.wrapperMenuRef.innerHTML = '';

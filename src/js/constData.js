@@ -10,6 +10,7 @@ const CONST_DATA = {
   },
   instance: '',
   router: '',
+  username: '',
   wathedFilms: {
     favorites: false,
     watchedLater: false,

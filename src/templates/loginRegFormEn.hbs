@@ -53,7 +53,18 @@
             <form class="form__sign__up group">
               <label class="label"
                 >Username
-                <input type="text" class="input username__sign__up" />
+                <input type="text" class="input username__sign__up" required  placeholder="Ben Afflek"/>
+              </label>
+              
+              <label class="label"
+                >Email Address
+                <input
+                  type="email"
+                  placeholder="moviemania@gmail.com"
+                  class="input email__sign__up"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  required
+                />
               </label>
               <label class="label"
                 >Password
@@ -64,16 +75,6 @@
                   data-type="password"
                   minlength="4"
                   maxlength="16"
-                  required
-                />
-              </label>
-              <label class="label"
-                >Email Address
-                <input
-                  type="email"
-                  placeholder="moviemania@gmail.com"
-                  class="input email__sign__up"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   required
                 />
               </label>
