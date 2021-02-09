@@ -7,6 +7,8 @@ import userMenuRu from '../templates/header/dropDownMenu.hbs';
 import userMenuEn from '../templates/header/dropDownMenuEn.hbs';
 import userFilmsList from './userFilmsByStatus';
 import getLanguage from './changeLanguage';
+import main from './main';
+import { getUserName } from './getSetUserData';
 
 refs.userAccount.addEventListener('click', openDropDownMenu);
 
@@ -21,10 +23,19 @@ function openDropDownMenu() {
   const languageRu = getLanguage() === constData.Languages.RUSSIAN;
 
   if (languageRu) {
-    refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenuRu());
+    const username = constData.username;
+    refs.wrapperMenuRef.insertAdjacentHTML(
+      'beforeend',
+      userMenuRu({ username }),
+    );
     refs.userAccount.classList.toggle('menu__open');
   } else {
-    refs.wrapperMenuRef.insertAdjacentHTML('beforeend', userMenuEn());
+    const username = constData.username;
+
+    refs.wrapperMenuRef.insertAdjacentHTML(
+      'beforeend',
+      userMenuEn({ username }),
+    );
     refs.userAccount.classList.toggle('menu__open');
   }
 
@@ -52,7 +63,8 @@ function logOut() {
       refs.wrapperMenuRef.classList.remove('menu__list--animate');
       refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
-      fetchApi.setLocation('#/');
+      main.changeUserInterests(constData.userData);
+      fetchApi.setLocation('#/logaut');
     })
     .catch(error => {
       console.log(error);

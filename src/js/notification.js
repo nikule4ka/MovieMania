@@ -4,6 +4,7 @@ import '@pnotify/core/dist/Material.css';
 defaults.styling = 'material';
 defaults.icons = 'material';
 defaults.width = '280px';
+defaults.delay = '500';
 
 function errorNotifications(title) {
   error({

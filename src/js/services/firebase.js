@@ -30,6 +30,8 @@ async function addUser({ user }, username) {
     const db = firebase.database();
     const users = db.ref('users');
     users.child(uid).set({ email: email, username: username });
+    const languageRu = language();
+    notificationsReg(languageRu);
   } catch {
     console.error('user add failed');
   }
@@ -53,6 +55,7 @@ export async function login(email, password) {
     getUserName().then(snapshot => {
       const userInfo = snapshot.val();
       const languageRu = language();
+      constData.username = userInfo.username;
       notificationLogin(languageRu, userInfo);
     });
 
@@ -91,6 +94,8 @@ async function addUserGogleReg(user, username) {
     const db = firebase.database();
     const users = db.ref('users');
     users.child(uid).set({ email: email, username: username });
+    const languageRu = language();
+    notificationsReg(languageRu);
   } catch {
     console.error('user add failed');
   }
@@ -130,6 +135,15 @@ firebase.auth().onAuthStateChanged(user => {
         main.changeUserInterests(constData.userData);
       }
     });
+    if (user.displayName !== null) {
+      constData.username = user.displayName;
+    }
+    if (user.displayName === null) {
+      getUserName().then(snapshot => {
+        const userInfo = snapshot.val();
+        constData.username = userInfo.username;
+      });
+    }
 
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
@@ -146,6 +160,14 @@ function notifications(languageRu) {
     );
   } else {
     notification.errorNotifications('User with this e-mail already exists');
+  }
+}
+
+function notificationsReg(languageRu) {
+  if (languageRu) {
+    notification.successNotifications('Вы успешно зарегестрировались');
+  } else {
+    notification.successNotifications('You have successfully registered');
   }
 }
 
