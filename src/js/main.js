@@ -141,6 +141,7 @@ function checkInformation(filmInformation) {
 }
 
 function changeUserInterests(filmInformation) {
+  interests.clearInterests();
   if (filmInformation === null) {
     return;
   }

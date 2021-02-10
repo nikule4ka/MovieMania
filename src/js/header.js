@@ -63,7 +63,6 @@ function logOut() {
       refs.wrapperMenuRef.innerHTML = '';
       constData.userData = [];
       main.changeUserInterests(constData.userData);
-      fetchApi.setLocation('#/logout');
     })
     .catch(error => {
       console.log(error);

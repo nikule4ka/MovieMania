@@ -4,6 +4,7 @@ import '@firebase/auth';
 import refs from '../refs';
 import { getListings } from '../getSetUserData';
 import constData from '../constData';
+import interests from '../showUserInterest';
 import main from '../main';
 import notification from '../notification';
 import getLanguage from '../changeLanguage';
@@ -54,7 +55,6 @@ export async function login(email, password) {
   try {
     const auth = firebase.auth();
     await auth.signInWithEmailAndPassword(email, password);
-    fetchApi.setLocation('#/');
     getUserName().then(snapshot => {
       const userInfo = snapshot.val();
       const languageRu = language();
@@ -84,7 +84,6 @@ async function userExists(user) {
       const userInfo = getUser.val();
       const languageRu = language();
       notificationLogin(languageRu, userInfo);
-      fetchApi.setLocation('#/');
     }
   } catch {
     const languageRu = language();
@@ -100,7 +99,6 @@ async function addUserGogleReg(user, username) {
     users.child(uid).set({ email: email, username: username });
     const languageRu = language();
     notificationsReg(languageRu);
-    fetchApi.setLocation('#/');
   } catch {
     console.error('user add failed');
   }
@@ -153,6 +151,7 @@ firebase.auth().onAuthStateChanged(user => {
     refs.userLogin.classList.add('is-hidden');
     refs.userAccount.classList.remove('is-hidden');
   } else {
+    interests.clearInterests();
     refs.userLogin.classList.remove('is-hidden');
     refs.userAccount.classList.add('is-hidden');
   }

@@ -80,6 +80,8 @@ export default function showMovieCard(id) {
 
       data.languageRu = getLocalLanguage() === constData.Languages.RUSSIAN;
 
+      data.min = data.languageRu ? 'мин' : 'min';
+
       refs.cardMovies.innerHTML = '';
       refs.cardMovies.insertAdjacentHTML('beforeend', movieMarkupCard(data));
 

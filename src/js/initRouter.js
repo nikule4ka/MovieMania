@@ -99,11 +99,6 @@ router
     hideCard();
     showUserLists(constData.queryString.WATCHED_LATER, page);
   })
-  .add(/logout/, () => {
-    clearSearchString();
-    hideCard();
-    main.mainInit();
-  })
   .add('', () => {
     clearSearchString();
     hideCard();

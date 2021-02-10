@@ -28,6 +28,25 @@ export function showInterestsOnCard(data) {
   });
 }
 
-const interests = { showInterests, showInterestsOnCard };
+export function clearInterests() {
+  const data = {
+    favorites: false,
+    watched: false,
+    watchedLater: false,
+  };
+
+  const interestsContainerLists = document.querySelectorAll(
+    '.status__film__js',
+  );
+
+  interestsContainerLists.forEach(interestsContainer => {
+    data.id = interestsContainer.dataset.container;
+
+    interestsContainer.innerHTML = '';
+    interestsContainer.insertAdjacentHTML('beforeend', interestsMarkUp(data));
+  });
+}
+
+const interests = { showInterests, showInterestsOnCard, clearInterests };
 
 export default interests;
