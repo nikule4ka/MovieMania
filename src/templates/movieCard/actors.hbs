@@ -1,11 +1,13 @@
-{{#each this}}
 <div class="card__actors">
     <ul class="list__actors">
-        <li class="list__actorCard">
-            <img src="" width="" alt="">
-            <h3 class="list__actorName"></h3>
-            <p class="list__actorMovieName"></p>
+        {{#each this}}
+        <li class="list__actor-card">
+
+            <img src="{{profile_path}}" alt="{{name}}" width="100px" height="150px">
+
+            <h3 class="list__actor-name">{{name}}</h3>
+            <p class="list__actor-moviename">{{character}}</p>
         </li>
+        {{/each}}
     </ul>
 </div>
-{{each}}

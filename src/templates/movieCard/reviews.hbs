@@ -1,12 +1,11 @@
-{{#each this}}
 <div class="card__reviews">
-    <p class="name-movie">{{nameOfmovie}}</p>
-    <ul class="list__reviews">
-        <li class="list__reviewCard">
-            <p class="list__nameOfUser"></p>
-            <h4 class="list__review"></h4>
-            <p class="list__dateOfReview"></p>
-        </li>
-    </ul>
+    <ul class=" list__reviews">
+        {{#each this}}
+            <li class="list__review-card">
+                <h4 class="list__name-user">{{author}}</h4>
+                <p class="list__date-review">{{created_at}} </p>
+                <p class="list__review">{{content}}</p>
+            </li>
+        {{/each}}
+        </ul>
 </div>
-{{each}}

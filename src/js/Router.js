@@ -69,12 +69,22 @@ class Router {
 
   interval = () => {
     if (this.current === this.getFragment()) return;
+    this.render();
+  };
+
+  removeModal = () => {
+    const modalWindow = document.querySelector('.basicLightbox');
+    if (modalWindow !== null) modalWindow.remove();
+  };
+
+  render = () => {
     this.current = this.getFragment();
 
     this.routes.some(route => {
       const match = this.current.match(route.path);
       if (match) {
         match.shift();
+        this.removeModal();
         route.cb.apply({}, match);
         return match;
       }

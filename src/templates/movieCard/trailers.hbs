@@ -1,6 +1,7 @@
 {{#each this}}
-<div class="card__trailers">
-    <iframe title={{name}} id="ytplayer" type="text/html" width="640" height="360"
-        src="https://www.youtube.com/embed/{{key}}" frameBorder="0" allowFullScreen />
-</div>
-{{each}}
+    <div class="card__trailers">
+        <h4 class="card-trailers-title">{{name}}</h4>
+        <iframe class="card__trailers-video" src="https://www.youtube.com/embed/{{key}}" frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+{{/each}}
